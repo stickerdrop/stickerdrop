@@ -189,6 +189,7 @@
       .footer-grid { grid-template-columns: 1fr 1fr; }
     }
   </style>
+<script src="https://js.stripe.com/v3/"></script>
 </head>
 <body>
 
@@ -337,11 +338,8 @@
       </div>
     </div>
 
-    <input class="card-input" placeholder="Card number" style="width:100%;margin-bottom:12px"/>
-    <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:20px">
-      <input class="card-input" placeholder="MM / YY"/>
-      <input class="card-input" placeholder="CVC"/>
-    </div>
+    <div id="stripeCardElement" style="background:#2e2e2e;border:1px solid rgba(255,255,255,0.1);border-radius:6px;padding:14px 16px;margin-bottom:20px;"></div>
+    <div id="cardErrors" style="color:#FF5C00;font-size:0.82rem;margin-bottom:12px;min-height:18px"></div>
 
     <button class="pay-btn" onclick="placeOrder()">PAY <span id="payTotal">$32.50</span> — ORDER NOW</button>
   </div>
@@ -470,7 +468,7 @@
       <h4>Company</h4>
       <a href="#faq">FAQ</a>
       <a href="#reviews">Reviews</a>
-      <a href="mailto:hello@stickerdrop.co">Contact</a>
+      <a href="/cdn-cgi/l/email-protection#3058555c5c5f70434459535b554254425f401e535f">Contact</a>
     </div>
     <div class="footer-col">
       <h4>Shipping</h4>
@@ -490,7 +488,7 @@
   </div>
 </footer>
 
-<script>
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
   let selectedSize = '2x2';
   let selectedFinish = 'gloss';
   let uploadedFile = null;
@@ -579,6 +577,44 @@
     if (file) { document.getElementById('fileInput').files = e.dataTransfer.files; handleFile({target:{files:[file]}}); }
   });
 
+
+
+  function closeCheckout() {
+    document.getElementById('checkoutModal').classList.remove('open');
+  }
+
+  function selectPay(el) {
+    document.querySelectorAll('.pay-opt').forEach(b => b.classList.remove('active'));
+    el.classList.add('active');
+  }
+
+  // Real Stripe checkout
+  const stripe = Stripe('pk_live_51Q5JJoP6o7zTKR7KLstUoCAxTzw7y7h8Vm8LeB2FgMFpni7ybA4BL9IEgrG211TcBFfjdTbLOI93gd4vP7OsdCM0001kTzxLNv');
+  const elements = stripe.elements();
+  let cardElement = null;
+  let cardMounted = false;
+
+  function mountCard() {
+    if (cardMounted) return;
+    // Replace fake card inputs with real Stripe element
+    const cardContainer = document.getElementById('stripeCardElement');
+    if (!cardContainer) return;
+    cardElement = elements.create('card', {
+      style: {
+        base: {
+          color: '#f5f0eb',
+          fontFamily: 'DM Sans, system-ui, sans-serif',
+          fontSize: '16px',
+          '::placeholder': { color: '#888' },
+          backgroundColor: '#2e2e2e',
+        },
+        invalid: { color: '#FF5C00' }
+      }
+    });
+    cardElement.mount('#stripeCardElement');
+    cardMounted = true;
+  }
+
   function openCheckout() {
     const pricing = updatePrice();
     const qty = document.getElementById('qty').value;
@@ -597,28 +633,96 @@
     document.getElementById('summaryTotal').textContent = '$' + pricing.total;
     document.getElementById('payTotal').textContent = '$' + pricing.total;
     document.getElementById('checkoutModal').classList.add('open');
+    setTimeout(mountCard, 100);
   }
 
-  function closeCheckout() {
-    document.getElementById('checkoutModal').classList.remove('open');
+  async function placeOrder() {
+    const name    = document.getElementById('custName').value.trim();
+    const email   = document.getElementById('custEmail').value.trim();
+    const address = document.getElementById('custAddress').value.trim();
+
+    if (!name || !email || !address) {
+      alert('Please fill in your name, email, and shipping address.');
+      return;
+    }
+    if (!cardElement) {
+      alert('Please enter your card details.');
+      return;
+    }
+
+    const payBtn = document.querySelector('.pay-btn');
+    payBtn.textContent = 'Processing...';
+    payBtn.disabled = true;
+
+    try {
+      const pricing = updatePrice();
+      const qty     = document.getElementById('qty').value;
+      const type    = document.getElementById('stickerType').value;
+      const size    = selectedSize;
+      const finish  = selectedFinish;
+      const totalCents = Math.round(parseFloat(pricing.total) * 100);
+
+      // Create payment intent via Stripe
+      const { paymentMethod, error } = await stripe.createPaymentMethod({
+        type: 'card',
+        card: cardElement,
+        billing_details: { name, email }
+      });
+
+      if (error) {
+        alert('Card error: ' + error.message);
+        payBtn.textContent = 'PAY $' + pricing.total + ' — ORDER NOW';
+        payBtn.disabled = false;
+        return;
+      }
+
+      // Confirm payment — this charges the card
+      const { error: confirmError, paymentIntent } = await stripe.confirmCardPayment(
+        await getClientSecret(totalCents, email, name, qty, type, size, finish, address),
+        { payment_method: paymentMethod.id }
+      );
+
+      if (confirmError) {
+        alert('Payment failed: ' + confirmError.message);
+        payBtn.textContent = 'PAY $' + pricing.total + ' — ORDER NOW';
+        payBtn.disabled = false;
+        return;
+      }
+
+      if (paymentIntent.status === 'succeeded') {
+        closeCheckout();
+        document.getElementById('successOverlay').classList.add('open');
+      }
+
+    } catch (err) {
+      alert('Something went wrong. Please try again.');
+      payBtn.textContent = 'PAY ' + document.getElementById('payTotal').textContent + ' — ORDER NOW';
+      payBtn.disabled = false;
+    }
   }
 
-  function selectPay(el) {
-    document.querySelectorAll('.pay-opt').forEach(b => b.classList.remove('active'));
-    el.classList.add('active');
-  }
-
-  function placeOrder() {
-    closeCheckout();
-    document.getElementById('successOverlay').classList.add('open');
+  async function getClientSecret(amountCents, email, name, qty, type, size, finish, address) {
+    // Call our Railway backend to create a PaymentIntent
+    const resp = await fetch('https://agent-production-ff8d.up.railway.app/create-payment-intent', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        amount: amountCents,
+        currency: 'usd',
+        metadata: {
+          customer_name:    name,
+          customer_email:   email,
+          shipping_address: address,
+          product_type:     type,
+          quantity:         qty,
+          size:             size,
+          finish:           finish
+        }
+      })
+    });
+    const data = await resp.json();
+    return data.client_secret;
   }
 
   const obs = new IntersectionObserver((entries) => {
-    entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
-  }, { threshold: 0.1 });
-  document.querySelectorAll('.fade-up').forEach(el => obs.observe(el));
-
-  updatePrice();
-</script>
-</body>
-</html>
+    entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visibl
