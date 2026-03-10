@@ -371,7 +371,7 @@
       <div class="product-body">
         <div class="product-name">Die-Cut Stickers</div>
         <div class="product-desc">Cut to the exact shape of your design. Clean edges, premium vinyl. The classic choice.</div>
-        <div class="product-price">FROM $0.35/ea</div>
+        <div class="product-price">FROM $0.69/ea</div>
         <button class="product-cta" onclick="document.getElementById('order').scrollIntoView({behavior:'smooth'})">ORDER NOW</button>
       </div>
     </div>
@@ -380,7 +380,7 @@
       <div class="product-body">
         <div class="product-name">Holographic Stickers</div>
         <div class="product-desc">Rainbow iridescent finish that catches every light. Makes your design impossible to ignore.</div>
-        <div class="product-price">FROM $0.55/ea</div>
+        <div class="product-price">FROM $0.99/ea</div>
         <button class="product-cta" onclick="document.getElementById('order').scrollIntoView({behavior:'smooth'})">ORDER NOW</button>
       </div>
     </div>
@@ -389,7 +389,7 @@
       <div class="product-body">
         <div class="product-name">Clear Stickers</div>
         <div class="product-desc">Transparent background for a clean no-label look. Perfect for windows and smooth surfaces.</div>
-        <div class="product-price">FROM $0.42/ea</div>
+        <div class="product-price">FROM $0.79/ea</div>
         <button class="product-cta" onclick="document.getElementById('order').scrollIntoView({behavior:'smooth'})">ORDER NOW</button>
       </div>
     </div>
@@ -398,7 +398,7 @@
       <div class="product-body">
         <div class="product-name">Kiss-Cut Stickers</div>
         <div class="product-desc">Easy peel-and-stick on a backing sheet. Great for packaging and giveaways.</div>
-        <div class="product-price">FROM $0.28/ea</div>
+        <div class="product-price">FROM $0.55/ea</div>
         <button class="product-cta" onclick="document.getElementById('order').scrollIntoView({behavior:'smooth'})">ORDER NOW</button>
       </div>
     </div>
@@ -407,7 +407,7 @@
       <div class="product-body">
         <div class="product-name">Bumper Stickers</div>
         <div class="product-desc">Heavy-duty vinyl built to last outdoors. UV resistant and waterproof.</div>
-        <div class="product-price">FROM $0.60/ea</div>
+        <div class="product-price">FROM $0.89/ea</div>
         <button class="product-cta" onclick="document.getElementById('order').scrollIntoView({behavior:'smooth'})">ORDER NOW</button>
       </div>
     </div>
@@ -495,7 +495,7 @@
   let selectedFinish = 'gloss';
   let uploadedFile = null;
 
-  const basePrices = { 'die-cut': 0.35, 'kiss-cut': 0.28, 'clear': 0.42, 'holographic': 0.55, 'bumper': 0.60 };
+  const basePrices = { 'die-cut': 0.69, 'kiss-cut': 0.55, 'clear': 0.79, 'holographic': 0.99, 'bumper': 0.89 };
   const sizeMultipliers = { '2x2': 1, '3x3': 1.4, '4x4': 2, '5x5': 2.6, '3x5': 1.8, 'custom': 2.5 };
   const finishMultipliers = { 'gloss': 1, 'matte': 1.1, 'holographic': 1.5, 'clear': 1.2 };
 
@@ -506,9 +506,10 @@
     const sm = sizeMultipliers[selectedSize] || 1;
     const fm = finishMultipliers[selectedFinish] || 1;
     let unitPrice = base * sm * fm;
-    if (qty >= 1000) unitPrice *= 0.55;
-    else if (qty >= 500) unitPrice *= 0.65;
-    else if (qty >= 100) unitPrice *= 0.80;
+    if (qty >= 1000) unitPrice *= 0.70;
+    else if (qty >= 500) unitPrice *= 0.80;
+    else if (qty >= 250) unitPrice *= 0.88;
+    else if (qty >= 100) unitPrice *= 0.92;
 
     const subtotal = parseFloat((unitPrice * qty).toFixed(2));
     const shipping = subtotal >= 80 ? 0 : 15;
@@ -621,4 +622,3 @@
 </script>
 </body>
 </html>
-
