@@ -16,17 +16,8 @@
       --gray: #1a1a1a;
       --mid: #2e2e2e;
     }
-
     * { margin: 0; padding: 0; box-sizing: border-box; }
-
-    body {
-      background: var(--black);
-      color: var(--white);
-      font-family: 'DM Sans', sans-serif;
-      overflow-x: hidden;
-    }
-
-    /* ── NAV ── */
+    body { background: var(--black); color: var(--white); font-family: 'DM Sans', sans-serif; overflow-x: hidden; }
     nav {
       position: fixed; top: 0; left: 0; right: 0; z-index: 100;
       display: flex; align-items: center; justify-content: space-between;
@@ -35,473 +26,236 @@
       backdrop-filter: blur(12px);
       border-bottom: 1px solid rgba(255,255,255,0.06);
     }
-    .logo {
-      font-family: 'Bebas Neue', sans-serif;
-      font-size: 2rem;
-      letter-spacing: 3px;
-      color: var(--yellow);
-      text-decoration: none;
-    }
+    .logo { font-family: 'Bebas Neue', sans-serif; font-size: 2rem; letter-spacing: 3px; color: var(--yellow); text-decoration: none; }
     .logo span { color: var(--orange); }
     nav ul { list-style: none; display: flex; gap: 36px; }
-    nav ul a { color: var(--white); text-decoration: none; font-size: 0.875rem; font-weight: 500; letter-spacing: 0.5px; opacity: 0.8; transition: opacity 0.2s; }
+    nav ul a { color: var(--white); text-decoration: none; font-size: 0.875rem; font-weight: 500; opacity: 0.8; transition: opacity 0.2s; }
     nav ul a:hover { opacity: 1; color: var(--yellow); }
-    .nav-cta {
-      background: var(--yellow); color: var(--black);
-      padding: 10px 24px; border-radius: 4px;
-      font-weight: 700; font-size: 0.875rem; letter-spacing: 0.5px;
-      text-decoration: none; transition: background 0.2s, transform 0.1s;
-    }
-    .nav-cta:hover { background: var(--orange); color: #fff; transform: translateY(-1px); }
-
-    /* ── HERO ── */
+    .nav-cta { background: var(--yellow); color: var(--black); border: none; padding: 10px 24px; border-radius: 4px; font-weight: 700; font-size: 0.875rem; cursor: pointer; letter-spacing: 0.5px; }
+    .nav-cta:hover { background: var(--orange); color: #fff; }
     .hero {
-      min-height: 100vh;
-      display: flex; align-items: center;
-      padding: 140px 48px 80px;
-      position: relative;
-      overflow: hidden;
+      min-height: 100vh; display: flex; align-items: center;
+      padding: 120px 48px 80px;
+      background: radial-gradient(ellipse at 70% 50%, rgba(255,92,0,0.08) 0%, transparent 60%),
+                  radial-gradient(ellipse at 20% 80%, rgba(0,212,180,0.06) 0%, transparent 50%);
     }
-    .hero-bg {
-      position: absolute; inset: 0; z-index: 0;
-      background:
-        radial-gradient(ellipse 80% 60% at 70% 50%, rgba(255,92,0,0.12) 0%, transparent 60%),
-        radial-gradient(ellipse 50% 80% at 20% 80%, rgba(255,225,53,0.08) 0%, transparent 60%);
-    }
-    .hero-grid {
-      position: absolute; inset: 0; z-index: 0;
-      background-image:
-        linear-gradient(rgba(255,255,255,0.03) 1px, transparent 1px),
-        linear-gradient(90deg, rgba(255,255,255,0.03) 1px, transparent 1px);
-      background-size: 60px 60px;
-    }
-    .hero-content { position: relative; z-index: 1; max-width: 720px; }
-    .hero-tag {
-      display: inline-block;
-      background: var(--orange); color: #fff;
-      font-family: 'Space Mono', monospace;
-      font-size: 0.75rem; letter-spacing: 2px;
-      padding: 6px 16px; border-radius: 2px; margin-bottom: 28px;
-    }
-    h1 {
-      font-family: 'Bebas Neue', sans-serif;
-      font-size: clamp(4rem, 10vw, 9rem);
-      line-height: 0.92;
-      letter-spacing: 2px;
-      margin-bottom: 28px;
-    }
-    h1 .accent { color: var(--yellow); }
-    h1 .stroke {
-      -webkit-text-stroke: 2px var(--white);
-      color: transparent;
-    }
-    .hero-sub {
-      font-size: 1.15rem; opacity: 0.75; max-width: 520px;
-      line-height: 1.7; margin-bottom: 44px;
-    }
-    .hero-actions { display: flex; gap: 16px; flex-wrap: wrap; }
-    .btn-primary {
-      background: var(--yellow); color: var(--black);
-      padding: 16px 36px; border-radius: 4px;
-      font-weight: 700; font-size: 1rem; letter-spacing: 0.5px;
-      cursor: pointer; border: none; transition: all 0.2s;
-      text-decoration: none; display: inline-block;
-    }
+    .hero-content { max-width: 640px; }
+    .hero-tag { display: inline-block; background: rgba(255,225,53,0.1); border: 1px solid rgba(255,225,53,0.3); color: var(--yellow); font-size: 0.75rem; font-weight: 700; letter-spacing: 2px; padding: 6px 16px; border-radius: 2px; margin-bottom: 28px; }
+    h1 { font-family: 'Bebas Neue', sans-serif; font-size: clamp(4rem, 8vw, 7rem); line-height: 0.95; letter-spacing: 2px; margin-bottom: 24px; }
+    h1 span { color: var(--orange); }
+    .hero-sub { font-size: 1.1rem; opacity: 0.7; line-height: 1.7; margin-bottom: 40px; max-width: 480px; }
+    .hero-btns { display: flex; gap: 16px; flex-wrap: wrap; }
+    .btn-primary { background: var(--yellow); color: var(--black); border: none; padding: 16px 36px; border-radius: 4px; font-weight: 700; font-size: 1rem; cursor: pointer; letter-spacing: 0.5px; transition: all 0.2s; }
     .btn-primary:hover { background: var(--orange); color: #fff; transform: translateY(-2px); }
-    .btn-outline {
-      border: 1.5px solid rgba(255,255,255,0.3); color: var(--white);
-      padding: 16px 36px; border-radius: 4px;
-      font-weight: 500; font-size: 1rem;
-      cursor: pointer; background: transparent; transition: all 0.2s;
-      text-decoration: none; display: inline-block;
-    }
+    .btn-outline { background: transparent; border: 1.5px solid rgba(255,255,255,0.3); color: var(--white); padding: 16px 36px; border-radius: 4px; font-weight: 600; font-size: 1rem; cursor: pointer; transition: all 0.2s; }
     .btn-outline:hover { border-color: var(--yellow); color: var(--yellow); }
-    .hero-floaters {
-      position: absolute; right: 48px; top: 50%; transform: translateY(-50%);
-      display: flex; flex-direction: column; gap: 20px; z-index: 1;
-    }
-    .sticker-float {
-      width: 120px; height: 120px; border-radius: 16px;
-      display: flex; align-items: center; justify-content: center;
-      font-size: 3rem; font-weight: 900;
-      box-shadow: 0 20px 60px rgba(0,0,0,0.5);
-      animation: float 6s ease-in-out infinite;
-      border: 4px solid var(--black);
-    }
-    .sf1 { background: var(--yellow); animation-delay: 0s; }
-    .sf2 { background: var(--pink); animation-delay: -2s; }
-    .sf3 { background: var(--teal); animation-delay: -4s; }
-    @keyframes float {
-      0%, 100% { transform: translateY(0px) rotate(-3deg); }
-      50% { transform: translateY(-20px) rotate(3deg); }
-    }
-
-    /* ── MARQUEE ── */
-    .marquee-strip {
-      background: var(--yellow); padding: 14px 0;
-      overflow: hidden; white-space: nowrap;
-    }
-    .marquee-inner {
-      display: inline-flex; gap: 48px;
-      animation: marquee 20s linear infinite;
-    }
-    .marquee-inner span {
-      font-family: 'Bebas Neue', sans-serif;
-      font-size: 1.5rem; color: var(--black); letter-spacing: 3px;
-    }
-    @keyframes marquee { from { transform: translateX(0); } to { transform: translateX(-50%); } }
-
-    /* ── SECTIONS ── */
+    .trust-row { display: flex; gap: 32px; align-items: center; margin-top: 56px; flex-wrap: wrap; }
+    .trust-item { display: flex; align-items: center; gap: 10px; font-size: 0.85rem; opacity: 0.6; }
+    .trust-item img { width: 120px; height: 120px; border-radius: 16px; object-fit: cover; }
     section { padding: 100px 48px; }
-    .section-label {
-      font-family: 'Space Mono', monospace;
-      font-size: 0.7rem; letter-spacing: 3px; color: var(--orange);
-      text-transform: uppercase; margin-bottom: 16px;
-    }
-    h2 {
-      font-family: 'Bebas Neue', sans-serif;
-      font-size: clamp(2.5rem, 5vw, 4rem);
-      letter-spacing: 1px; margin-bottom: 48px;
-    }
-
-    /* ── ORDER BUILDER ── */
+    .section-tag { display: inline-block; color: var(--orange); font-size: 0.72rem; font-weight: 700; letter-spacing: 3px; text-transform: uppercase; margin-bottom: 12px; }
+    h2 { font-family: 'Bebas Neue', sans-serif; font-size: clamp(2.5rem, 5vw, 4rem); letter-spacing: 2px; margin-bottom: 16px; }
     .order-section { background: var(--gray); }
     .order-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 48px; max-width: 1100px; }
-
     .upload-zone {
       border: 2px dashed rgba(255,255,255,0.2);
       border-radius: 12px; padding: 60px 40px;
-      text-align: center; cursor: pointer;
-      transition: all 0.3s; background: rgba(255,255,255,0.02);
-      position: relative;
+      text-align: center; cursor: pointer; transition: all 0.3s;
+      background: rgba(255,255,255,0.02);
     }
     .upload-zone:hover, .upload-zone.drag { border-color: var(--yellow); background: rgba(255,225,53,0.04); }
     .upload-icon { font-size: 3rem; margin-bottom: 16px; }
-    .upload-title { font-size: 1.1rem; font-weight: 600; margin-bottom: 8px; }
-    .upload-sub { opacity: 0.5; font-size: 0.85rem; }
-    #fileInput { display: none; }
-    .upload-preview {
-      display: none; position: relative;
-    }
-    .upload-preview img {
-      max-width: 100%; border-radius: 8px; max-height: 300px; object-fit: contain;
-    }
-    .remove-file {
-      position: absolute; top: 8px; right: 8px;
-      background: var(--orange); color: #fff; border: none;
-      border-radius: 50%; width: 28px; height: 28px;
-      cursor: pointer; font-size: 1rem; font-weight: 700;
-    }
-
+    .upload-title { font-size: 1.2rem; font-weight: 700; margin-bottom: 8px; }
+    .upload-sub { font-size: 0.85rem; opacity: 0.5; margin-bottom: 24px; }
+    .upload-preview { display: none; position: relative; }
+    .upload-preview img { max-width: 100%; border-radius: 8px; max-height: 300px; object-fit: contain; }
+    .remove-btn { position: absolute; top: 8px; right: 8px; background: var(--orange); color: #fff; border: none; border-radius: 50%; width: 28px; height: 28px; cursor: pointer; font-size: 1rem; }
     .config-panel h3 { font-size: 1.3rem; font-weight: 700; margin-bottom: 24px; }
     .form-group { margin-bottom: 20px; }
-    .form-group label {
-      display: block; font-size: 0.8rem; letter-spacing: 1px;
-      text-transform: uppercase; font-weight: 600; opacity: 0.7; margin-bottom: 8px;
-    }
-    .form-group select,
-    .form-group input[type="number"],
-    .form-group input[type="text"],
-    .form-group input[type="email"],
-    .form-group input[type="tel"] {
+    .form-group label { display: block; font-size: 0.78rem; font-weight: 700; letter-spacing: 1.5px; text-transform: uppercase; opacity: 0.6; margin-bottom: 8px; }
+    .form-group input, .form-group select {
       width: 100%; background: var(--mid); border: 1px solid rgba(255,255,255,0.1);
       color: var(--white); padding: 12px 16px; border-radius: 6px;
-      font-size: 0.95rem; font-family: 'DM Sans', sans-serif;
-      transition: border-color 0.2s; appearance: none;
+      font-size: 0.95rem; font-family: inherit; transition: border-color 0.2s; appearance: none;
     }
-    .form-group select:focus,
-    .form-group input:focus { outline: none; border-color: var(--yellow); }
-
-    .size-grid {
-      display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px;
-    }
+    .form-group input:focus, .form-group select:focus { outline: none; border-color: var(--yellow); }
+    .size-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px; }
     .size-btn {
       background: var(--mid); border: 1.5px solid rgba(255,255,255,0.1);
       color: var(--white); padding: 10px; border-radius: 6px;
-      font-size: 0.8rem; font-weight: 600; cursor: pointer; text-align: center;
-      transition: all 0.2s;
+      font-size: 0.85rem; font-weight: 600; cursor: pointer; transition: all 0.2s; text-align: center;
     }
     .size-btn:hover, .size-btn.active { background: var(--yellow); color: var(--black); border-color: var(--yellow); }
-
-    .finish-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+    .finish-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 8px; }
     .finish-btn {
       background: var(--mid); border: 1.5px solid rgba(255,255,255,0.1);
       color: var(--white); padding: 12px 16px; border-radius: 6px;
-      font-size: 0.85rem; font-weight: 600; cursor: pointer;
-      transition: all 0.2s; text-align: left;
+      font-size: 0.85rem; font-weight: 600; cursor: pointer; transition: all 0.2s; text-align: center;
     }
-    .finish-btn span { display: block; font-size: 0.7rem; opacity: 0.6; font-weight: 400; margin-top: 2px; }
     .finish-btn:hover, .finish-btn.active { border-color: var(--teal); color: var(--teal); }
-
-    .price-box {
-      background: var(--black); border-radius: 10px; padding: 20px 24px;
-      margin-top: 24px; display: flex; justify-content: space-between; align-items: center;
-    }
+    .price-box { background: var(--black); border-radius: 10px; padding: 20px 24px; margin: 24px 0; }
     .price-label { font-size: 0.8rem; opacity: 0.6; text-transform: uppercase; letter-spacing: 1px; }
     .price-val { font-family: 'Bebas Neue', sans-serif; font-size: 2.5rem; color: var(--yellow); }
-
-    /* ── CHECKOUT MODAL ── */
-    .modal-bg {
+    .shipping-badge { font-size: 0.82rem; color: var(--yellow); margin-top: 6px; font-weight: 600; }
+    .checkout-modal {
       display: none; position: fixed; inset: 0; z-index: 200;
-      background: rgba(0,0,0,0.85); backdrop-filter: blur(8px);
-      align-items: center; justify-content: center; padding: 20px;
+      background: rgba(0,0,0,0.85); align-items: center; justify-content: center;
     }
-    .modal-bg.open { display: flex; }
-    .modal {
+    .checkout-modal.open { display: flex; }
+    .checkout-box {
       background: var(--gray); border-radius: 16px;
-      padding: 48px; max-width: 560px; width: 100%;
-      max-height: 90vh; overflow-y: auto;
+      padding: 40px; max-width: 480px; width: 90%; max-height: 90vh; overflow-y: auto;
       border: 1px solid rgba(255,255,255,0.08);
     }
-    .modal h3 { font-family: 'Bebas Neue'; font-size: 2rem; margin-bottom: 8px; }
-    .modal-sub { opacity: 0.6; font-size: 0.9rem; margin-bottom: 32px; }
-    .modal-close {
-      position: absolute; top: 16px; right: 16px;
-      background: none; border: none; color: var(--white);
-      font-size: 1.5rem; cursor: pointer; opacity: 0.5;
-    }
-    .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
-    .modal .modal-close:hover { opacity: 1; }
+    .checkout-box h3 { font-family: 'Bebas Neue', sans-serif; font-size: 2rem; letter-spacing: 2px; margin-bottom: 24px; display: flex; justify-content: space-between; align-items: center; }
+    .close-btn { background: none; border: none; color: var(--white); font-size: 1.5rem; cursor: pointer; opacity: 0.5; }
+    .close-btn:hover { opacity: 1; }
     .payment-opts { display: flex; gap: 12px; margin-bottom: 20px; }
     .pay-opt {
       flex: 1; padding: 14px; border-radius: 8px;
       border: 1.5px solid rgba(255,255,255,0.15);
-      cursor: pointer; text-align: center; transition: all 0.2s;
-      font-weight: 600; font-size: 0.85rem; background: var(--mid);
+      background: var(--mid); color: var(--white);
+      font-size: 0.9rem; font-weight: 600; cursor: pointer; text-align: center; transition: all 0.2s;
     }
     .pay-opt:hover, .pay-opt.active { border-color: var(--yellow); color: var(--yellow); }
-    .pay-icon { font-size: 1.5rem; margin-bottom: 4px; display: block; }
-    .card-row {
+    .card-input {
       background: var(--mid); border: 1px solid rgba(255,255,255,0.1);
       border-radius: 6px; padding: 14px 16px; font-family: 'Space Mono', monospace;
-      color: rgba(255,255,255,0.4); font-size: 0.85rem; margin-bottom: 16px;
+      font-size: 0.9rem; color: var(--white); width: 100%; margin-bottom: 12px;
     }
     .order-summary { background: var(--black); border-radius: 8px; padding: 16px 20px; margin-bottom: 24px; }
-    .order-row { display: flex; justify-content: space-between; font-size: 0.85rem; padding: 4px 0; }
-    .order-row.total { border-top: 1px solid rgba(255,255,255,0.1); margin-top: 8px; padding-top: 12px; font-weight: 700; color: var(--yellow); }
-    .submit-btn {
-      width: 100%; background: var(--yellow); color: var(--black);
-      border: none; padding: 18px; border-radius: 8px;
-      font-family: 'Bebas Neue'; font-size: 1.4rem; letter-spacing: 2px;
-      cursor: pointer; transition: all 0.2s;
-    }
-    .submit-btn:hover { background: var(--orange); color: #fff; }
-
-    /* ── SUCCESS ── */
+    .order-row { display: flex; justify-content: space-between; font-size: 0.85rem; padding: 5px 0; }
+    .order-row.total { border-top: 1px solid rgba(255,255,255,0.1); margin-top: 8px; padding-top: 12px; font-weight: 700; color: var(--yellow); font-size: 1rem; }
+    .order-row.free-ship { color: var(--teal); font-weight: 700; }
+    .pay-btn { width: 100%; background: var(--yellow); color: var(--black); border: none; padding: 18px; border-radius: 8px; font-size: 1rem; font-weight: 700; cursor: pointer; transition: all 0.2s; letter-spacing: 0.5px; }
+    .pay-btn:hover { background: var(--orange); color: #fff; }
     .success-overlay {
       display: none; position: fixed; inset: 0; z-index: 300;
-      background: var(--black); align-items: center; justify-content: center;
+      background: rgba(0,0,0,0.95); align-items: center; justify-content: center;
       flex-direction: column; text-align: center; padding: 40px;
     }
     .success-overlay.open { display: flex; }
-    .success-icon { font-size: 5rem; margin-bottom: 24px; animation: pop 0.5s ease; }
-    @keyframes pop { 0% { transform: scale(0); } 80% { transform: scale(1.2); } 100% { transform: scale(1); } }
-    .success-overlay h2 { font-family: 'Bebas Neue'; font-size: 3.5rem; color: var(--yellow); margin-bottom: 16px; }
-    .success-overlay p { opacity: 0.7; max-width: 480px; line-height: 1.8; }
-    .success-steps { display: flex; gap: 16px; margin: 32px 0; flex-wrap: wrap; justify-content: center; }
-    .step-badge {
-      background: var(--gray); border: 1px solid rgba(255,255,255,0.1);
-      border-radius: 8px; padding: 16px 20px; font-size: 0.85rem;
-    }
-    .step-badge strong { display: block; color: var(--teal); margin-bottom: 4px; }
-
-    /* ── PRODUCTS ── */
-    .products-grid {
-      display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
-      gap: 24px; max-width: 1200px;
-    }
+    .success-icon { font-size: 5rem; margin-bottom: 24px; }
+    .success-overlay h2 { font-family: 'Bebas Neue', sans-serif; font-size: 3rem; color: var(--yellow); margin-bottom: 16px; }
+    .success-overlay p { opacity: 0.7; margin-bottom: 32px; max-width: 420px; line-height: 1.7; }
+    .success-steps { display: flex; flex-direction: column; gap: 12px; margin-bottom: 32px; }
+    .step-badge { background: var(--gray); border-radius: 8px; padding: 12px 20px; font-size: 0.85rem; }
+    .step-badge strong { display: block; margin-bottom: 2px; color: var(--teal); }
+    .products-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 24px; }
     .product-card {
       background: var(--gray); border-radius: 12px; overflow: hidden;
       border: 1px solid rgba(255,255,255,0.06); transition: transform 0.25s, border-color 0.25s;
     }
     .product-card:hover { transform: translateY(-6px); border-color: rgba(255,225,53,0.3); }
-    .product-thumb {
-      height: 200px; display: flex; align-items: center; justify-content: center; font-size: 4rem;
-    }
-    .pc1 { background: linear-gradient(135deg, #1a1a2e, #16213e); }
-    .pc2 { background: linear-gradient(135deg, #1a0a0a, #2e0a00); }
-    .pc3 { background: linear-gradient(135deg, #0a1a0a, #003300); }
-    .pc4 { background: linear-gradient(135deg, #0a0a1a, #00003e); }
-    .product-info { padding: 20px 24px; }
-    .product-info h4 { font-size: 1rem; font-weight: 700; margin-bottom: 6px; }
-    .product-info p { font-size: 0.8rem; opacity: 0.55; margin-bottom: 16px; }
-    .product-footer { display: flex; align-items: center; justify-content: space-between; }
+    .product-img { width: 100%; height: 200px; object-fit: cover; background: var(--mid); display: flex; align-items: center; justify-content: center; font-size: 3rem; }
+    .product-body { padding: 20px; }
+    .product-name { font-size: 1rem; font-weight: 700; margin-bottom: 6px; }
+    .product-desc { font-size: 0.82rem; opacity: 0.6; margin-bottom: 12px; line-height: 1.5; }
     .product-price { font-family: 'Bebas Neue'; font-size: 1.5rem; color: var(--yellow); }
-    .product-btn {
-      background: rgba(255,255,255,0.08); color: var(--white);
-      border: none; padding: 8px 16px; border-radius: 4px;
-      font-size: 0.8rem; font-weight: 600; cursor: pointer; transition: all 0.2s;
-    }
-    .product-btn:hover { background: var(--yellow); color: var(--black); }
-
-    /* ── SOCIAL PROOF ── */
-    .trust-bar {
-      background: var(--gray); padding: 48px;
-      display: flex; align-items: center; justify-content: center;
-      gap: 60px; flex-wrap: wrap;
-    }
-    .trust-item { text-align: center; }
-    .trust-num { font-family: 'Bebas Neue'; font-size: 3rem; color: var(--yellow); }
-    .trust-label { font-size: 0.8rem; opacity: 0.55; letter-spacing: 1px; }
-
-    .reviews-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 20px; max-width: 1100px; }
+    .product-cta { background: var(--yellow); color: var(--black); border: none; padding: 8px 16px; border-radius: 4px; font-weight: 700; font-size: 0.85rem; cursor: pointer; margin-top: 12px; }
+    .product-cta:hover { background: var(--orange); color: #fff; }
+    .features-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 24px; }
+    .feature-card { background: var(--gray); border-radius: 10px; padding: 24px; border: 1px solid rgba(255,255,255,0.06); }
+    .feature-icon { font-size: 2rem; margin-bottom: 12px; }
+    .feature-title { font-size: 1rem; font-weight: 700; margin-bottom: 8px; }
+    .feature-desc { font-size: 0.85rem; opacity: 0.6; line-height: 1.6; }
+    .review-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 20px; }
     .review-card {
-      background: var(--gray); border-radius: 10px; padding: 24px;
-      border: 1px solid rgba(255,255,255,0.06);
-    }
-    .stars { color: var(--yellow); font-size: 1rem; margin-bottom: 12px; }
-    .review-text { font-size: 0.9rem; opacity: 0.7; line-height: 1.7; margin-bottom: 16px; }
-    .reviewer { font-size: 0.8rem; font-weight: 600; }
-    .reviewer span { opacity: 0.5; font-weight: 400; }
-
-    /* ── HOW IT WORKS ── */
-    .steps-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: 24px; max-width: 1000px; }
-    .step-card {
       position: relative; background: var(--gray); border-radius: 12px;
       padding: 32px 28px; border: 1px solid rgba(255,255,255,0.06);
     }
-    .step-num {
-      font-family: 'Bebas Neue'; font-size: 5rem; color: rgba(255,225,53,0.1);
-      position: absolute; top: 12px; right: 16px; line-height: 1;
-    }
-    .step-icon { font-size: 2rem; margin-bottom: 16px; }
-    .step-title { font-size: 1rem; font-weight: 700; margin-bottom: 8px; }
-    .step-desc { font-size: 0.85rem; opacity: 0.6; line-height: 1.6; }
-
-    /* ── FOOTER ── */
-    footer {
-      background: var(--gray); padding: 60px 48px 32px;
-      border-top: 1px solid rgba(255,255,255,0.06);
-    }
+    .review-stars { color: var(--yellow); font-size: 1.1rem; margin-bottom: 12px; }
+    .review-text { font-size: 0.9rem; line-height: 1.7; opacity: 0.8; margin-bottom: 16px; }
+    .reviewer { font-size: 0.82rem; opacity: 0.5; }
+    footer { padding: 60px 48px 40px; border-top: 1px solid rgba(255,255,255,0.06); }
     .footer-grid { display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 48px; margin-bottom: 48px; }
-    .footer-brand p { opacity: 0.5; font-size: 0.85rem; line-height: 1.7; margin-top: 12px; max-width: 280px; }
-    .footer-col h5 { font-size: 0.8rem; letter-spacing: 2px; text-transform: uppercase; opacity: 0.5; margin-bottom: 16px; }
-    .footer-col a { display: block; opacity: 0.7; font-size: 0.9rem; text-decoration: none; color: var(--white); margin-bottom: 8px; transition: opacity 0.2s; }
+    .footer-brand p { font-size: 0.85rem; opacity: 0.5; line-height: 1.7; margin-top: 12px; max-width: 280px; }
+    .footer-col h4 { font-size: 0.78rem; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; opacity: 0.4; margin-bottom: 16px; }
+    .footer-col a { display: block; font-size: 0.85rem; opacity: 0.6; text-decoration: none; margin-bottom: 8px; transition: opacity 0.2s; }
     .footer-col a:hover { opacity: 1; color: var(--yellow); }
     .footer-bottom { border-top: 1px solid rgba(255,255,255,0.06); padding-top: 24px; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 16px; }
-    .footer-bottom p { font-size: 0.8rem; opacity: 0.4; }
-    .social-links { display: flex; gap: 16px; }
-    .social-link {
-      width: 36px; height: 36px; border-radius: 6px; background: var(--mid);
-      display: flex; align-items: center; justify-content: center;
-      font-size: 1rem; text-decoration: none; transition: background 0.2s;
-    }
-    .social-link:hover { background: var(--yellow); }
-
-    /* ── ANIMATIONS ── */
-    .fade-up { opacity: 0; transform: translateY(30px); transition: opacity 0.6s ease, transform 0.6s ease; }
+    .footer-bottom p { font-size: 0.82rem; opacity: 0.4; }
+    .social-links { display: flex; gap: 12px; }
+    .social-link { width: 36px; height: 36px; border-radius: 6px; background: var(--mid); display: flex; align-items: center; justify-content: center; text-decoration: none; font-size: 1rem; transition: background 0.2s; }
+    .social-link:hover { background: var(--orange); }
+    .fade-up { opacity: 0; transform: translateY(24px); transition: opacity 0.6s ease, transform 0.6s ease; }
     .fade-up.visible { opacity: 1; transform: none; }
-
-    @media (max-width: 900px) {
-      nav { padding: 16px 24px; }
+    @media (max-width: 768px) {
+      nav { padding: 16px 20px; }
       nav ul { display: none; }
-      .hero { padding: 120px 24px 80px; }
-      .hero-floaters { display: none; }
-      section { padding: 70px 24px; }
+      .hero { padding: 100px 20px 60px; }
+      section { padding: 60px 20px; }
       .order-grid { grid-template-columns: 1fr; }
       .footer-grid { grid-template-columns: 1fr 1fr; }
-      .form-row { grid-template-columns: 1fr; }
     }
   </style>
 </head>
 <body>
 
-<!-- NAV -->
 <nav>
   <a href="#" class="logo">Sticker<span>Drop</span></a>
   <ul>
     <li><a href="#order">Order</a></li>
     <li><a href="#products">Products</a></li>
-    <li><a href="#how">How It Works</a></li>
     <li><a href="#reviews">Reviews</a></li>
+    <li><a href="#faq">FAQ</a></li>
   </ul>
-  <a href="#order" class="nav-cta">ORDER NOW</a>
+  <button class="nav-cta" onclick="document.getElementById('order').scrollIntoView({behavior:'smooth'})">ORDER NOW</button>
 </nav>
 
-<!-- HERO -->
 <section class="hero">
-  <div class="hero-bg"></div>
-  <div class="hero-grid"></div>
   <div class="hero-content">
-    <div class="hero-tag">🚀 SHIPS IN 3–5 BUSINESS DAYS</div>
-    <h1>YOUR<br><span class="accent">STICKERS.</span><br><span class="stroke">UNLEASHED.</span></h1>
-    <p class="hero-sub">Upload your artwork, pick your size and finish, and we'll print & ship professional-grade custom stickers straight to your door. No minimums. No hassle.</p>
-    <div class="hero-actions">
-      <a href="#order" class="btn-primary">🎨 Build Your Stickers</a>
-      <a href="#how" class="btn-outline">See How It Works</a>
+    <div class="hero-tag">PREMIUM CUSTOM STICKERS</div>
+    <h1>YOUR<br/>STICKERS.<br/><span>UNLEASHED.</span></h1>
+    <p class="hero-sub">Die-cut precision. Holographic brilliance. Ships in 3-5 days. Upload your design and get professional stickers delivered to your door.</p>
+    <div class="hero-btns">
+      <button class="btn-primary" onclick="document.getElementById('order').scrollIntoView({behavior:'smooth'})">ORDER YOUR STICKERS</button>
+      <button class="btn-outline" onclick="document.getElementById('products').scrollIntoView({behavior:'smooth'})">VIEW PRODUCTS</button>
     </div>
-  </div>
-  <div class="hero-floaters">
-    <div class="sticker-float sf1">⚡</div>
-    <div class="sticker-float sf2">🔥</div>
-    <div class="sticker-float sf3">💎</div>
+    <div class="trust-row">
+      <div class="trust-item">⚡ Ships in 3-5 days</div>
+      <div class="trust-item">🎨 Any design, any shape</div>
+      <div class="trust-item">🚚 Free shipping over $80</div>
+      <div class="trust-item">⭐ 4.9/5 rated</div>
+    </div>
   </div>
 </section>
 
-<!-- MARQUEE -->
-<div class="marquee-strip">
-  <div class="marquee-inner">
-    <span>KISS-CUT</span><span>•</span>
-    <span>DIE-CUT</span><span>•</span>
-    <span>CLEAR</span><span>•</span>
-    <span>HOLOGRAPHIC</span><span>•</span>
-    <span>MATTE</span><span>•</span>
-    <span>GLOSS</span><span>•</span>
-    <span>WATERPROOF</span><span>•</span>
-    <span>UV-RESISTANT</span><span>•</span>
-    <span>KISS-CUT</span><span>•</span>
-    <span>DIE-CUT</span><span>•</span>
-    <span>CLEAR</span><span>•</span>
-    <span>HOLOGRAPHIC</span><span>•</span>
-    <span>MATTE</span><span>•</span>
-    <span>GLOSS</span><span>•</span>
-    <span>WATERPROOF</span><span>•</span>
-    <span>UV-RESISTANT</span><span>•</span>
-  </div>
-</div>
-
-<!-- TRUST BAR -->
-<div class="trust-bar">
-  <div class="trust-item"><div class="trust-num">50K+</div><div class="trust-label">Happy Customers</div></div>
-  <div class="trust-item"><div class="trust-num">4.9★</div><div class="trust-label">Average Rating</div></div>
-  <div class="trust-item"><div class="trust-num">3–5</div><div class="trust-label">Day Turnaround</div></div>
-  <div class="trust-item"><div class="trust-num">100%</div><div class="trust-label">Waterproof</div></div>
-  <div class="trust-item"><div class="trust-num">∞</div><div class="trust-label">Design Possibilities</div></div>
-</div>
-
-<!-- ORDER BUILDER -->
+<!-- ORDER SECTION -->
 <section class="order-section" id="order">
-  <div class="section-label">// BUILD YOUR ORDER</div>
-  <h2>DESIGN YOUR PERFECT STICKERS</h2>
-  <div class="order-grid">
+  <div class="section-tag">// PLACE YOUR ORDER</div>
+  <h2>DESIGN YOUR <span style="color:var(--orange)">STICKERS</span></h2>
+  <p style="opacity:0.6;margin-bottom:40px;max-width:500px">Upload your artwork, choose your options, and we'll print and ship your custom stickers in 3-5 business days.</p>
 
+  <div class="order-grid">
     <!-- Upload -->
     <div>
       <div class="upload-zone" id="dropZone" onclick="document.getElementById('fileInput').click()">
-        <div class="upload-preview" id="uploadPreview">
-          <img id="previewImg" src="" alt="Preview" />
-          <button class="remove-file" onclick="removeFile(event)">✕</button>
-        </div>
         <div id="uploadPlaceholder">
           <div class="upload-icon">🎨</div>
-          <div class="upload-title">Drop your artwork here</div>
-          <div class="upload-sub">PNG, JPG, SVG, PDF up to 50MB<br>300 DPI recommended for best quality</div>
+          <div class="upload-title">Drop your design here</div>
+          <div class="upload-sub">PNG, JPG, SVG, PDF — 300 DPI recommended</div>
+          <button class="btn-primary" type="button">CHOOSE FILE</button>
         </div>
+        <div class="upload-preview" id="uploadPreview">
+          <img id="previewImg" src="" alt="Preview"/>
+          <button class="remove-btn" onclick="removeFile(event)">×</button>
+        </div>
+        <input type="file" id="fileInput" accept="image/*,.pdf,.svg" style="display:none" onchange="handleFile(event)"/>
       </div>
-      <input type="file" id="fileInput" accept="image/*,.pdf,.svg" onchange="handleFile(event)" />
     </div>
 
     <!-- Config -->
     <div class="config-panel">
-      <h3>Configure Your Order</h3>
+      <h3>CONFIGURE YOUR ORDER</h3>
 
       <div class="form-group">
         <label>Sticker Type</label>
         <select id="stickerType" onchange="updatePrice()">
-          <option value="die-cut">Die-Cut (Custom Shape)</option>
-          <option value="kiss-cut">Kiss-Cut (Square Backing)</option>
+          <option value="die-cut">Die-Cut Stickers</option>
+          <option value="kiss-cut">Kiss-Cut Stickers</option>
           <option value="clear">Clear Stickers</option>
-          <option value="holographic">Holographic</option>
+          <option value="holographic">Holographic Stickers</option>
           <option value="bumper">Bumper Stickers</option>
         </select>
       </div>
@@ -509,22 +263,22 @@
       <div class="form-group">
         <label>Size</label>
         <div class="size-grid">
-          <div class="size-btn active" onclick="selectSize(this, '2x2')">2" × 2"</div>
-          <div class="size-btn" onclick="selectSize(this, '3x3')">3" × 3"</div>
-          <div class="size-btn" onclick="selectSize(this, '4x4')">4" × 4"</div>
-          <div class="size-btn" onclick="selectSize(this, '5x5')">5" × 5"</div>
-          <div class="size-btn" onclick="selectSize(this, '3x5')">3" × 5"</div>
-          <div class="size-btn" onclick="selectSize(this, 'custom')">Custom</div>
+          <button class="size-btn active" onclick="selectSize(this,'2x2')">2" × 2"</button>
+          <button class="size-btn" onclick="selectSize(this,'3x3')">3" × 3"</button>
+          <button class="size-btn" onclick="selectSize(this,'4x4')">4" × 4"</button>
+          <button class="size-btn" onclick="selectSize(this,'5x5')">5" × 5"</button>
+          <button class="size-btn" onclick="selectSize(this,'3x5')">3" × 5"</button>
+          <button class="size-btn" onclick="selectSize(this,'custom')">Custom</button>
         </div>
       </div>
 
       <div class="form-group">
         <label>Finish</label>
         <div class="finish-grid">
-          <div class="finish-btn active" onclick="selectFinish(this, 'gloss')">✨ Gloss<span>Vibrant & shiny</span></div>
-          <div class="finish-btn" onclick="selectFinish(this, 'matte')">🌫 Matte<span>Soft & elegant</span></div>
-          <div class="finish-btn" onclick="selectFinish(this, 'holographic')">🌈 Holo<span>Eye-catching</span></div>
-          <div class="finish-btn" onclick="selectFinish(this, 'clear')">💎 Clear<span>Invisible backing</span></div>
+          <button class="finish-btn active" onclick="selectFinish(this,'gloss')">✨ Gloss</button>
+          <button class="finish-btn" onclick="selectFinish(this,'matte')">🌫 Matte</button>
+          <button class="finish-btn" onclick="selectFinish(this,'holographic')">🌈 Holographic</button>
+          <button class="finish-btn" onclick="selectFinish(this,'clear')">🔍 Clear</button>
         </div>
       </div>
 
@@ -534,201 +288,62 @@
       </div>
 
       <div class="price-box">
-        <div>
-          <div class="price-label">Total Price</div>
-          <div class="price-val" id="priceDisplay">$24.99</div>
-        </div>
-        <button class="btn-primary" onclick="openCheckout()">Checkout →</button>
+        <div class="price-label">SUBTOTAL</div>
+        <div id="priceDisplay" class="price-val">$17.50</div>
+        <div id="shippingBadge" class="shipping-badge">Add more for FREE shipping on orders over $80</div>
       </div>
+
+      <button class="btn-primary" style="width:100%;font-size:1.1rem;padding:18px" onclick="openCheckout()">
+        PROCEED TO CHECKOUT →
+      </button>
     </div>
   </div>
 </section>
-
-<!-- HOW IT WORKS -->
-<section id="how">
-  <div class="section-label">// PROCESS</div>
-  <h2>HOW IT WORKS</h2>
-  <div class="steps-grid fade-up">
-    <div class="step-card">
-      <div class="step-num">01</div>
-      <div class="step-icon">🎨</div>
-      <div class="step-title">Upload Your Design</div>
-      <div class="step-desc">Drop your PNG, SVG, or PDF artwork. Our system auto-checks resolution and quality.</div>
-    </div>
-    <div class="step-card">
-      <div class="step-num">02</div>
-      <div class="step-icon">⚙️</div>
-      <div class="step-title">Configure & Price</div>
-      <div class="step-desc">Choose size, finish, and quantity. Instant pricing — no hidden fees.</div>
-    </div>
-    <div class="step-card">
-      <div class="step-num">03</div>
-      <div class="step-icon">💳</div>
-      <div class="step-title">Checkout Securely</div>
-      <div class="step-desc">Pay via Stripe or QuickBooks Payments. Your data is always encrypted.</div>
-    </div>
-    <div class="step-card">
-      <div class="step-num">04</div>
-      <div class="step-icon">🚀</div>
-      <div class="step-title">We Print & Ship</div>
-      <div class="step-desc">Your order goes to our print partner same-day. Delivered in 3–5 business days.</div>
-    </div>
-  </div>
-</section>
-
-<!-- PRODUCTS -->
-<section id="products" style="background: var(--gray);">
-  <div class="section-label">// STICKER TYPES</div>
-  <h2>FIND YOUR STYLE</h2>
-  <div class="products-grid">
-    <div class="product-card">
-      <div class="product-thumb pc1">✂️</div>
-      <div class="product-info">
-        <h4>Die-Cut Stickers</h4>
-        <p>Cut to the exact shape of your design. Most popular choice for branding.</p>
-        <div class="product-footer">
-          <div class="product-price">from $0.29</div>
-          <button class="product-btn" onclick="document.getElementById('order').scrollIntoView({behavior:'smooth'})">Order</button>
-        </div>
-      </div>
-    </div>
-    <div class="product-card">
-      <div class="product-thumb pc2">🔥</div>
-      <div class="product-info">
-        <h4>Kiss-Cut Stickers</h4>
-        <p>Easy-peel square backing. Perfect for sticker sheets and merch packs.</p>
-        <div class="product-footer">
-          <div class="product-price">from $0.25</div>
-          <button class="product-btn" onclick="document.getElementById('order').scrollIntoView({behavior:'smooth'})">Order</button>
-        </div>
-      </div>
-    </div>
-    <div class="product-card">
-      <div class="product-thumb pc3">🌈</div>
-      <div class="product-info">
-        <h4>Holographic Stickers</h4>
-        <p>Rainbow shimmer effect that makes your designs absolutely pop.</p>
-        <div class="product-footer">
-          <div class="product-price">from $0.45</div>
-          <button class="product-btn" onclick="document.getElementById('order').scrollIntoView({behavior:'smooth'})">Order</button>
-        </div>
-      </div>
-    </div>
-    <div class="product-card">
-      <div class="product-thumb pc4">💎</div>
-      <div class="product-info">
-        <h4>Clear Stickers</h4>
-        <p>Transparent vinyl — perfect for windows, bottles, and packaging.</p>
-        <div class="product-footer">
-          <div class="product-price">from $0.35</div>
-          <button class="product-btn" onclick="document.getElementById('order').scrollIntoView({behavior:'smooth'})">Order</button>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- REVIEWS -->
-<section id="reviews">
-  <div class="section-label">// SOCIAL PROOF</div>
-  <h2>CUSTOMERS LOVE US</h2>
-  <div class="reviews-grid">
-    <div class="review-card">
-      <div class="stars">★★★★★</div>
-      <div class="review-text">"Ordered 500 die-cut stickers for my small business. Quality was insane — crisp colors, waterproof, and they arrived 2 days earlier than expected!"</div>
-      <div class="reviewer">Sarah K. <span>— Etsy Shop Owner</span></div>
-    </div>
-    <div class="review-card">
-      <div class="stars">★★★★★</div>
-      <div class="review-text">"The upload process was stupidly simple. I went from artwork to checkout in under 3 minutes. Will be ordering every month for my band merch."</div>
-      <div class="reviewer">Marcus T. <span>— Musician</span></div>
-    </div>
-    <div class="review-card">
-      <div class="stars">★★★★★</div>
-      <div class="review-text">"Holographic stickers look absolutely fire. Got compliments from every single customer who received them in their packages. 10/10."</div>
-      <div class="reviewer">Jenna R. <span>— E-Commerce Brand</span></div>
-    </div>
-  </div>
-</section>
-
-<!-- FOOTER -->
-<footer>
-  <div class="footer-grid">
-    <div class="footer-brand">
-      <a href="#" class="logo">Sticker<span>Drop</span></a>
-      <p>The world's most customer-obsessed custom sticker company. Premium quality, fast turnaround, unbeatable prices.</p>
-    </div>
-    <div class="footer-col">
-      <h5>Products</h5>
-      <a href="#">Die-Cut Stickers</a>
-      <a href="#">Kiss-Cut Stickers</a>
-      <a href="#">Holographic</a>
-      <a href="#">Clear Stickers</a>
-      <a href="#">Bumper Stickers</a>
-    </div>
-    <div class="footer-col">
-      <h5>Company</h5>
-      <a href="#">About Us</a>
-      <a href="#">Blog</a>
-      <a href="#">Careers</a>
-      <a href="#">Press</a>
-    </div>
-    <div class="footer-col">
-      <h5>Support</h5>
-      <a href="#">FAQ</a>
-      <a href="#">Shipping Info</a>
-      <a href="#">Returns</a>
-      <a href="#">Contact Us</a>
-    </div>
-  </div>
-  <div class="footer-bottom">
-    <p>© 2026 StickerDrop Inc. All rights reserved. | Privacy Policy | Terms of Service</p>
-    <div class="social-links">
-      <a href="#" class="social-link">📸</a>
-      <a href="#" class="social-link">🎵</a>
-      <a href="#" class="social-link">👥</a>
-    </div>
-  </div>
-</footer>
 
 <!-- CHECKOUT MODAL -->
-<div class="modal-bg" id="checkoutModal">
-  <div class="modal" style="position:relative">
-    <button class="modal-close" onclick="closeCheckout()">✕</button>
-    <h3>CHECKOUT</h3>
-    <p class="modal-sub">Secure payment powered by Stripe & QuickBooks</p>
+<div class="checkout-modal" id="checkoutModal">
+  <div class="checkout-box">
+    <h3>CHECKOUT <button class="close-btn" onclick="closeCheckout()">×</button></h3>
+
+    <div class="form-group">
+      <label>Full Name</label>
+      <input type="text" id="custName" placeholder="Your full name" style="background:var(--mid);border:1px solid rgba(255,255,255,0.1);color:var(--white);padding:12px 16px;border-radius:6px;width:100%;font-family:inherit;font-size:0.95rem"/>
+    </div>
+    <div class="form-group">
+      <label>Email</label>
+      <input type="email" id="custEmail" placeholder="your@email.com" style="background:var(--mid);border:1px solid rgba(255,255,255,0.1);color:var(--white);padding:12px 16px;border-radius:6px;width:100%;font-family:inherit;font-size:0.95rem"/>
+    </div>
+    <div class="form-group">
+      <label>Shipping Address</label>
+      <input type="text" id="custAddress" placeholder="Street address, City, State, ZIP" style="background:var(--mid);border:1px solid rgba(255,255,255,0.1);color:var(--white);padding:12px 16px;border-radius:6px;width:100%;font-family:inherit;font-size:0.95rem"/>
+    </div>
 
     <div class="order-summary" id="orderSummary">
-      <div class="order-row"><span id="summaryItem">Die-Cut Stickers (2"×2") × 50</span><span id="summaryBase">$24.99</span></div>
-      <div class="order-row"><span>Shipping</span><span>$4.99</span></div>
-      <div class="order-row total"><span>Total</span><span id="summaryTotal">$29.98</span></div>
+      <div class="order-row"><span id="summaryItem">Die-Cut Stickers x 50</span><span id="summaryBase">$17.50</span></div>
+      <div class="order-row" id="shippingRow"><span>Shipping</span><span id="summaryShipping">$15.00</span></div>
+      <div class="order-row total"><span>Total</span><span id="summaryTotal">$32.50</span></div>
     </div>
 
-    <div class="form-group"><label>Full Name</label><input type="text" placeholder="Jane Smith" /></div>
-    <div class="form-group"><label>Email</label><input type="email" placeholder="jane@example.com" /></div>
-    <div class="form-group"><label>Phone</label><input type="tel" placeholder="+1 (555) 000-0000" /></div>
-
-    <div class="form-group"><label>Shipping Address</label><input type="text" placeholder="123 Main Street" /></div>
-    <div class="form-row">
-      <div class="form-group"><label>City</label><input type="text" placeholder="Austin" /></div>
-      <div class="form-group"><label>State</label><input type="text" placeholder="TX" /></div>
-    </div>
-    <div class="form-row">
-      <div class="form-group"><label>ZIP</label><input type="text" placeholder="78701" /></div>
-      <div class="form-group"><label>Country</label><input type="text" placeholder="USA" /></div>
+    <div style="margin-bottom:16px;padding:10px 14px;background:rgba(0,212,180,0.08);border:1px solid rgba(0,212,180,0.2);border-radius:6px;font-size:0.82rem;color:var(--teal)">
+      🔒 Secure checkout powered by Stripe. Your card info is never stored.
     </div>
 
-    <div class="form-group" style="margin-top:8px"><label>Payment Method</label>
+    <div class="form-group">
+      <label>Payment</label>
       <div class="payment-opts">
-        <div class="pay-opt active" onclick="selectPay(this)"><span class="pay-icon">💳</span>Credit Card</div>
-        <div class="pay-opt" onclick="selectPay(this)"><span class="pay-icon">📊</span>QuickBooks</div>
-        <div class="pay-opt" onclick="selectPay(this)"><span class="pay-icon">🔒</span>Stripe Link</div>
+        <button class="pay-opt active" onclick="selectPay(this)">💳 Card</button>
+        <button class="pay-opt" onclick="selectPay(this)">Apple Pay</button>
+        <button class="pay-opt" onclick="selectPay(this)">Google Pay</button>
       </div>
     </div>
 
-    <div class="card-row">Card number will be collected securely via Stripe Elements on integration</div>
+    <input class="card-input" placeholder="Card number" style="width:100%;margin-bottom:12px"/>
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:20px">
+      <input class="card-input" placeholder="MM / YY"/>
+      <input class="card-input" placeholder="CVC"/>
+    </div>
 
-    <button class="submit-btn" onclick="placeOrder()">🚀 PLACE ORDER & PAY</button>
+    <button class="pay-btn" onclick="placeOrder()">PAY <span id="payTotal">$32.50</span> — ORDER NOW</button>
   </div>
 </div>
 
@@ -745,13 +360,141 @@
   <button class="btn-primary" onclick="document.getElementById('successOverlay').classList.remove('open')">Order More Stickers</button>
 </div>
 
+<!-- PRODUCTS -->
+<section id="products">
+  <div class="section-tag">// PRODUCT LINEUP</div>
+  <h2 class="fade-up">EVERY STICKER <span style="color:var(--orange)">TYPE</span></h2>
+  <p class="fade-up" style="opacity:0.6;margin-bottom:48px;max-width:500px">From die-cut precision to holographic shine — we've got every format covered.</p>
+  <div class="products-grid">
+    <div class="product-card fade-up">
+      <div class="product-img">✂️</div>
+      <div class="product-body">
+        <div class="product-name">Die-Cut Stickers</div>
+        <div class="product-desc">Cut to the exact shape of your design. Clean edges, premium vinyl. The classic choice.</div>
+        <div class="product-price">FROM $0.35/ea</div>
+        <button class="product-cta" onclick="document.getElementById('order').scrollIntoView({behavior:'smooth'})">ORDER NOW</button>
+      </div>
+    </div>
+    <div class="product-card fade-up">
+      <div class="product-img">🌈</div>
+      <div class="product-body">
+        <div class="product-name">Holographic Stickers</div>
+        <div class="product-desc">Rainbow iridescent finish that catches every light. Makes your design impossible to ignore.</div>
+        <div class="product-price">FROM $0.55/ea</div>
+        <button class="product-cta" onclick="document.getElementById('order').scrollIntoView({behavior:'smooth'})">ORDER NOW</button>
+      </div>
+    </div>
+    <div class="product-card fade-up">
+      <div class="product-img">🔍</div>
+      <div class="product-body">
+        <div class="product-name">Clear Stickers</div>
+        <div class="product-desc">Transparent background for a clean no-label look. Perfect for windows and smooth surfaces.</div>
+        <div class="product-price">FROM $0.42/ea</div>
+        <button class="product-cta" onclick="document.getElementById('order').scrollIntoView({behavior:'smooth'})">ORDER NOW</button>
+      </div>
+    </div>
+    <div class="product-card fade-up">
+      <div class="product-img">🏷️</div>
+      <div class="product-body">
+        <div class="product-name">Kiss-Cut Stickers</div>
+        <div class="product-desc">Easy peel-and-stick on a backing sheet. Great for packaging and giveaways.</div>
+        <div class="product-price">FROM $0.28/ea</div>
+        <button class="product-cta" onclick="document.getElementById('order').scrollIntoView({behavior:'smooth'})">ORDER NOW</button>
+      </div>
+    </div>
+    <div class="product-card fade-up">
+      <div class="product-img">🚗</div>
+      <div class="product-body">
+        <div class="product-name">Bumper Stickers</div>
+        <div class="product-desc">Heavy-duty vinyl built to last outdoors. UV resistant and waterproof.</div>
+        <div class="product-price">FROM $0.60/ea</div>
+        <button class="product-cta" onclick="document.getElementById('order').scrollIntoView({behavior:'smooth'})">ORDER NOW</button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FEATURES -->
+<section style="background:var(--gray)">
+  <div class="section-tag">// WHY STICKERDROP</div>
+  <h2 class="fade-up">BUILT FOR <span style="color:var(--orange)">CREATORS</span></h2>
+  <div class="features-grid" style="margin-top:40px">
+    <div class="feature-card fade-up"><div class="feature-icon">⚡</div><div class="feature-title">Ships in 3-5 Days</div><div class="feature-desc">Lightning fast production. Order today, stickers at your door by the weekend.</div></div>
+    <div class="feature-card fade-up"><div class="feature-icon">🎨</div><div class="feature-title">Any Design, Any Shape</div><div class="feature-desc">Upload any artwork and we cut it to the exact shape. No minimums on complexity.</div></div>
+    <div class="feature-card fade-up"><div class="feature-icon">💎</div><div class="feature-title">Premium Vinyl</div><div class="feature-desc">Weatherproof, scratch-resistant, UV-protected. Built to last years on any surface.</div></div>
+    <div class="feature-card fade-up"><div class="feature-icon">🚚</div><div class="feature-title">Free Shipping Over $80</div><div class="feature-desc">Free standard shipping on all US orders over $80. Flat $15 on smaller orders.</div></div>
+    <div class="feature-card fade-up"><div class="feature-icon">📦</div><div class="feature-title">No Minimums</div><div class="feature-desc">Order as few as 1 or as many as 10,000. Same quality, always.</div></div>
+    <div class="feature-card fade-up"><div class="feature-icon">🔒</div><div class="feature-title">Secure Checkout</div><div class="feature-desc">Stripe-powered payments. Your info is always encrypted and protected.</div></div>
+  </div>
+</section>
+
+<!-- REVIEWS -->
+<section id="reviews">
+  <div class="section-tag">// CUSTOMER REVIEWS</div>
+  <h2 class="fade-up">WHAT PEOPLE <span style="color:var(--orange)">ARE SAYING</span></h2>
+  <div class="review-grid" style="margin-top:40px">
+    <div class="review-card fade-up"><div class="review-stars">★★★★★</div><div class="review-text">"Ordered 100 holographic stickers for my small business. The quality is insane — way better than I expected. My customers love them."</div><div class="reviewer">— Sarah K., Small Business Owner</div></div>
+    <div class="review-card fade-up"><div class="review-stars">★★★★★</div><div class="review-text">"Fastest turnaround I've ever seen. Ordered Thursday, had them in hand Monday. Print quality is perfect — zero complaints."</div><div class="reviewer">— Marcus T., Graphic Designer</div></div>
+    <div class="review-card fade-up"><div class="review-stars">★★★★★</div><div class="review-text">"I've tried 4 other sticker companies. StickerDrop is the only one that gets the colors exactly right. Will never go anywhere else."</div><div class="reviewer">— Jenna R., Content Creator</div></div>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section id="faq" style="background:var(--gray)">
+  <div class="section-tag">// FAQ</div>
+  <h2 class="fade-up">GOT <span style="color:var(--orange)">QUESTIONS?</span></h2>
+  <div style="max-width:700px;margin-top:40px">
+    <div class="feature-card fade-up" style="margin-bottom:16px"><div class="feature-title">What file formats do you accept?</div><div class="feature-desc" style="margin-top:8px">PNG, JPG, SVG, and PDF. For best results use 300 DPI or higher. Vector files (SVG, PDF) give the sharpest cut lines.</div></div>
+    <div class="feature-card fade-up" style="margin-bottom:16px"><div class="feature-title">How long does shipping take?</div><div class="feature-desc" style="margin-top:8px">Production takes 3-5 business days. Standard shipping adds 2-5 days. Free shipping on orders over $80, flat $15 under $80.</div></div>
+    <div class="feature-card fade-up" style="margin-bottom:16px"><div class="feature-title">What is your minimum order?</div><div class="feature-desc" style="margin-top:8px">No minimums. Order 1 or order 10,000 — we treat every order the same.</div></div>
+    <div class="feature-card fade-up" style="margin-bottom:16px"><div class="feature-title">Can I get a proof before printing?</div><div class="feature-desc" style="margin-top:8px">Digital proofs are available on orders over 250 units. Email us after ordering and we'll send one within 24 hours.</div></div>
+    <div class="feature-card fade-up"><div class="feature-title">What is your return policy?</div><div class="feature-desc" style="margin-top:8px">If there's a quality issue with your order we'll reprint or refund — no questions asked. Contact us within 7 days of delivery.</div></div>
+  </div>
+</section>
+
+<footer>
+  <div class="footer-grid">
+    <div class="footer-brand">
+      <a href="#" class="logo">Sticker<span>Drop</span></a>
+      <p>Premium custom stickers for creators, brands, and businesses. Printed fast. Delivered faster.</p>
+    </div>
+    <div class="footer-col">
+      <h4>Products</h4>
+      <a href="#products">Die-Cut Stickers</a>
+      <a href="#products">Holographic</a>
+      <a href="#products">Clear Stickers</a>
+      <a href="#products">Kiss-Cut</a>
+      <a href="#products">Bumper Stickers</a>
+    </div>
+    <div class="footer-col">
+      <h4>Company</h4>
+      <a href="#faq">FAQ</a>
+      <a href="#reviews">Reviews</a>
+      <a href="mailto:hello@stickerdrop.co">Contact</a>
+    </div>
+    <div class="footer-col">
+      <h4>Shipping</h4>
+      <a href="#">Free over $80</a>
+      <a href="#">Flat $15 under $80</a>
+      <a href="#">US Only</a>
+      <a href="#">3-5 Day Production</a>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <p>© 2026 StickerDrop. All rights reserved.</p>
+    <div class="social-links">
+      <a href="#" class="social-link">📸</a>
+      <a href="#" class="social-link">🎵</a>
+      <a href="#" class="social-link">👥</a>
+    </div>
+  </div>
+</footer>
+
 <script>
-  // ── State ──
   let selectedSize = '2x2';
   let selectedFinish = 'gloss';
   let uploadedFile = null;
 
-  // ── Pricing ──
   const basePrices = { 'die-cut': 0.35, 'kiss-cut': 0.28, 'clear': 0.42, 'holographic': 0.55, 'bumper': 0.60 };
   const sizeMultipliers = { '2x2': 1, '3x3': 1.4, '4x4': 2, '5x5': 2.6, '3x5': 1.8, 'custom': 2.5 };
   const finishMultipliers = { 'gloss': 1, 'matte': 1.1, 'holographic': 1.5, 'clear': 1.2 };
@@ -763,13 +506,31 @@
     const sm = sizeMultipliers[selectedSize] || 1;
     const fm = finishMultipliers[selectedFinish] || 1;
     let unitPrice = base * sm * fm;
-    // Volume discount
     if (qty >= 1000) unitPrice *= 0.55;
     else if (qty >= 500) unitPrice *= 0.65;
     else if (qty >= 100) unitPrice *= 0.80;
-    const total = (unitPrice * qty).toFixed(2);
-    document.getElementById('priceDisplay').textContent = '$' + total;
-    return total;
+
+    const subtotal = parseFloat((unitPrice * qty).toFixed(2));
+    const shipping = subtotal >= 80 ? 0 : 15;
+    const total = (subtotal + shipping).toFixed(2);
+
+    document.getElementById('priceDisplay').textContent = '$' + subtotal.toFixed(2);
+
+    const badge = document.getElementById('shippingBadge');
+    if (shipping === 0) {
+      badge.textContent = 'FREE SHIPPING on this order!';
+      badge.style.color = '#00D4B4';
+    } else {
+      const needed = (80 - subtotal).toFixed(2);
+      if (needed > 0) {
+        badge.textContent = 'Add $' + needed + ' more for FREE shipping';
+        badge.style.color = '#FFE135';
+      } else {
+        badge.textContent = 'FREE SHIPPING on this order!';
+        badge.style.color = '#00D4B4';
+      }
+    }
+    return { subtotal: subtotal.toFixed(2), shipping, total };
   }
 
   function selectSize(el, size) {
@@ -786,7 +547,6 @@
     updatePrice();
   }
 
-  // ── File Upload ──
   function handleFile(e) {
     const file = e.target.files[0];
     if (!file) return;
@@ -809,7 +569,6 @@
     document.getElementById('fileInput').value = '';
   }
 
-  // Drag & drop
   const dz = document.getElementById('dropZone');
   dz.addEventListener('dragover', (e) => { e.preventDefault(); dz.classList.add('drag'); });
   dz.addEventListener('dragleave', () => dz.classList.remove('drag'));
@@ -819,14 +578,23 @@
     if (file) { document.getElementById('fileInput').files = e.dataTransfer.files; handleFile({target:{files:[file]}}); }
   });
 
-  // ── Checkout ──
   function openCheckout() {
-    const price = updatePrice();
+    const pricing = updatePrice();
     const qty = document.getElementById('qty').value;
     const type = document.getElementById('stickerType').options[document.getElementById('stickerType').selectedIndex].text;
-    document.getElementById('summaryItem').textContent = `${type} (${selectedSize.replace('x','"×')}") × ${qty}`;
-    document.getElementById('summaryBase').textContent = '$' + price;
-    document.getElementById('summaryTotal').textContent = '$' + (parseFloat(price) + 4.99).toFixed(2);
+    document.getElementById('summaryItem').textContent = type + ' x ' + qty;
+    document.getElementById('summaryBase').textContent = '$' + pricing.subtotal;
+    const shipEl = document.getElementById('summaryShipping');
+    const shipRow = document.getElementById('shippingRow');
+    if (pricing.shipping === 0) {
+      shipEl.textContent = 'FREE';
+      shipRow.classList.add('free-ship');
+    } else {
+      shipEl.textContent = '$' + pricing.shipping.toFixed(2);
+      shipRow.classList.remove('free-ship');
+    }
+    document.getElementById('summaryTotal').textContent = '$' + pricing.total;
+    document.getElementById('payTotal').textContent = '$' + pricing.total;
     document.getElementById('checkoutModal').classList.add('open');
   }
 
@@ -844,11 +612,13 @@
     document.getElementById('successOverlay').classList.add('open');
   }
 
-  // ── Scroll animations ──
   const obs = new IntersectionObserver((entries) => {
     entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
   }, { threshold: 0.1 });
   document.querySelectorAll('.fade-up').forEach(el => obs.observe(el));
+
+  updatePrice();
 </script>
 </body>
 </html>
+
