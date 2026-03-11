@@ -1,4 +1,5 @@
 <!DOCTYPE html>
+
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
@@ -187,9 +188,21 @@
       section { padding: 60px 20px; }
       .order-grid { grid-template-columns: 1fr; }
       .footer-grid { grid-template-columns: 1fr 1fr; }
+      .size-grid { grid-template-columns: repeat(3, 1fr); gap: 10px; }
+      .finish-grid { grid-template-columns: repeat(2, 1fr); gap: 10px; }
+      .size-btn { padding: 14px 8px; font-size: 0.9rem; min-height: 48px; }
+      .finish-btn { padding: 14px 8px; font-size: 0.9rem; min-height: 48px; }
+      .btn-primary { padding: 18px; font-size: 1rem; min-height: 56px; }
+      .checkout-box { padding: 24px 20px; }
+      .form-group input { min-height: 48px; font-size: 16px; }
+      .form-group select { min-height: 48px; font-size: 16px; }
+      input[type="number"] { min-height: 48px; font-size: 16px; }
+      .pay-btn { min-height: 56px; font-size: 1.1rem; }
     }
+    /* Prevent double-tap zoom on buttons */
+    button { touch-action: manipulation; }
+    input, select { touch-action: manipulation; font-size: 16px; }
   </style>
-<script src="https://js.stripe.com/v3/"></script>
 </head>
 <body>
 
@@ -223,6 +236,7 @@
 </section>
 
 <!-- ORDER SECTION -->
+
 <section class="order-section" id="order">
   <div class="section-tag">// PLACE YOUR ORDER</div>
   <h2>DESIGN YOUR <span style="color:var(--orange)">STICKERS</span></h2>
@@ -246,106 +260,116 @@
       </div>
     </div>
 
-    <!-- Config -->
-    <div class="config-panel">
-      <h3>CONFIGURE YOUR ORDER</h3>
+```
+<!-- Config -->
+<div class="config-panel">
+  <h3>CONFIGURE YOUR ORDER</h3>
 
-      <div class="form-group">
-        <label>Sticker Type</label>
-        <select id="stickerType" onchange="updatePrice()">
-          <option value="die-cut">Die-Cut Stickers</option>
-          <option value="kiss-cut">Kiss-Cut Stickers</option>
-          <option value="clear">Clear Stickers</option>
-          <option value="holographic">Holographic Stickers</option>
-          <option value="bumper">Bumper Stickers</option>
-        </select>
-      </div>
+  <div class="form-group">
+    <label>Sticker Type</label>
+    <select id="stickerType" onchange="updatePrice()" oninput="updatePrice()">
+      <option value="die-cut">Die-Cut Stickers</option>
+      <option value="kiss-cut">Kiss-Cut Stickers</option>
+      <option value="clear">Clear Stickers</option>
+      <option value="holographic">Holographic Stickers</option>
+      <option value="bumper">Bumper Stickers</option>
+    </select>
+  </div>
 
-      <div class="form-group">
-        <label>Size</label>
-        <div class="size-grid">
-          <button class="size-btn active" onclick="selectSize(this,'2x2')">2" × 2"</button>
-          <button class="size-btn" onclick="selectSize(this,'3x3')">3" × 3"</button>
-          <button class="size-btn" onclick="selectSize(this,'4x4')">4" × 4"</button>
-          <button class="size-btn" onclick="selectSize(this,'5x5')">5" × 5"</button>
-          <button class="size-btn" onclick="selectSize(this,'3x5')">3" × 5"</button>
-          <button class="size-btn" onclick="selectSize(this,'custom')">Custom</button>
-        </div>
-      </div>
-
-      <div class="form-group">
-        <label>Finish</label>
-        <div class="finish-grid">
-          <button class="finish-btn active" onclick="selectFinish(this,'gloss')">✨ Gloss</button>
-          <button class="finish-btn" onclick="selectFinish(this,'matte')">🌫 Matte</button>
-          <button class="finish-btn" onclick="selectFinish(this,'holographic')">🌈 Holographic</button>
-          <button class="finish-btn" onclick="selectFinish(this,'clear')">🔍 Clear</button>
-        </div>
-      </div>
-
-      <div class="form-group">
-        <label>Quantity</label>
-        <input type="number" id="qty" value="50" min="1" max="10000" onchange="updatePrice()" />
-      </div>
-
-      <div class="price-box">
-        <div class="price-label">SUBTOTAL</div>
-        <div id="priceDisplay" class="price-val">$17.50</div>
-        <div id="shippingBadge" class="shipping-badge">Add more for FREE shipping on orders over $80</div>
-      </div>
-
-      <button class="btn-primary" style="width:100%;font-size:1.1rem;padding:18px" onclick="openCheckout()">
-        PROCEED TO CHECKOUT →
-      </button>
+  <div class="form-group">
+    <label>Size</label>
+    <div class="size-grid">
+      <button class="size-btn active" data-size="2x2" onclick="selectSize('2x2')">2" × 2"</button>
+      <button class="size-btn" data-size="3x3" onclick="selectSize('3x3')">3" × 3"</button>
+      <button class="size-btn" data-size="4x4" onclick="selectSize('4x4')">4" × 4"</button>
+      <button class="size-btn" data-size="5x5" onclick="selectSize('5x5')">5" × 5"</button>
+      <button class="size-btn" data-size="3x5" onclick="selectSize('3x5')">3" × 5"</button>
+      <button class="size-btn" data-size="custom" onclick="selectSize('custom')">Custom</button>
     </div>
+  </div>
+
+  <div class="form-group">
+    <label>Finish</label>
+    <div class="finish-grid">
+      <button class="finish-btn active" data-finish="gloss" onclick="selectFinish('gloss')">✨ Gloss</button>
+      <button class="finish-btn" data-finish="matte" onclick="selectFinish('matte')">🌫 Matte</button>
+      <button class="finish-btn" data-finish="holographic" onclick="selectFinish('holographic')">🌈 Holographic</button>
+      <button class="finish-btn" data-finish="clear" onclick="selectFinish('clear')">🔍 Clear</button>
+    </div>
+  </div>
+
+  <div class="form-group">
+    <label>Quantity</label>
+    <input type="number" id="qty" value="50" min="1" max="10000" onchange="updatePrice()" oninput="updatePrice()" />
+  </div>
+
+  <div class="price-box">
+    <div class="price-label">SUBTOTAL</div>
+    <div id="priceDisplay" class="price-val">$17.50</div>
+    <div id="shippingBadge" class="shipping-badge">Add more for FREE shipping on orders over $80</div>
+  </div>
+
+  <button class="btn-primary" style="width:100%;font-size:1.1rem;padding:18px" onclick="openCheckout()">
+    PROCEED TO CHECKOUT →
+  </button>
+</div>
+```
+
   </div>
 </section>
 
 <!-- CHECKOUT MODAL -->
+
 <div class="checkout-modal" id="checkoutModal">
   <div class="checkout-box">
     <h3>CHECKOUT <button class="close-btn" onclick="closeCheckout()">×</button></h3>
 
-    <div class="form-group">
-      <label>Full Name</label>
-      <input type="text" id="custName" placeholder="Your full name" style="background:var(--mid);border:1px solid rgba(255,255,255,0.1);color:var(--white);padding:12px 16px;border-radius:6px;width:100%;font-family:inherit;font-size:0.95rem"/>
-    </div>
-    <div class="form-group">
-      <label>Email</label>
-      <input type="email" id="custEmail" placeholder="your@email.com" style="background:var(--mid);border:1px solid rgba(255,255,255,0.1);color:var(--white);padding:12px 16px;border-radius:6px;width:100%;font-family:inherit;font-size:0.95rem"/>
-    </div>
-    <div class="form-group">
-      <label>Shipping Address</label>
-      <input type="text" id="custAddress" placeholder="Street address, City, State, ZIP" style="background:var(--mid);border:1px solid rgba(255,255,255,0.1);color:var(--white);padding:12px 16px;border-radius:6px;width:100%;font-family:inherit;font-size:0.95rem"/>
-    </div>
+```
+<div class="form-group">
+  <label>Full Name</label>
+  <input type="text" id="custName" placeholder="Your full name" style="background:var(--mid);border:1px solid rgba(255,255,255,0.1);color:var(--white);padding:12px 16px;border-radius:6px;width:100%;font-family:inherit;font-size:0.95rem"/>
+</div>
+<div class="form-group">
+  <label>Email</label>
+  <input type="email" id="custEmail" placeholder="your@email.com" style="background:var(--mid);border:1px solid rgba(255,255,255,0.1);color:var(--white);padding:12px 16px;border-radius:6px;width:100%;font-family:inherit;font-size:0.95rem"/>
+</div>
+<div class="form-group">
+  <label>Shipping Address</label>
+  <input type="text" id="custAddress" placeholder="Street address, City, State, ZIP" style="background:var(--mid);border:1px solid rgba(255,255,255,0.1);color:var(--white);padding:12px 16px;border-radius:6px;width:100%;font-family:inherit;font-size:0.95rem"/>
+</div>
 
-    <div class="order-summary" id="orderSummary">
-      <div class="order-row"><span id="summaryItem">Die-Cut Stickers x 50</span><span id="summaryBase">$17.50</span></div>
-      <div class="order-row" id="shippingRow"><span>Shipping</span><span id="summaryShipping">$15.00</span></div>
-      <div class="order-row total"><span>Total</span><span id="summaryTotal">$32.50</span></div>
-    </div>
+<div class="order-summary" id="orderSummary">
+  <div class="order-row"><span id="summaryItem">Die-Cut Stickers x 50</span><span id="summaryBase">$17.50</span></div>
+  <div class="order-row" id="shippingRow"><span>Shipping</span><span id="summaryShipping">$15.00</span></div>
+  <div class="order-row total"><span>Total</span><span id="summaryTotal">$32.50</span></div>
+</div>
 
-    <div style="margin-bottom:16px;padding:10px 14px;background:rgba(0,212,180,0.08);border:1px solid rgba(0,212,180,0.2);border-radius:6px;font-size:0.82rem;color:var(--teal)">
-      🔒 Secure checkout powered by Stripe. Your card info is never stored.
-    </div>
+<div style="margin-bottom:16px;padding:10px 14px;background:rgba(0,212,180,0.08);border:1px solid rgba(0,212,180,0.2);border-radius:6px;font-size:0.82rem;color:var(--teal)">
+  🔒 Secure checkout powered by Stripe. Your card info is never stored.
+</div>
 
-    <div class="form-group">
-      <label>Payment</label>
-      <div class="payment-opts">
-        <button class="pay-opt active" onclick="selectPay(this)">💳 Card</button>
-        <button class="pay-opt" onclick="selectPay(this)">Apple Pay</button>
-        <button class="pay-opt" onclick="selectPay(this)">Google Pay</button>
-      </div>
-    </div>
+<div class="form-group">
+  <label>Payment</label>
+  <div class="payment-opts">
+    <button class="pay-opt active" onclick="selectPay(this)">💳 Card</button>
+    <button class="pay-opt" onclick="selectPay(this)">Apple Pay</button>
+    <button class="pay-opt" onclick="selectPay(this)">Google Pay</button>
+  </div>
+</div>
 
-    <div id="stripeCardElement" style="background:#2e2e2e;border:1px solid rgba(255,255,255,0.1);border-radius:6px;padding:14px 16px;margin-bottom:20px;"></div>
-    <div id="cardErrors" style="color:#FF5C00;font-size:0.82rem;margin-bottom:12px;min-height:18px"></div>
+<div style="background:rgba(0,212,180,0.08);border:1px solid rgba(0,212,180,0.2);border-radius:6px;padding:14px 16px;margin-bottom:20px;font-size:0.85rem;color:#00D4B4;text-align:center">
+  🔒 You will be redirected to Stripe's secure checkout page.<br/>
+  <span style="font-size:0.75rem;opacity:0.7">Works on all devices. Cards, Apple Pay, Google Pay accepted.</span>
+</div>
 
-    <button class="pay-btn" onclick="placeOrder()">PAY <span id="payTotal">$32.50</span> — ORDER NOW</button>
+<button class="pay-btn" onclick="placeOrder()">PAY <span id="payTotal">$32.50</span> — ORDER NOW</button>
+```
+
   </div>
 </div>
 
 <!-- SUCCESS -->
+
 <div class="success-overlay" id="successOverlay">
   <div class="success-icon">🎉</div>
   <h2>ORDER PLACED!</h2>
@@ -359,6 +383,7 @@
 </div>
 
 <!-- PRODUCTS -->
+
 <section id="products">
   <div class="section-tag">// PRODUCT LINEUP</div>
   <h2 class="fade-up">EVERY STICKER <span style="color:var(--orange)">TYPE</span></h2>
@@ -413,6 +438,7 @@
 </section>
 
 <!-- FEATURES -->
+
 <section style="background:var(--gray)">
   <div class="section-tag">// WHY STICKERDROP</div>
   <h2 class="fade-up">BUILT FOR <span style="color:var(--orange)">CREATORS</span></h2>
@@ -427,6 +453,7 @@
 </section>
 
 <!-- REVIEWS -->
+
 <section id="reviews">
   <div class="section-tag">// CUSTOMER REVIEWS</div>
   <h2 class="fade-up">WHAT PEOPLE <span style="color:var(--orange)">ARE SAYING</span></h2>
@@ -438,6 +465,7 @@
 </section>
 
 <!-- FAQ -->
+
 <section id="faq" style="background:var(--gray)">
   <div class="section-tag">// FAQ</div>
   <h2 class="fade-up">GOT <span style="color:var(--orange)">QUESTIONS?</span></h2>
@@ -489,240 +517,388 @@
 </footer>
 
 <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
-  let selectedSize = '2x2';
-  let selectedFinish = 'gloss';
-  let uploadedFile = null;
 
-  const basePrices = { 'die-cut': 0.69, 'kiss-cut': 0.55, 'clear': 0.79, 'holographic': 0.99, 'bumper': 0.89 };
-  const sizeMultipliers = { '2x2': 1, '3x3': 1.4, '4x4': 2, '5x5': 2.6, '3x5': 1.8, 'custom': 2.5 };
-  const finishMultipliers = { 'gloss': 1, 'matte': 1.1, 'holographic': 1.5, 'clear': 1.2 };
+var selectedSize = ‘2x2’;
+var selectedFinish = ‘gloss’;
+var uploadedFile = null;
 
-  function updatePrice() {
-    const type = document.getElementById('stickerType').value;
-    const qty = parseInt(document.getElementById('qty').value) || 1;
-    const base = basePrices[type] || 0.35;
-    const sm = sizeMultipliers[selectedSize] || 1;
-    const fm = finishMultipliers[selectedFinish] || 1;
-    let unitPrice = base * sm * fm;
-    if (qty >= 1000) unitPrice *= 0.70;
-    else if (qty >= 500) unitPrice *= 0.80;
-    else if (qty >= 250) unitPrice *= 0.88;
-    else if (qty >= 100) unitPrice *= 0.92;
+var basePrices = { ‘die-cut’: 0.69, ‘kiss-cut’: 0.55, ‘clear’: 0.79, ‘holographic’: 0.99, ‘bumper’: 0.89 };
+var sizeMultipliers = { ‘2x2’: 1, ‘3x3’: 1.4, ‘4x4’: 2, ‘5x5’: 2.6, ‘3x5’: 1.8, ‘custom’: 2.5 };
+var finishMultipliers = { ‘gloss’: 1, ‘matte’: 1.1, ‘holographic’: 1.5, ‘clear’: 1.2 };
 
-    const subtotal = parseFloat((unitPrice * qty).toFixed(2));
-    const shipping = subtotal >= 80 ? 0 : 15;
-    const total = (subtotal + shipping).toFixed(2);
+function updatePrice() {
+var typeEl = document.getElementById(‘stickerType’);
+var type = typeEl ? typeEl.value : ‘die-cut’;
+var qtyEl = document.getElementById(‘qty’);
+var qty = parseInt(qtyEl ? qtyEl.value : 50) || 1;
+var base = basePrices[type] || 0.69;
+var sm = sizeMultipliers[selectedSize] || 1;
+var fm = finishMultipliers[selectedFinish] || 1;
+var unitPrice = base * sm * fm;
+if (qty >= 1000) unitPrice *= 0.70;
+else if (qty >= 500) unitPrice *= 0.80;
+else if (qty >= 250) unitPrice *= 0.88;
+else if (qty >= 100) unitPrice *= 0.92;
+var subtotal = Math.round(unitPrice * qty * 100) / 100;
+var shipping = subtotal >= 80 ? 0 : 15;
+var total = Math.round((subtotal + shipping) * 100) / 100;
+var priceEl = document.getElementById(‘priceDisplay’);
+if (priceEl) priceEl.textContent = ‘$’ + subtotal.toFixed(2);
+var badge = document.getElementById(‘shippingBadge’);
+if (badge) {
+if (shipping === 0) {
+badge.textContent = ‘FREE SHIPPING on this order!’;
+badge.style.color = ‘#00D4B4’;
+} else {
+var needed = (80 - subtotal).toFixed(2);
+badge.textContent = ‘Add $’ + needed + ’ more for FREE shipping’;
+badge.style.color = ‘#FFE135’;
+}
+}
+return { subtotal: subtotal.toFixed(2), shipping: shipping, total: total.toFixed(2) };
+}
 
-    document.getElementById('priceDisplay').textContent = '$' + subtotal.toFixed(2);
+function selectSize(size) {
+selectedSize = size;
+var btns = document.querySelectorAll(’.size-btn’);
+for (var i = 0; i < btns.length; i++) {
+btns[i].classList.remove(‘active’);
+if (btns[i].getAttribute(‘data-size’) === size) {
+btns[i].classList.add(‘active’);
+}
+}
+updatePrice();
+}
 
-    const badge = document.getElementById('shippingBadge');
-    if (shipping === 0) {
-      badge.textContent = 'FREE SHIPPING on this order!';
-      badge.style.color = '#00D4B4';
-    } else {
-      const needed = (80 - subtotal).toFixed(2);
-      if (needed > 0) {
-        badge.textContent = 'Add $' + needed + ' more for FREE shipping';
-        badge.style.color = '#FFE135';
-      } else {
-        badge.textContent = 'FREE SHIPPING on this order!';
-        badge.style.color = '#00D4B4';
-      }
+function selectFinish(finish) {
+selectedFinish = finish;
+var btns = document.querySelectorAll(’.finish-btn’);
+for (var i = 0; i < btns.length; i++) {
+btns[i].classList.remove(‘active’);
+if (btns[i].getAttribute(‘data-finish’) === finish) {
+btns[i].classList.add(‘active’);
+}
+}
+updatePrice();
+}
+
+function handleFile(e) {
+var file = e.target.files[0];
+if (!file) return;
+uploadedFile = file;
+var reader = new FileReader();
+reader.onload = function(ev) {
+document.getElementById(‘previewImg’).src = ev.target.result;
+document.getElementById(‘uploadPreview’).style.display = ‘block’;
+document.getElementById(‘uploadPlaceholder’).style.display = ‘none’;
+};
+reader.readAsDataURL(file);
+}
+
+function removeFile(e) {
+e.stopPropagation();
+uploadedFile = null;
+document.getElementById(‘previewImg’).src = ‘’;
+document.getElementById(‘uploadPreview’).style.display = ‘none’;
+document.getElementById(‘uploadPlaceholder’).style.display = ‘block’;
+document.getElementById(‘fileInput’).value = ‘’;
+}
+
+function openCheckout() {
+var pricing = updatePrice();
+var qty = document.getElementById(‘qty’).value;
+var typeEl = document.getElementById(‘stickerType’);
+var type = typeEl.options[typeEl.selectedIndex].text;
+document.getElementById(‘summaryItem’).textContent = type + ’ x ’ + qty;
+document.getElementById(‘summaryBase’).textContent = ‘$’ + pricing.subtotal;
+var shipEl = document.getElementById(‘summaryShipping’);
+var shipRow = document.getElementById(‘shippingRow’);
+if (pricing.shipping === 0) {
+shipEl.textContent = ‘FREE’;
+if (shipRow) shipRow.classList.add(‘free-ship’);
+} else {
+shipEl.textContent = ‘$’ + parseFloat(pricing.shipping).toFixed(2);
+if (shipRow) shipRow.classList.remove(‘free-ship’);
+}
+document.getElementById(‘summaryTotal’).textContent = ‘$’ + pricing.total;
+var payTotalEl = document.getElementById(‘payTotal’);
+if (payTotalEl) payTotalEl.textContent = ‘$’ + pricing.total;
+document.getElementById(‘checkoutModal’).classList.add(‘open’);
+}
+
+function closeCheckout() {
+document.getElementById(‘checkoutModal’).classList.remove(‘open’);
+}
+
+function selectPay(el) {
+var btns = document.querySelectorAll(’.pay-opt’);
+for (var i = 0; i < btns.length; i++) btns[i].classList.remove(‘active’);
+el.classList.add(‘active’);
+}
+
+function placeOrder() {
+var name = document.getElementById(‘custName’).value.trim();
+var email = document.getElementById(‘custEmail’).value.trim();
+var address = document.getElementById(‘custAddress’).value.trim();
+if (!name || !email || !address) {
+alert(‘Please fill in your name, email, and shipping address.’);
+return;
+}
+var pricing = updatePrice();
+var qty = document.getElementById(‘qty’).value;
+var typeEl = document.getElementById(‘stickerType’);
+var typeName = typeEl.options[typeEl.selectedIndex].text;
+var totalCents = Math.round(parseFloat(pricing.total) * 100);
+var payBtn = document.querySelector(’.pay-btn’);
+if (payBtn) { payBtn.textContent = ‘Redirecting to secure checkout…’; payBtn.disabled = true; }
+fetch(‘https://agent-production-ff8d.up.railway.app/create-checkout-session’, {
+method: ‘POST’,
+headers: { ‘Content-Type’: ‘application/json’ },
+body: JSON.stringify({
+amount: totalCents,
+currency: ‘usd’,
+customer_email: email,
+product_name: typeName + ’ (’ + selectedSize + ’ ’ + selectedFinish + ‘) x’ + qty,
+metadata: {
+customer_name: name,
+customer_email: email,
+shipping_address: address,
+product_type: typeEl.value,
+quantity: qty,
+size: selectedSize,
+finish: selectedFinish
+}
+})
+})
+.then(function(r) { return r.json(); })
+.then(function(data) {
+if (data.url) {
+window.location.href = data.url;
+} else {
+alert(‘Error: ’ + (data.error || ‘Could not create checkout’));
+if (payBtn) { payBtn.textContent = ‘PAY $’ + pricing.total + ’ - ORDER NOW’; payBtn.disabled = false; }
+}
+})
+.catch(function(err) {
+alert(‘Something went wrong. Please try again.’);
+if (payBtn) { payBtn.textContent = ‘PAY $’ + pricing.total + ’ - ORDER NOW’; payBtn.disabled = false; }
+});
+}
+
+function placeOrderDirect() {
+closeCheckout();
+document.getElementById(‘successOverlay’).classList.add(‘open’);
+}
+
+// Init
+document.addEventListener(‘DOMContentLoaded’, function() {
+updatePrice();
+
+```
+// Drag and drop
+var dz = document.getElementById('dropZone');
+if (dz) {
+  dz.addEventListener('dragover', function(e) { e.preventDefault(); dz.classList.add('drag'); });
+  dz.addEventListener('dragleave', function() { dz.classList.remove('drag'); });
+  dz.addEventListener('drop', function(e) {
+    e.preventDefault();
+    dz.classList.remove('drag');
+    var file = e.dataTransfer.files[0];
+    if (file) {
+      document.getElementById('fileInput').files = e.dataTransfer.files;
+      handleFile({ target: { files: [file] } });
     }
-    return { subtotal: subtotal.toFixed(2), shipping, total };
-  }
-
-  function selectSize(el, size) {
-    document.querySelectorAll('.size-btn').forEach(b => b.classList.remove('active'));
-    el.classList.add('active');
-    selectedSize = size;
-    updatePrice();
-  }
-
-  function selectFinish(el, finish) {
-    document.querySelectorAll('.finish-btn').forEach(b => b.classList.remove('active'));
-    el.classList.add('active');
-    selectedFinish = finish;
-    updatePrice();
-  }
-
-  function handleFile(e) {
-    const file = e.target.files[0];
-    if (!file) return;
-    uploadedFile = file;
-    const reader = new FileReader();
-    reader.onload = (ev) => {
-      document.getElementById('previewImg').src = ev.target.result;
-      document.getElementById('uploadPreview').style.display = 'block';
-      document.getElementById('uploadPlaceholder').style.display = 'none';
-    };
-    reader.readAsDataURL(file);
-  }
-
-  function removeFile(e) {
-    e.stopPropagation();
-    uploadedFile = null;
-    document.getElementById('previewImg').src = '';
-    document.getElementById('uploadPreview').style.display = 'none';
-    document.getElementById('uploadPlaceholder').style.display = 'block';
-    document.getElementById('fileInput').value = '';
-  }
-
-  const dz = document.getElementById('dropZone');
-  dz.addEventListener('dragover', (e) => { e.preventDefault(); dz.classList.add('drag'); });
-  dz.addEventListener('dragleave', () => dz.classList.remove('drag'));
-  dz.addEventListener('drop', (e) => {
-    e.preventDefault(); dz.classList.remove('drag');
-    const file = e.dataTransfer.files[0];
-    if (file) { document.getElementById('fileInput').files = e.dataTransfer.files; handleFile({target:{files:[file]}}); }
   });
+}
 
+// Scroll animations
+var obs = new IntersectionObserver(function(entries) {
+  entries.forEach(function(e) { if (e.isIntersecting) e.target.classList.add('visible'); });
+}, { threshold: 0.1 });
+document.querySelectorAll('.fade-up').forEach(function(el) { obs.observe(el); });
+```
 
+});
+</script><script>
+let selectedSize = ‘2x2’;
+let selectedFinish = ‘gloss’;
+let uploadedFile = null;
 
-  function closeCheckout() {
-    document.getElementById('checkoutModal').classList.remove('open');
+const basePrices = { ‘die-cut’: 0.69, ‘kiss-cut’: 0.55, ‘clear’: 0.79, ‘holographic’: 0.99, ‘bumper’: 0.89 };
+const sizeMultipliers = { ‘2x2’: 1, ‘3x3’: 1.4, ‘4x4’: 2, ‘5x5’: 2.6, ‘3x5’: 1.8, ‘custom’: 2.5 };
+const finishMultipliers = { ‘gloss’: 1, ‘matte’: 1.1, ‘holographic’: 1.5, ‘clear’: 1.2 };
+
+function updatePrice() {
+const type = document.getElementById(‘stickerType’).value;
+const qty = parseInt(document.getElementById(‘qty’).value) || 1;
+const base = basePrices[type] || 0.35;
+const sm = sizeMultipliers[selectedSize] || 1;
+const fm = finishMultipliers[selectedFinish] || 1;
+let unitPrice = base * sm * fm;
+if (qty >= 1000) unitPrice *= 0.70;
+else if (qty >= 500) unitPrice *= 0.80;
+else if (qty >= 250) unitPrice *= 0.88;
+else if (qty >= 100) unitPrice *= 0.92;
+
+```
+const subtotal = parseFloat((unitPrice * qty).toFixed(2));
+const shipping = subtotal >= 80 ? 0 : 15;
+const total = (subtotal + shipping).toFixed(2);
+
+document.getElementById('priceDisplay').textContent = '$' + subtotal.toFixed(2);
+
+const badge = document.getElementById('shippingBadge');
+if (shipping === 0) {
+  badge.textContent = 'FREE SHIPPING on this order!';
+  badge.style.color = '#00D4B4';
+} else {
+  const needed = (80 - subtotal).toFixed(2);
+  if (needed > 0) {
+    badge.textContent = 'Add $' + needed + ' more for FREE shipping';
+    badge.style.color = '#FFE135';
+  } else {
+    badge.textContent = 'FREE SHIPPING on this order!';
+    badge.style.color = '#00D4B4';
   }
+}
+return { subtotal: subtotal.toFixed(2), shipping, total };
+```
 
-  function selectPay(el) {
-    document.querySelectorAll('.pay-opt').forEach(b => b.classList.remove('active'));
-    el.classList.add('active');
-  }
+}
 
-  // Real Stripe checkout
-  const stripe = Stripe('pk_live_51Q5JJoP6o7zTKR7KLstUoCAxTzw7y7h8Vm8LeB2FgMFpni7ybA4BL9IEgrG211TcBFfjdTbLOI93gd4vP7OsdCM0001kTzxLNv');
-  const elements = stripe.elements();
-  let cardElement = null;
-  let cardMounted = false;
+function selectSize(el, size) {
+document.querySelectorAll(’.size-btn’).forEach(b => b.classList.remove(‘active’));
+el.classList.add(‘active’);
+selectedSize = size;
+updatePrice();
+}
 
-  function mountCard() {
-    if (cardMounted) return;
-    // Replace fake card inputs with real Stripe element
-    const cardContainer = document.getElementById('stripeCardElement');
-    if (!cardContainer) return;
-    cardElement = elements.create('card', {
-      style: {
-        base: {
-          color: '#f5f0eb',
-          fontFamily: 'DM Sans, system-ui, sans-serif',
-          fontSize: '16px',
-          '::placeholder': { color: '#888' },
-          backgroundColor: '#2e2e2e',
-        },
-        invalid: { color: '#FF5C00' }
+function selectFinish(el, finish) {
+document.querySelectorAll(’.finish-btn’).forEach(b => b.classList.remove(‘active’));
+el.classList.add(‘active’);
+selectedFinish = finish;
+updatePrice();
+}
+
+function handleFile(e) {
+const file = e.target.files[0];
+if (!file) return;
+uploadedFile = file;
+const reader = new FileReader();
+reader.onload = (ev) => {
+document.getElementById(‘previewImg’).src = ev.target.result;
+document.getElementById(‘uploadPreview’).style.display = ‘block’;
+document.getElementById(‘uploadPlaceholder’).style.display = ‘none’;
+};
+reader.readAsDataURL(file);
+}
+
+function removeFile(e) {
+e.stopPropagation();
+uploadedFile = null;
+document.getElementById(‘previewImg’).src = ‘’;
+document.getElementById(‘uploadPreview’).style.display = ‘none’;
+document.getElementById(‘uploadPlaceholder’).style.display = ‘block’;
+document.getElementById(‘fileInput’).value = ‘’;
+}
+
+const dz = document.getElementById(‘dropZone’);
+dz.addEventListener(‘dragover’, (e) => { e.preventDefault(); dz.classList.add(‘drag’); });
+dz.addEventListener(‘dragleave’, () => dz.classList.remove(‘drag’));
+dz.addEventListener(‘drop’, (e) => {
+e.preventDefault(); dz.classList.remove(‘drag’);
+const file = e.dataTransfer.files[0];
+if (file) { document.getElementById(‘fileInput’).files = e.dataTransfer.files; handleFile({target:{files:[file]}}); }
+});
+
+function closeCheckout() {
+document.getElementById(‘checkoutModal’).classList.remove(‘open’);
+}
+
+function selectPay(el) {
+document.querySelectorAll(’.pay-opt’).forEach(b => b.classList.remove(‘active’));
+el.classList.add(‘active’);
+}
+
+// Stripe Payment - works on ALL devices including mobile
+
+function openCheckout() {
+const pricing = updatePrice();
+const qty = document.getElementById(‘qty’).value;
+const type = document.getElementById(‘stickerType’).options[document.getElementById(‘stickerType’).selectedIndex].text;
+document.getElementById(‘summaryItem’).textContent = type + ’ x ’ + qty;
+document.getElementById(‘summaryBase’).textContent = ‘$’ + pricing.subtotal;
+const shipEl = document.getElementById(‘summaryShipping’);
+const shipRow = document.getElementById(‘shippingRow’);
+if (pricing.shipping === 0) {
+shipEl.textContent = ‘FREE’;
+shipRow.classList.add(‘free-ship’);
+} else {
+shipEl.textContent = ‘$’ + pricing.shipping.toFixed(2);
+shipRow.classList.remove(‘free-ship’);
+}
+document.getElementById(‘summaryTotal’).textContent = ‘$’ + pricing.total;
+document.getElementById(‘payTotal’).textContent = ‘$’ + pricing.total;
+document.getElementById(‘checkoutModal’).classList.add(‘open’);
+}
+
+async function placeOrder() {
+const name    = document.getElementById(‘custName’).value.trim();
+const email   = document.getElementById(‘custEmail’).value.trim();
+const address = document.getElementById(‘custAddress’).value.trim();
+
+```
+if (!name || !email || !address) {
+  alert('Please fill in your name, email, and shipping address.');
+  return;
+}
+
+const pricing = updatePrice();
+const qty     = document.getElementById('qty').value;
+const type    = document.getElementById('stickerType').value;
+const typeName = document.getElementById('stickerType').options[document.getElementById('stickerType').selectedIndex].text;
+const totalCents = Math.round(parseFloat(pricing.total) * 100);
+
+const payBtn = document.querySelector('.pay-btn');
+payBtn.textContent = 'Redirecting to secure checkout...';
+payBtn.disabled = true;
+
+try {
+  // Call Railway to create Stripe checkout session
+  const resp = await fetch('https://agent-production-ff8d.up.railway.app/create-checkout-session', {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({
+      amount: totalCents,
+      currency: 'usd',
+      customer_email: email,
+      product_name: typeName + ' (' + selectedSize + '" ' + selectedFinish + ') x' + qty,
+      metadata: {
+        customer_name:    name,
+        customer_email:   email,
+        shipping_address: address,
+        product_type:     type,
+        quantity:         qty,
+        size:             selectedSize,
+        finish:           selectedFinish
       }
-    });
-    cardElement.mount('#stripeCardElement');
-    cardMounted = true;
+    })
+  });
+  const data = await resp.json();
+  if (data.url) {
+    // Redirect to Stripe hosted checkout - works on ALL devices
+    window.location.href = data.url;
+  } else {
+    throw new Error(data.error || 'Could not create checkout session');
   }
+} catch (err) {
+  alert('Something went wrong: ' + err.message + '. Please try again.');
+  payBtn.textContent = 'PAY ' + document.getElementById('payTotal').textContent + ' — ORDER NOW';
+  payBtn.disabled = false;
+}
+```
 
-  function openCheckout() {
-    const pricing = updatePrice();
-    const qty = document.getElementById('qty').value;
-    const type = document.getElementById('stickerType').options[document.getElementById('stickerType').selectedIndex].text;
-    document.getElementById('summaryItem').textContent = type + ' x ' + qty;
-    document.getElementById('summaryBase').textContent = '$' + pricing.subtotal;
-    const shipEl = document.getElementById('summaryShipping');
-    const shipRow = document.getElementById('shippingRow');
-    if (pricing.shipping === 0) {
-      shipEl.textContent = 'FREE';
-      shipRow.classList.add('free-ship');
-    } else {
-      shipEl.textContent = '$' + pricing.shipping.toFixed(2);
-      shipRow.classList.remove('free-ship');
-    }
-    document.getElementById('summaryTotal').textContent = '$' + pricing.total;
-    document.getElementById('payTotal').textContent = '$' + pricing.total;
-    document.getElementById('checkoutModal').classList.add('open');
-    setTimeout(mountCard, 100);
-  }
+}
 
-  async function placeOrder() {
-    const name    = document.getElementById('custName').value.trim();
-    const email   = document.getElementById('custEmail').value.trim();
-    const address = document.getElementById('custAddress').value.trim();
-
-    if (!name || !email || !address) {
-      alert('Please fill in your name, email, and shipping address.');
-      return;
-    }
-    if (!cardElement) {
-      alert('Please enter your card details.');
-      return;
-    }
-
-    const payBtn = document.querySelector('.pay-btn');
-    payBtn.textContent = 'Processing...';
-    payBtn.disabled = true;
-
-    try {
-      const pricing = updatePrice();
-      const qty     = document.getElementById('qty').value;
-      const type    = document.getElementById('stickerType').value;
-      const size    = selectedSize;
-      const finish  = selectedFinish;
-      const totalCents = Math.round(parseFloat(pricing.total) * 100);
-
-      // Create payment intent via Stripe
-      const { paymentMethod, error } = await stripe.createPaymentMethod({
-        type: 'card',
-        card: cardElement,
-        billing_details: { name, email }
-      });
-
-      if (error) {
-        alert('Card error: ' + error.message);
-        payBtn.textContent = 'PAY $' + pricing.total + ' — ORDER NOW';
-        payBtn.disabled = false;
-        return;
-      }
-
-      // Confirm payment — this charges the card
-      const { error: confirmError, paymentIntent } = await stripe.confirmCardPayment(
-        await getClientSecret(totalCents, email, name, qty, type, size, finish, address),
-        { payment_method: paymentMethod.id }
-      );
-
-      if (confirmError) {
-        alert('Payment failed: ' + confirmError.message);
-        payBtn.textContent = 'PAY $' + pricing.total + ' — ORDER NOW';
-        payBtn.disabled = false;
-        return;
-      }
-
-      if (paymentIntent.status === 'succeeded') {
-        closeCheckout();
-        document.getElementById('successOverlay').classList.add('open');
-      }
-
-    } catch (err) {
-      alert('Something went wrong. Please try again.');
-      payBtn.textContent = 'PAY ' + document.getElementById('payTotal').textContent + ' — ORDER NOW';
-      payBtn.disabled = false;
-    }
-  }
-
-  async function getClientSecret(amountCents, email, name, qty, type, size, finish, address) {
-    // Call our Railway backend to create a PaymentIntent
-    const resp = await fetch('https://agent-production-ff8d.up.railway.app/create-payment-intent', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({
-        amount: amountCents,
-        currency: 'usd',
-        metadata: {
-          customer_name:    name,
-          customer_email:   email,
-          shipping_address: address,
-          product_type:     type,
-          quantity:         qty,
-          size:             size,
-          finish:           finish
-        }
-      })
-    });
-    const data = await resp.json();
-    return data.client_secret;
-  }
-
-  const obs = new IntersectionObserver((entries) => {
-    entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visibl
+const obs = new IntersectionObserver((entries) => {
+entries.forEach(e => { if (e.isIntersecting) e.target.classList.add(’visibl
