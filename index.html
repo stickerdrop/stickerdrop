@@ -563,9 +563,58 @@ input, select { touch-action: manipulation; font-size: 16px; }
         </div>
         <input type="file" id="fileInput" accept="image/*,.pdf,.svg" style="display:none" onchange="handleFile(event)"/>
       </div>
-    </div>
 
 ```
+  <!-- PROOF WINDOW -->
+  <div id="proofWindow" style="display:none;margin-top:20px;background:#111;border-radius:12px;border:1px solid rgba(255,255,255,0.1);overflow:hidden">
+    <div style="background:#1a1a1a;padding:12px 16px;display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid rgba(255,255,255,0.08)">
+      <div>
+        <div style="font-size:0.7rem;letter-spacing:2px;color:#FF5C00;font-weight:700;text-transform:uppercase">Design Proof</div>
+        <div style="font-size:0.8rem;color:#888;margin-top:2px">Review your design before ordering</div>
+      </div>
+      <div id="proofQualityBadge" style="padding:4px 12px;border-radius:20px;font-size:0.7rem;font-weight:700;letter-spacing:1px"></div>
+    </div>
+    <div style="padding:20px">
+      <!-- Preview with size indicator -->
+      <div style="position:relative;display:inline-block;width:100%">
+        <div id="proofCanvas" style="background:repeating-conic-gradient(#1a1a1a 0% 25%,#222 0% 50%) 0 0 / 16px 16px;border-radius:8px;display:flex;align-items:center;justify-content:center;min-height:200px;overflow:hidden;position:relative">
+          <img id="proofImg" style="max-width:100%;max-height:300px;object-fit:contain;display:block"/>
+          <!-- Size overlay ruler -->
+          <div id="proofRuler" style="position:absolute;bottom:8px;left:50%;transform:translateX(-50%);background:rgba(0,0,0,0.7);color:#ffe135;font-size:0.7rem;padding:3px 10px;border-radius:20px;font-weight:700;letter-spacing:1px;white-space:nowrap"></div>
+        </div>
+      </div>
+
+      <!-- Quality indicators -->
+      <div style="margin-top:16px;display:grid;grid-template-columns:1fr 1fr 1fr;gap:10px">
+        <div style="background:#1a1a1a;border-radius:8px;padding:10px;text-align:center">
+          <div style="font-size:0.65rem;color:#666;text-transform:uppercase;letter-spacing:1px;margin-bottom:4px">Resolution</div>
+          <div id="proofResolution" style="font-size:0.85rem;font-weight:700;color:#f5f0eb">—</div>
+        </div>
+        <div style="background:#1a1a1a;border-radius:8px;padding:10px;text-align:center">
+          <div style="font-size:0.65rem;color:#666;text-transform:uppercase;letter-spacing:1px;margin-bottom:4px">Size</div>
+          <div id="proofSize" style="font-size:0.85rem;font-weight:700;color:#f5f0eb">—</div>
+        </div>
+        <div style="background:#1a1a1a;border-radius:8px;padding:10px;text-align:center">
+          <div style="font-size:0.65rem;color:#666;text-transform:uppercase;letter-spacing:1px;margin-bottom:4px">Format</div>
+          <div id="proofFormat" style="font-size:0.85rem;font-weight:700;color:#f5f0eb">—</div>
+        </div>
+      </div>
+
+      <!-- Quality warning -->
+      <div id="proofWarning" style="display:none;margin-top:12px;padding:10px 14px;border-radius:8px;font-size:0.82rem;line-height:1.5;border-left:3px solid #FF5C00;background:rgba(255,92,0,0.08);color:#ffb07a"></div>
+
+      <!-- Approval checkbox -->
+      <div style="margin-top:16px;display:flex;align-items:flex-start;gap:12px;padding:14px;background:#1a1a1a;border-radius:8px;border:1px solid rgba(255,255,255,0.08)">
+        <input type="checkbox" id="proofApproved" style="width:18px;height:18px;margin-top:1px;accent-color:#00D4B4;cursor:pointer" onchange="updateApproval()"/>
+        <label for="proofApproved" style="font-size:0.85rem;color:#ccc;line-height:1.5;cursor:pointer">
+          <strong style="color:#f5f0eb">I approve this design for printing.</strong><br/>
+          I confirm my artwork looks correct and I understand that StickerDrop will print exactly what is shown above.
+        </label>
+      </div>
+    </div>
+  </div>
+</div>
+
 <!-- Config -->
 <div class="config-panel">
   <h3>CONFIGURE YOUR ORDER</h3>
@@ -591,6 +640,25 @@ input, select { touch-action: manipulation; font-size: 16px; }
       <button class="size-btn" data-size="3x5" onclick="selectSize('3x5')">3" × 5"</button>
       <button class="size-btn" data-size="custom" onclick="selectSize('custom')">Custom</button>
     </div>
+    <div id="customSizeInputs" style="display:none;margin-top:12px;background:#1a1a1a;border-radius:8px;padding:14px;border:1px solid rgba(255,255,255,0.1)">
+      <div style="font-size:0.72rem;letter-spacing:1.5px;color:#888;text-transform:uppercase;margin-bottom:10px">Enter your dimensions (inches)</div>
+      <div style="display:flex;align-items:center;gap:10px">
+        <div style="flex:1">
+          <div style="font-size:0.7rem;color:#666;margin-bottom:4px">Width</div>
+          <input type="number" id="customWidth" min="0.5" max="24" step="0.25" value="3"
+            style="width:100%;background:#2a2a2a;border:1px solid rgba(255,255,255,0.15);color:#f5f0eb;padding:10px 12px;border-radius:6px;font-size:1rem;font-family:inherit"
+            oninput="updateCustomSize()" placeholder="e.g. 3.5"/>
+        </div>
+        <div style="color:#888;font-size:1.2rem;padding-top:16px">×</div>
+        <div style="flex:1">
+          <div style="font-size:0.7rem;color:#666;margin-bottom:4px">Height</div>
+          <input type="number" id="customHeight" min="0.5" max="24" step="0.25" value="3"
+            style="width:100%;background:#2a2a2a;border:1px solid rgba(255,255,255,0.15);color:#f5f0eb;padding:10px 12px;border-radius:6px;font-size:1rem;font-family:inherit"
+            oninput="updateCustomSize()" placeholder="e.g. 4"/>
+        </div>
+      </div>
+      <div id="customSizePreview" style="margin-top:10px;font-size:0.82rem;color:#00D4B4"></div>
+    </div>
   </div>
 
   <div class="form-group">
@@ -614,6 +682,9 @@ input, select { touch-action: manipulation; font-size: 16px; }
     <div id="shippingBadge" class="shipping-badge">Add more for FREE shipping on orders over $80</div>
   </div>
 
+  <div id="proofRequiredMsg" style="display:none;margin-bottom:10px;padding:10px 14px;background:rgba(255,92,0,0.08);border:1px solid rgba(255,92,0,0.2);border-radius:8px;font-size:0.82rem;color:#FF5C00;text-align:center">
+    ⚠️ Please upload your design and approve the proof before checking out
+  </div>
   <button class="btn-primary" style="width:100%;font-size:1.1rem;padding:18px" id="checkoutBtn" onclick="openCheckout()">
     PROCEED TO CHECKOUT →
   </button>
@@ -824,152 +895,395 @@ input, select { touch-action: manipulation; font-size: 16px; }
 </footer>
 
 <script>
-var selectedSize='2x2',selectedFinish='gloss',uploadedFile=null;
-var BP={'die-cut':0.69,'kiss-cut':0.55,'clear':0.79,'holographic':0.99,'bumper':0.89};
-var SM={'2x2':1,'3x3':1.4,'4x4':2,'5x5':2.6,'3x5':1.8,'custom':2.5};
-var FM={'gloss':1,'matte':1.1,'holographic':1.5,'clear':1.2};
+var selectedSize='2x2',selectedFinish='gloss',uploadedFile=null,proofApproved=false;
+var customW=3,customH=3;
 
-function updatePrice(){
-  var t=document.getElementById('stickerType'),q=document.getElementById('qty');
-  if(!t||!q) return {subtotal:'0.00',shipping:15,total:'15.00'};
-  var qty=parseInt(q.value)||1;
-  var u=(BP[t.value]||0.69)*(SM[selectedSize]||1)*(FM[selectedFinish]||1);
-  if(qty>=1000)u*=0.70;else if(qty>=500)u*=0.80;else if(qty>=250)u*=0.88;else if(qty>=100)u*=0.92;
-  var sub=Math.round(u*qty*100)/100,sh=sub>=80?0:15,tot=Math.round((sub+sh)*100)/100;
-  var pe=document.getElementById('priceDisplay');
-  if(pe)pe.textContent='$'+sub.toFixed(2);
-  var ba=document.getElementById('shippingBadge');
-  if(ba){
-    if(sh===0){ba.textContent='FREE SHIPPING!';ba.style.color='#00D4B4';}
-    else{ba.textContent='Add $'+(80-sub).toFixed(2)+' more for FREE shipping';ba.style.color='#FFE135';}
-  }
-  return {subtotal:sub.toFixed(2),shipping:sh,total:tot.toFixed(2)};
+// Firesprint-style pricing: base rate per sq inch * quantity brackets
+// Prices modeled on Firesprint's actual pricing tiers
+var TYPE_RATES = {
+  'die-cut':      {base:0.28, min:1.20},
+  'kiss-cut':     {base:0.22, min:0.95},
+  'clear':        {base:0.32, min:1.35},
+  'holographic':  {base:0.40, min:1.60},
+  'bumper':       {base:0.35, min:1.45}
+};
+var FINISH_MULT = {'gloss':1.0,'matte':1.1,'holographic':1.5,'clear':1.2};
+var SIZE_INCHES = {
+  '2x2':{w:2,h:2},'3x3':{w:3,h:3},'4x4':{w:4,h:4},
+  '5x5':{w:5,h:5},'3x5':{w:3,h:5},'custom':null
+};
+
+function getSqInches() {
+  if (selectedSize === 'custom') return customW * customH;
+  var s = SIZE_INCHES[selectedSize];
+  return s ? s.w * s.h : 4;
 }
 
-function selectSize(s){
-  selectedSize=s;
-  document.querySelectorAll('.size-btn').forEach(function(b){
-    b.classList.toggle('active',b.getAttribute('data-size')===s);
+function calcUnitPrice(type, sqIn, finish, qty) {
+  var rate = TYPE_RATES[type] || TYPE_RATES['die-cut'];
+  var fm   = FINISH_MULT[finish] || 1;
+  // Price per sticker based on square inches
+  var unitBase = Math.max(rate.min, rate.base * sqIn) * fm;
+  // Volume discount brackets (matching Firesprint tiers)
+  if (qty >= 1000) unitBase *= 0.55;
+  else if (qty >= 500) unitBase *= 0.65;
+  else if (qty >= 250) unitBase *= 0.75;
+  else if (qty >= 100) unitBase *= 0.85;
+  else if (qty >= 50)  unitBase *= 0.92;
+  return unitBase;
+}
+
+function updatePrice() {
+  var typeEl = document.getElementById('stickerType');
+  var qtyEl  = document.getElementById('qty');
+  if (!typeEl || !qtyEl) return {subtotal:'0.00',shipping:15,total:'15.00'};
+  var type = typeEl.value;
+  var qty  = parseInt(qtyEl.value) || 1;
+  var sqIn = getSqInches();
+  var unitPrice = calcUnitPrice(type, sqIn, selectedFinish, qty);
+  var subtotal  = Math.round(unitPrice * qty * 100) / 100;
+  var shipping  = subtotal >= 80 ? 0 : 15;
+  var total     = Math.round((subtotal + shipping) * 100) / 100;
+
+  var pe = document.getElementById('priceDisplay');
+  if (pe) pe.textContent = '$' + subtotal.toFixed(2);
+
+  // Unit price display
+  var upe = document.getElementById('unitPrice');
+  if (upe) upe.textContent = '($' + unitPrice.toFixed(2) + ' each)';
+
+  var badge = document.getElementById('shippingBadge');
+  if (badge) {
+    if (shipping === 0) {
+      badge.textContent = 'FREE SHIPPING on this order!';
+      badge.style.color = '#00D4B4';
+    } else {
+      badge.textContent = 'Add $' + (80 - subtotal).toFixed(2) + ' more for FREE shipping';
+      badge.style.color = '#FFE135';
+    }
+  }
+
+  // Update proof ruler
+  updateProofRuler();
+
+  return {subtotal:subtotal.toFixed(2), shipping:shipping, total:total.toFixed(2)};
+}
+
+function updateProofRuler() {
+  var ruler = document.getElementById('proofRuler');
+  var sizeEl = document.getElementById('proofSize');
+  if (!ruler && !sizeEl) return;
+  var label;
+  if (selectedSize === 'custom') {
+    label = customW + '" × ' + customH + '"';
+  } else {
+    var s = SIZE_INCHES[selectedSize];
+    label = s ? s.w + '" × ' + s.h + '"' : '—';
+  }
+  if (ruler) ruler.textContent = label;
+  if (sizeEl) sizeEl.textContent = label;
+}
+
+function selectSize(s) {
+  selectedSize = s;
+  document.querySelectorAll('.size-btn').forEach(function(b) {
+    b.classList.toggle('active', b.getAttribute('data-size') === s);
+  });
+  var custom = document.getElementById('customSizeInputs');
+  if (custom) custom.style.display = s === 'custom' ? 'block' : 'none';
+  updatePrice();
+}
+
+function updateCustomSize() {
+  var w = parseFloat(document.getElementById('customWidth').value) || 1;
+  var h = parseFloat(document.getElementById('customHeight').value) || 1;
+  customW = Math.min(24, Math.max(0.5, w));
+  customH = Math.min(24, Math.max(0.5, h));
+  var prev = document.getElementById('customSizePreview');
+  if (prev) {
+    var sqIn = customW * customH;
+    prev.textContent = customW + '" × ' + customH + '" = ' + sqIn.toFixed(2) + ' sq in';
+    prev.style.color = sqIn > 100 ? '#ff5c00' : '#00D4B4';
+    if (sqIn > 100) prev.textContent += ' (max 10"×10" for standard pricing)';
+  }
+  updatePrice();
+}
+
+function selectFinish(f) {
+  selectedFinish = f;
+  document.querySelectorAll('.finish-btn').forEach(function(b) {
+    b.classList.toggle('active', b.getAttribute('data-finish') === f);
   });
   updatePrice();
 }
 
-function selectFinish(f){
-  selectedFinish=f;
-  document.querySelectorAll('.finish-btn').forEach(function(b){
-    b.classList.toggle('active',b.getAttribute('data-finish')===f);
-  });
-  updatePrice();
+// ── PROOF WINDOW ──
+function showProof(file, dataUrl) {
+  var proof = document.getElementById('proofWindow');
+  var img   = document.getElementById('proofImg');
+  if (!proof || !img) return;
+
+  img.src = dataUrl;
+  proof.style.display = 'block';
+
+  // Get image dimensions
+  var testImg = new Image();
+  testImg.onload = function() {
+    var w = testImg.naturalWidth;
+    var h = testImg.naturalHeight;
+    var dpi = estimateDPI(w, h);
+
+    // Resolution display
+    var resEl = document.getElementById('proofResolution');
+    if (resEl) {
+      resEl.textContent = w + ' × ' + h + 'px';
+      resEl.style.color = dpi >= 300 ? '#00c876' : dpi >= 150 ? '#ffb800' : '#ff4444';
+    }
+
+    // Format
+    var fmtEl = document.getElementById('proofFormat');
+    if (fmtEl) {
+      var ext = file.name.split('.').pop().toUpperCase();
+      fmtEl.textContent = ext;
+      fmtEl.style.color = ['PNG','SVG','PDF'].includes(ext) ? '#00c876' : '#ffb800';
+    }
+
+    // Quality badge
+    var badge = document.getElementById('proofQualityBadge');
+    var warning = document.getElementById('proofWarning');
+    var warnings = [];
+
+    if (dpi < 150) {
+      warnings.push('⚠️ Low resolution (' + w + '×' + h + 'px). Your stickers may print blurry. We recommend at least 300 DPI (e.g. ' + Math.ceil(selectedSize !== 'custom' ? (SIZE_INCHES[selectedSize]||{w:3}).w * 300 : customW * 300) + '×' + Math.ceil(selectedSize !== 'custom' ? (SIZE_INCHES[selectedSize]||{h:3}).h * 300 : customH * 300) + 'px for this size).');
+    } else if (dpi < 300) {
+      warnings.push('⚡ Medium resolution. Your stickers will print OK but for best results use 300+ DPI.');
+    }
+
+    if (badge) {
+      if (warnings.length === 0) {
+        badge.textContent = '✓ PRINT READY';
+        badge.style.background = 'rgba(0,200,118,0.1)';
+        badge.style.color = '#00c876';
+        badge.style.border = '1px solid rgba(0,200,118,0.3)';
+      } else if (dpi < 150) {
+        badge.textContent = '⚠ LOW RES';
+        badge.style.background = 'rgba(255,68,68,0.1)';
+        badge.style.color = '#ff4444';
+        badge.style.border = '1px solid rgba(255,68,68,0.3)';
+      } else {
+        badge.textContent = '~ OK QUALITY';
+        badge.style.background = 'rgba(255,184,0,0.1)';
+        badge.style.color = '#ffb800';
+        badge.style.border = '1px solid rgba(255,184,0,0.3)';
+      }
+    }
+
+    if (warning) {
+      if (warnings.length > 0) {
+        warning.textContent = warnings.join(' ');
+        warning.style.display = 'block';
+      } else {
+        warning.style.display = 'none';
+      }
+    }
+
+    updateProofRuler();
+  };
+  testImg.src = dataUrl;
+
+  // Reset approval
+  var cb = document.getElementById('proofApproved');
+  if (cb) cb.checked = false;
+  proofApproved = false;
+  updateApprovalUI();
 }
 
-function openCheckout(){
-  var p=updatePrice();
-  var te=document.getElementById('stickerType');
-  var q=document.getElementById('qty').value;
-  document.getElementById('summaryItem').textContent=te.options[te.selectedIndex].text+' x '+q;
-  document.getElementById('summaryBase').textContent='$'+p.subtotal;
-  var se=document.getElementById('summaryShipping');
-  var sr=document.getElementById('shippingRow');
-  if(p.shipping===0){
-    if(se)se.textContent='FREE';
-    if(sr)sr.classList.add('free-ship');
-  }else{
-    if(se)se.textContent='$'+parseFloat(p.shipping).toFixed(2);
-    if(sr)sr.classList.remove('free-ship');
+function estimateDPI(px_w, px_h) {
+  // Estimate DPI based on pixel dimensions vs selected print size
+  var printW, printH;
+  if (selectedSize === 'custom') {
+    printW = customW; printH = customH;
+  } else {
+    var s = SIZE_INCHES[selectedSize] || {w:3,h:3};
+    printW = s.w; printH = s.h;
   }
-  document.getElementById('summaryTotal').textContent='$'+p.total;
-  var pt=document.getElementById('payTotal');
-  if(pt)pt.textContent='$'+p.total;
+  var dpiW = px_w / printW;
+  var dpiH = px_h / printH;
+  return Math.min(dpiW, dpiH);
+}
+
+function updateApproval() {
+  var cb = document.getElementById('proofApproved');
+  proofApproved = cb ? cb.checked : false;
+  updateApprovalUI();
+}
+
+function updateApprovalUI() {
+  var btn = document.getElementById('checkoutBtn');
+  var msg = document.getElementById('proofRequiredMsg');
+  var hasFile = uploadedFile !== null;
+
+  if (btn) {
+    if (!hasFile) {
+      btn.style.opacity = '0.5';
+      btn.style.cursor = 'not-allowed';
+    } else if (!proofApproved) {
+      btn.style.opacity = '0.5';
+      btn.style.cursor = 'not-allowed';
+    } else {
+      btn.style.opacity = '1';
+      btn.style.cursor = 'pointer';
+    }
+  }
+
+  if (msg) {
+    msg.style.display = (!hasFile || !proofApproved) ? 'block' : 'none';
+    if (!hasFile) {
+      msg.textContent = '⚠️ Please upload your design file first';
+    } else if (!proofApproved) {
+      msg.textContent = '⚠️ Please review and approve your design proof above before checking out';
+    }
+  }
+}
+
+function openCheckout() {
+  if (!uploadedFile) {
+    alert('Please upload your design file first.');
+    return;
+  }
+  if (!proofApproved) {
+    alert('Please review your design proof and check the approval box before proceeding.');
+    document.getElementById('proofWindow').scrollIntoView({behavior:'smooth'});
+    return;
+  }
+  var pricing = updatePrice();
+  var typeEl  = document.getElementById('stickerType');
+  var qty     = document.getElementById('qty').value;
+  var sizeLabel = selectedSize === 'custom' ? customW+'"×'+customH+'"' :
+    (SIZE_INCHES[selectedSize] ? SIZE_INCHES[selectedSize].w+'"×'+SIZE_INCHES[selectedSize].h+'"' : selectedSize);
+
+  document.getElementById('summaryItem').textContent = typeEl.options[typeEl.selectedIndex].text + ' ' + sizeLabel + ' × ' + qty;
+  document.getElementById('summaryBase').textContent = '$' + pricing.subtotal;
+  var shipEl = document.getElementById('summaryShipping');
+  var shipRow = document.getElementById('shippingRow');
+  if (pricing.shipping === 0) {
+    if (shipEl) shipEl.textContent = 'FREE';
+    if (shipRow) shipRow.classList.add('free-ship');
+  } else {
+    if (shipEl) shipEl.textContent = '$' + parseFloat(pricing.shipping).toFixed(2);
+    if (shipRow) shipRow.classList.remove('free-ship');
+  }
+  document.getElementById('summaryTotal').textContent = '$' + pricing.total;
+  var pt = document.getElementById('payTotal');
+  if (pt) pt.textContent = '$' + pricing.total;
   document.getElementById('checkoutModal').classList.add('open');
 }
 
-function closeCheckout(){
+function closeCheckout() {
   document.getElementById('checkoutModal').classList.remove('open');
 }
 
-function selectPay(el){
+function selectPay(el) {
   document.querySelectorAll('.pay-opt').forEach(function(b){b.classList.remove('active');});
   el.classList.add('active');
 }
 
-function placeOrder(){
-  var n=(document.getElementById('custName').value||'').trim();
-  var e=(document.getElementById('custEmail').value||'').trim();
-  var a=(document.getElementById('custAddress').value||'').trim();
-  if(!n||!e||!a){alert('Please fill in name, email and address.');return;}
-  var p=updatePrice();
-  var te=document.getElementById('stickerType');
-  var q=document.getElementById('qty').value;
-  var pb=document.querySelector('.pay-btn');
-  if(pb){pb.textContent='Redirecting...';pb.disabled=true;}
-  fetch('https://agent-production-ff8d.up.railway.app/create-checkout-session',{
+function placeOrder() {
+  var n = (document.getElementById('custName').value||'').trim();
+  var e = (document.getElementById('custEmail').value||'').trim();
+  var a = (document.getElementById('custAddress').value||'').trim();
+  if (!n||!e||!a) { alert('Please fill in name, email and address.'); return; }
+  var pricing = updatePrice();
+  var typeEl  = document.getElementById('stickerType');
+  var qty     = document.getElementById('qty').value;
+  var sizeLabel = selectedSize === 'custom' ? customW+'"×'+customH+'"' :
+    (SIZE_INCHES[selectedSize] ? SIZE_INCHES[selectedSize].w+'"×'+SIZE_INCHES[selectedSize].h+'"' : selectedSize);
+  var pb = document.querySelector('.pay-btn');
+  if (pb) { pb.textContent='Redirecting...'; pb.disabled=true; }
+  fetch('https://agent-production-ff8d.up.railway.app/create-checkout-session', {
     method:'POST',
     headers:{'Content-Type':'application/json'},
     body:JSON.stringify({
-      amount:Math.round(parseFloat(p.total)*100),
-      currency:'usd',
-      customer_email:e,
-      product_name:te.options[te.selectedIndex].text+' x'+q,
-      metadata:{
-        customer_name:n,customer_email:e,shipping_address:a,
-        product_type:te.value,quantity:q,size:selectedSize,finish:selectedFinish
+      amount: Math.round(parseFloat(pricing.total)*100),
+      currency: 'usd',
+      customer_email: e,
+      product_name: typeEl.options[typeEl.selectedIndex].text+' '+sizeLabel+' x'+qty,
+      metadata: {
+        customer_name:n, customer_email:e, shipping_address:a,
+        product_type:typeEl.value, quantity:qty,
+        size:sizeLabel, finish:selectedFinish,
+        proof_approved:'yes'
       }
     })
   })
   .then(function(r){return r.json();})
   .then(function(d){
-    if(d.url){window.location.href=d.url;}
-    else{alert('Error: '+(d.error||'Please try again.'));if(pb){pb.textContent='ORDER NOW';pb.disabled=false;}}
+    if (d.url) { window.location.href=d.url; }
+    else { alert('Error: '+(d.error||'Please try again.')); if(pb){pb.textContent='ORDER NOW';pb.disabled=false;} }
   })
-  .catch(function(){
-    alert('Connection error. Please try again.');
-    if(pb){pb.textContent='ORDER NOW';pb.disabled=false;}
-  });
+  .catch(function(){ alert('Connection error. Please try again.'); if(pb){pb.textContent='ORDER NOW';pb.disabled=false;} });
 }
 
-function handleFile(e){
-  var f=e.target.files[0];if(!f)return;uploadedFile=f;
-  var r=new FileReader();
-  r.onload=function(ev){
-    document.getElementById('previewImg').src=ev.target.result;
-    document.getElementById('uploadPreview').style.display='block';
-    document.getElementById('uploadPlaceholder').style.display='none';
+function handleFile(e) {
+  var file = e.target.files[0];
+  if (!file) return;
+  uploadedFile = file;
+  var reader = new FileReader();
+  reader.onload = function(ev) {
+    // Show upload preview
+    document.getElementById('previewImg').src = ev.target.result;
+    document.getElementById('uploadPreview').style.display = 'block';
+    document.getElementById('uploadPlaceholder').style.display = 'none';
+    // Show proof window
+    showProof(file, ev.target.result);
+    updateApprovalUI();
   };
-  r.readAsDataURL(f);
+  reader.readAsDataURL(file);
 }
 
-function removeFile(e){
-  e.stopPropagation();uploadedFile=null;
-  document.getElementById('previewImg').src='';
-  document.getElementById('uploadPreview').style.display='none';
-  document.getElementById('uploadPlaceholder').style.display='block';
-  document.getElementById('fileInput').value='';
+function removeFile(e) {
+  e.stopPropagation();
+  uploadedFile = null;
+  proofApproved = false;
+  document.getElementById('previewImg').src = '';
+  document.getElementById('uploadPreview').style.display = 'none';
+  document.getElementById('uploadPlaceholder').style.display = 'block';
+  document.getElementById('fileInput').value = '';
+  var proof = document.getElementById('proofWindow');
+  if (proof) proof.style.display = 'none';
+  updateApprovalUI();
 }
 
-window.onload=function(){
+window.onload = function() {
   updatePrice();
-  var fi=document.getElementById('fileInput');
-  if(fi)fi.addEventListener('change',handleFile);
-  var dz=document.getElementById('dropZone');
-  if(dz){
-    dz.addEventListener('dragover',function(e){e.preventDefault();dz.classList.add('drag');});
-    dz.addEventListener('dragleave',function(){dz.classList.remove('drag');});
-    dz.addEventListener('drop',function(e){
-      e.preventDefault();dz.classList.remove('drag');
-      var f=e.dataTransfer.files[0];
-      if(f)handleFile({target:{files:[f]}});
+  updateApprovalUI();
+
+  var fi = document.getElementById('fileInput');
+  if (fi) fi.addEventListener('change', handleFile);
+
+  var dz = document.getElementById('dropZone');
+  if (dz) {
+    dz.addEventListener('dragover', function(e){e.preventDefault();dz.classList.add('drag');});
+    dz.addEventListener('dragleave', function(){dz.classList.remove('drag');});
+    dz.addEventListener('drop', function(e){
+      e.preventDefault(); dz.classList.remove('drag');
+      var file = e.dataTransfer.files[0];
+      if (file) handleFile({target:{files:[file]}});
     });
   }
-  if('IntersectionObserver' in window){
-    var obs=new IntersectionObserver(function(en){
+
+  if ('IntersectionObserver' in window) {
+    var obs = new IntersectionObserver(function(en){
       en.forEach(function(e){if(e.isIntersecting)e.target.classList.add('visible');});
     },{threshold:0.1});
     document.querySelectorAll('.fade-up').forEach(function(el){obs.observe(el);});
-  }else{
+  } else {
     document.querySelectorAll('.fade-up').forEach(function(el){el.classList.add('visible');});
   }
 };
 </script>
 
+</body>
+</html>
 </body>
 </html>
