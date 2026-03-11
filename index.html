@@ -1005,7 +1005,17 @@ function selectFinish(f) {
 var VECTOR_TYPES = ['pdf','ai','eps','svg'];
 
 function renderPDF(file, container) {
-  // Use PDF.js to render first page of PDF as canvas
+  // Hide the img tag - we will render to canvas instead
+  var proofImg = document.getElementById('proofImg');
+  if (proofImg) proofImg.style.display = 'none';
+
+  // Show loading indicator
+  var loading = document.createElement('div');
+  loading.id = 'pdfLoading';
+  loading.style.cssText = 'padding:24px;text-align:center;color:#888;font-size:0.85rem;';
+  loading.textContent = 'Rendering PDF preview...';
+  container.appendChild(loading);
+
   pdfjsLib.GlobalWorkerOptions.workerSrc =
     'https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.worker.min.js';
 
@@ -1014,22 +1024,40 @@ function renderPDF(file, container) {
     var typedarray = new Uint8Array(e.target.result);
     pdfjsLib.getDocument({data: typedarray}).promise.then(function(pdf) {
       pdf.getPage(1).then(function(page) {
-        var viewport = page.getViewport({scale: 1.5});
+        // Remove loading indicator
+        var ld = document.getElementById('pdfLoading');
+        if (ld) ld.remove();
+
+        // Scale to fit container width (~680px max)
+        var desiredWidth = Math.min(680, window.innerWidth - 80);
+        var unscaled = page.getViewport({scale: 1});
+        var scale = desiredWidth / unscaled.width;
+        var viewport = page.getViewport({scale: scale});
+
         var pdfCanvas = document.createElement('canvas');
         pdfCanvas.id = 'pdfCanvas';
         pdfCanvas.width = viewport.width;
         pdfCanvas.height = viewport.height;
         pdfCanvas.style.cssText = 'max-width:100%;border-radius:6px;display:block;margin:0 auto;';
         container.appendChild(pdfCanvas);
+
         var ctx = pdfCanvas.getContext('2d');
         page.render({canvasContext: ctx, viewport: viewport}).promise.then(function() {
-          // PDF rendered successfully
           var badge = document.getElementById('proofQualityBadge');
-          if (badge) badge.textContent = '✓ PRINT READY';
+          if (badge) {
+            badge.textContent = '✓ PRINT READY';
+            badge.style.background = 'rgba(0,200,118,0.1)';
+            badge.style.color = '#00c876';
+            badge.style.border = '1px solid rgba(0,200,118,0.3)';
+          }
+          updateProofRuler();
         });
       });
     }).catch(function(err) {
-      showVectorPlaceholder(container, {name:'document.pdf'}, 'PDF');
+      var ld = document.getElementById('pdfLoading');
+      if (ld) ld.remove();
+      // If PDF.js fails try server-side conversion
+      convertVectorServerSide(file, 'PDF', container);
     });
   };
   fileReader.readAsArrayBuffer(file);
@@ -1358,12 +1386,36 @@ function handleFile(e) {
   var file = e.target.files[0];
   if (!file) return;
   uploadedFile = file;
+  var ext = file.name.split('.').pop().toLowerCase();
+  var isVector = ['pdf','ai','eps','svg'].indexOf(ext) !== -1;
+  var isRaster = ['png','jpg','jpeg','gif','webp','bmp'].indexOf(ext) !== -1;
+
   var reader = new FileReader();
   reader.onload = function(ev) {
-    // Show upload preview
-    document.getElementById('previewImg').src = ev.target.result;
-    document.getElementById('uploadPreview').style.display = 'block';
-    document.getElementById('uploadPlaceholder').style.display = 'none';
+    if (isRaster) {
+      // Show raster image in upload preview box
+      document.getElementById('previewImg').src = ev.target.result;
+      document.getElementById('uploadPreview').style.display = 'block';
+      document.getElementById('uploadPlaceholder').style.display = 'none';
+    } else {
+      // For vector files show a clean file accepted message in upload box
+      document.getElementById('uploadPreview').style.display = 'block';
+      document.getElementById('uploadPlaceholder').style.display = 'none';
+      document.getElementById('previewImg').src = '';
+      document.getElementById('previewImg').style.display = 'none';
+      // Show file name in upload box
+      var existingTag = document.getElementById('uploadFileTag');
+      if (existingTag) existingTag.remove();
+      var tag = document.createElement('div');
+      tag.id = 'uploadFileTag';
+      tag.style.cssText = 'padding:20px;text-align:center;';
+      tag.innerHTML =
+        '<div style="font-size:2rem;margin-bottom:8px">' +
+        (ext==='pdf'?'📄':ext==='ai'?'🎨':ext==='svg'?'✏️':'📐') + '</div>' +
+        '<div style="font-size:0.9rem;font-weight:700;color:#f5f0eb;margin-bottom:4px">' + file.name + '</div>' +
+        '<div style="font-size:0.75rem;color:#00c876">✓ Vector file accepted</div>';
+      document.getElementById('uploadPreview').appendChild(tag);
+    }
     // Show proof window
     showProof(file, ev.target.result);
     updateApprovalUI();
@@ -1375,12 +1427,22 @@ function removeFile(e) {
   e.stopPropagation();
   uploadedFile = null;
   proofApproved = false;
-  document.getElementById('previewImg').src = '';
+  var pi = document.getElementById('previewImg');
+  if (pi) { pi.src = ''; pi.style.display = 'block'; }
   document.getElementById('uploadPreview').style.display = 'none';
   document.getElementById('uploadPlaceholder').style.display = 'block';
   document.getElementById('fileInput').value = '';
   var proof = document.getElementById('proofWindow');
   if (proof) proof.style.display = 'none';
+  // Clean up any vector/PDF elements
+  var tag = document.getElementById('uploadFileTag');
+  if (tag) tag.remove();
+  var pdfC = document.getElementById('pdfCanvas');
+  if (pdfC) pdfC.remove();
+  var pdfL = document.getElementById('pdfLoading');
+  if (pdfL) pdfL.remove();
+  var vp = document.getElementById('vectorPlaceholder');
+  if (vp) vp.remove();
   updateApprovalUI();
 }
 
