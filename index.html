@@ -214,7 +214,7 @@
     <li><a href="#reviews">Reviews</a></li>
     <li><a href="#faq">FAQ</a></li>
   </ul>
-  <button class="nav-cta" onclick="document.getElementById('order').scrollIntoView({behavior:'smooth'})">ORDER NOW</button>
+  <button class="nav-cta" id="navCta">ORDER NOW</button>
 </nav>
 
 <section class="hero">
@@ -223,8 +223,8 @@
     <h1>YOUR<br/>STICKERS.<br/><span>UNLEASHED.</span></h1>
     <p class="hero-sub">Die-cut precision. Holographic brilliance. Ships in 3-5 days. Upload your design and get professional stickers delivered to your door.</p>
     <div class="hero-btns">
-      <button class="btn-primary" onclick="document.getElementById('order').scrollIntoView({behavior:'smooth'})">ORDER YOUR STICKERS</button>
-      <button class="btn-outline" onclick="document.getElementById('products').scrollIntoView({behavior:'smooth'})">VIEW PRODUCTS</button>
+      <button class="btn-primary" id="navCta">ORDER YOUR STICKERS</button>
+      <button class="btn-outline" id="heroProductBtn">VIEW PRODUCTS</button>
     </div>
     <div class="trust-row">
       <div class="trust-item">⚡ Ships in 3-5 days</div>
@@ -279,22 +279,22 @@
   <div class="form-group">
     <label>Size</label>
     <div class="size-grid">
-      <button class="size-btn active" data-size="2x2" onclick="selectSize('2x2')">2" × 2"</button>
-      <button class="size-btn" data-size="3x3" onclick="selectSize('3x3')">3" × 3"</button>
-      <button class="size-btn" data-size="4x4" onclick="selectSize('4x4')">4" × 4"</button>
-      <button class="size-btn" data-size="5x5" onclick="selectSize('5x5')">5" × 5"</button>
-      <button class="size-btn" data-size="3x5" onclick="selectSize('3x5')">3" × 5"</button>
-      <button class="size-btn" data-size="custom" onclick="selectSize('custom')">Custom</button>
+      <button class="size-btn active" data-size="2x2">2" × 2"</button>
+      <button class="size-btn" data-size="3x3">3" × 3"</button>
+      <button class="size-btn" data-size="4x4">4" × 4"</button>
+      <button class="size-btn" data-size="5x5">5" × 5"</button>
+      <button class="size-btn" data-size="3x5">3" × 5"</button>
+      <button class="size-btn" data-size="custom">Custom</button>
     </div>
   </div>
 
   <div class="form-group">
     <label>Finish</label>
     <div class="finish-grid">
-      <button class="finish-btn active" data-finish="gloss" onclick="selectFinish('gloss')">✨ Gloss</button>
-      <button class="finish-btn" data-finish="matte" onclick="selectFinish('matte')">🌫 Matte</button>
-      <button class="finish-btn" data-finish="holographic" onclick="selectFinish('holographic')">🌈 Holographic</button>
-      <button class="finish-btn" data-finish="clear" onclick="selectFinish('clear')">🔍 Clear</button>
+      <button class="finish-btn active" data-finish="gloss">✨ Gloss</button>
+      <button class="finish-btn" data-finish="matte">🌫 Matte</button>
+      <button class="finish-btn" data-finish="holographic">🌈 Holographic</button>
+      <button class="finish-btn" data-finish="clear">🔍 Clear</button>
     </div>
   </div>
 
@@ -309,7 +309,7 @@
     <div id="shippingBadge" class="shipping-badge">Add more for FREE shipping on orders over $80</div>
   </div>
 
-  <button class="btn-primary" style="width:100%;font-size:1.1rem;padding:18px" onclick="openCheckout()">
+  <button class="btn-primary" style="width:100%;font-size:1.1rem;padding:18px" id="checkoutBtn">
     PROCEED TO CHECKOUT →
   </button>
 </div>
@@ -322,7 +322,7 @@
 
 <div class="checkout-modal" id="checkoutModal">
   <div class="checkout-box">
-    <h3>CHECKOUT <button class="close-btn" onclick="closeCheckout()">×</button></h3>
+    <h3>CHECKOUT <button class="close-btn" id="closeCheckoutBtn">×</button></h3>
 
 ```
 <div class="form-group">
@@ -379,7 +379,7 @@
     <div class="step-badge"><strong>📤 Sent to Print</strong>Firesprint order submitted</div>
     <div class="step-badge"><strong>📧 Email Sent</strong>Check your inbox</div>
   </div>
-  <button class="btn-primary" onclick="document.getElementById('successOverlay').classList.remove('open')">Order More Stickers</button>
+  <button class="btn-primary" id="successCloseBtn">Order More Stickers</button>
 </div>
 
 <!-- PRODUCTS -->
@@ -395,7 +395,7 @@
         <div class="product-name">Die-Cut Stickers</div>
         <div class="product-desc">Cut to the exact shape of your design. Clean edges, premium vinyl. The classic choice.</div>
         <div class="product-price">FROM $0.69/ea</div>
-        <button class="product-cta" onclick="document.getElementById('order').scrollIntoView({behavior:'smooth'})">ORDER NOW</button>
+        <button class="product-cta" id="navCta">ORDER NOW</button>
       </div>
     </div>
     <div class="product-card fade-up">
@@ -404,7 +404,7 @@
         <div class="product-name">Holographic Stickers</div>
         <div class="product-desc">Rainbow iridescent finish that catches every light. Makes your design impossible to ignore.</div>
         <div class="product-price">FROM $0.99/ea</div>
-        <button class="product-cta" onclick="document.getElementById('order').scrollIntoView({behavior:'smooth'})">ORDER NOW</button>
+        <button class="product-cta" id="navCta">ORDER NOW</button>
       </div>
     </div>
     <div class="product-card fade-up">
@@ -413,7 +413,7 @@
         <div class="product-name">Clear Stickers</div>
         <div class="product-desc">Transparent background for a clean no-label look. Perfect for windows and smooth surfaces.</div>
         <div class="product-price">FROM $0.79/ea</div>
-        <button class="product-cta" onclick="document.getElementById('order').scrollIntoView({behavior:'smooth'})">ORDER NOW</button>
+        <button class="product-cta" id="navCta">ORDER NOW</button>
       </div>
     </div>
     <div class="product-card fade-up">
@@ -422,7 +422,7 @@
         <div class="product-name">Kiss-Cut Stickers</div>
         <div class="product-desc">Easy peel-and-stick on a backing sheet. Great for packaging and giveaways.</div>
         <div class="product-price">FROM $0.55/ea</div>
-        <button class="product-cta" onclick="document.getElementById('order').scrollIntoView({behavior:'smooth'})">ORDER NOW</button>
+        <button class="product-cta" id="navCta">ORDER NOW</button>
       </div>
     </div>
     <div class="product-card fade-up">
@@ -431,7 +431,7 @@
         <div class="product-name">Bumper Stickers</div>
         <div class="product-desc">Heavy-duty vinyl built to last outdoors. UV resistant and waterproof.</div>
         <div class="product-price">FROM $0.89/ea</div>
-        <button class="product-cta" onclick="document.getElementById('order').scrollIntoView({behavior:'smooth'})">ORDER NOW</button>
+        <button class="product-cta" id="navCta">ORDER NOW</button>
       </div>
     </div>
   </div>
@@ -719,6 +719,261 @@ document.querySelectorAll('.fade-up').forEach(function(el) { obs.observe(el); })
 ```
 
 });
+</script><script>
+(function() {
+var selectedSize = ‘2x2’;
+var selectedFinish = ‘gloss’;
+var uploadedFile = null;
+
+var basePrices = { ‘die-cut’: 0.69, ‘kiss-cut’: 0.55, ‘clear’: 0.79, ‘holographic’: 0.99, ‘bumper’: 0.89 };
+var sizeMultipliers = { ‘2x2’: 1, ‘3x3’: 1.4, ‘4x4’: 2, ‘5x5’: 2.6, ‘3x5’: 1.8, ‘custom’: 2.5 };
+var finishMultipliers = { ‘gloss’: 1, ‘matte’: 1.1, ‘holographic’: 1.5, ‘clear’: 1.2 };
+
+function updatePrice() {
+var typeEl = document.getElementById(‘stickerType’);
+var qtyEl = document.getElementById(‘qty’);
+if (!typeEl || !qtyEl) return { subtotal: ‘0.00’, shipping: 15, total: ‘15.00’ };
+var type = typeEl.value;
+var qty = parseInt(qtyEl.value) || 1;
+var base = basePrices[type] || 0.69;
+var sm = sizeMultipliers[selectedSize] || 1;
+var fm = finishMultipliers[selectedFinish] || 1;
+var unitPrice = base * sm * fm;
+if (qty >= 1000) unitPrice *= 0.70;
+else if (qty >= 500) unitPrice *= 0.80;
+else if (qty >= 250) unitPrice *= 0.88;
+else if (qty >= 100) unitPrice *= 0.92;
+var subtotal = Math.round(unitPrice * qty * 100) / 100;
+var shipping = subtotal >= 80 ? 0 : 15;
+var total = Math.round((subtotal + shipping) * 100) / 100;
+var priceEl = document.getElementById(‘priceDisplay’);
+if (priceEl) priceEl.textContent = ‘$’ + subtotal.toFixed(2);
+var badge = document.getElementById(‘shippingBadge’);
+if (badge) {
+if (shipping === 0) {
+badge.textContent = ‘FREE SHIPPING on this order!’;
+badge.style.color = ‘#00D4B4’;
+} else {
+var needed = (80 - subtotal).toFixed(2);
+badge.textContent = ‘Add $’ + needed + ’ more for FREE shipping’;
+badge.style.color = ‘#FFE135’;
+}
+}
+return { subtotal: subtotal.toFixed(2), shipping: shipping, total: total.toFixed(2) };
+}
+
+function selectSize(size) {
+selectedSize = size;
+document.querySelectorAll(’.size-btn’).forEach(function(b) {
+b.classList.toggle(‘active’, b.getAttribute(‘data-size’) === size);
+});
+updatePrice();
+}
+
+function selectFinish(finish) {
+selectedFinish = finish;
+document.querySelectorAll(’.finish-btn’).forEach(function(b) {
+b.classList.toggle(‘active’, b.getAttribute(‘data-finish’) === finish);
+});
+updatePrice();
+}
+
+function openCheckout() {
+var pricing = updatePrice();
+var typeEl = document.getElementById(‘stickerType’);
+var qty = document.getElementById(‘qty’).value;
+var typeName = typeEl.options[typeEl.selectedIndex].text;
+document.getElementById(‘summaryItem’).textContent = typeName + ’ x ’ + qty;
+document.getElementById(‘summaryBase’).textContent = ‘$’ + pricing.subtotal;
+var shipEl = document.getElementById(‘summaryShipping’);
+var shipRow = document.getElementById(‘shippingRow’);
+if (pricing.shipping === 0) {
+if (shipEl) shipEl.textContent = ‘FREE’;
+if (shipRow) shipRow.classList.add(‘free-ship’);
+} else {
+if (shipEl) shipEl.textContent = ‘$’ + parseFloat(pricing.shipping).toFixed(2);
+if (shipRow) shipRow.classList.remove(‘free-ship’);
+}
+document.getElementById(‘summaryTotal’).textContent = ‘$’ + pricing.total;
+var payTotalEl = document.getElementById(‘payTotal’);
+if (payTotalEl) payTotalEl.textContent = ‘$’ + pricing.total;
+document.getElementById(‘checkoutModal’).classList.add(‘open’);
+}
+
+function closeCheckout() {
+document.getElementById(‘checkoutModal’).classList.remove(‘open’);
+}
+
+function placeOrder() {
+var name = (document.getElementById(‘custName’).value || ‘’).trim();
+var email = (document.getElementById(‘custEmail’).value || ‘’).trim();
+var address = (document.getElementById(‘custAddress’).value || ‘’).trim();
+if (!name || !email || !address) {
+alert(‘Please fill in your name, email, and shipping address.’);
+return;
+}
+var pricing = updatePrice();
+var qty = document.getElementById(‘qty’).value;
+var typeEl = document.getElementById(‘stickerType’);
+var typeName = typeEl.options[typeEl.selectedIndex].text;
+var totalCents = Math.round(parseFloat(pricing.total) * 100);
+var payBtn = document.querySelector(’.pay-btn’);
+if (payBtn) { payBtn.textContent = ‘Redirecting to secure checkout…’; payBtn.disabled = true; }
+fetch(‘https://agent-production-ff8d.up.railway.app/create-checkout-session’, {
+method: ‘POST’,
+headers: { ‘Content-Type’: ‘application/json’ },
+body: JSON.stringify({
+amount: totalCents,
+currency: ‘usd’,
+customer_email: email,
+product_name: typeName + ’ (’ + selectedSize + ’ ’ + selectedFinish + ‘) x’ + qty,
+metadata: {
+customer_name: name,
+customer_email: email,
+shipping_address: address,
+product_type: typeEl.value,
+quantity: qty,
+size: selectedSize,
+finish: selectedFinish
+}
+})
+})
+.then(function(r) { return r.json(); })
+.then(function(data) {
+if (data.url) {
+window.location.href = data.url;
+} else {
+alert(’Error: ’ + (data.error || ‘Could not create checkout. Please try again.’));
+if (payBtn) { payBtn.textContent = ‘PAY ’ + pricing.total + ’ - ORDER NOW’; payBtn.disabled = false; }
+}
+})
+.catch(function(err) {
+alert(‘Connection error. Please check your internet and try again.’);
+if (payBtn) { payBtn.textContent = ‘PAY ’ + pricing.total + ’ - ORDER NOW’; payBtn.disabled = false; }
+});
+}
+
+function handleFile(e) {
+var file = e.target.files[0];
+if (!file) return;
+uploadedFile = file;
+var reader = new FileReader();
+reader.onload = function(ev) {
+document.getElementById(‘previewImg’).src = ev.target.result;
+document.getElementById(‘uploadPreview’).style.display = ‘block’;
+document.getElementById(‘uploadPlaceholder’).style.display = ‘none’;
+};
+reader.readAsDataURL(file);
+}
+
+function removeFile(e) {
+e.stopPropagation();
+uploadedFile = null;
+document.getElementById(‘previewImg’).src = ‘’;
+document.getElementById(‘uploadPreview’).style.display = ‘none’;
+document.getElementById(‘uploadPlaceholder’).style.display = ‘block’;
+document.getElementById(‘fileInput’).value = ‘’;
+}
+
+function scrollTo(id) {
+var el = document.getElementById(id);
+if (el) el.scrollIntoView({ behavior: ‘smooth’ });
+}
+
+document.addEventListener(‘DOMContentLoaded’, function() {
+updatePrice();
+
+```
+// Size buttons
+document.querySelectorAll('.size-btn').forEach(function(btn) {
+  btn.addEventListener('click', function() { selectSize(this.getAttribute('data-size')); });
+});
+
+// Finish buttons
+document.querySelectorAll('.finish-btn').forEach(function(btn) {
+  btn.addEventListener('click', function() { selectFinish(this.getAttribute('data-finish')); });
+});
+
+// Quantity and type changes
+var qtyEl = document.getElementById('qty');
+if (qtyEl) { qtyEl.addEventListener('input', updatePrice); qtyEl.addEventListener('change', updatePrice); }
+var typeEl = document.getElementById('stickerType');
+if (typeEl) { typeEl.addEventListener('change', updatePrice); }
+
+// Checkout button
+var checkoutBtn = document.getElementById('checkoutBtn');
+if (checkoutBtn) checkoutBtn.addEventListener('click', openCheckout);
+
+// Close checkout
+var closeBtn = document.getElementById('closeCheckoutBtn');
+if (closeBtn) closeBtn.addEventListener('click', closeCheckout);
+
+// Pay button
+var payBtn = document.querySelector('.pay-btn');
+if (payBtn) payBtn.addEventListener('click', placeOrder);
+
+// Scroll buttons
+var navCta = document.getElementById('navCta');
+if (navCta) navCta.addEventListener('click', function() { scrollTo('order'); });
+
+var heroOrderBtn = document.getElementById('heroOrderBtn');
+if (heroOrderBtn) heroOrderBtn.addEventListener('click', function() { scrollTo('order'); });
+
+var heroProductBtn = document.getElementById('heroProductBtn');
+if (heroProductBtn) heroProductBtn.addEventListener('click', function() { scrollTo('products'); });
+
+document.querySelectorAll('.scroll-to-order').forEach(function(btn) {
+  btn.addEventListener('click', function() { scrollTo('order'); });
+});
+
+// Success close
+var successClose = document.getElementById('successCloseBtn');
+if (successClose) successClose.addEventListener('click', function() {
+  document.getElementById('successOverlay').classList.remove('open');
+});
+
+// File upload
+var fileInput = document.getElementById('fileInput');
+if (fileInput) fileInput.addEventListener('change', handleFile);
+
+var removeBtn = document.querySelector('.remove-btn');
+if (removeBtn) removeBtn.addEventListener('click', removeFile);
+
+// Drop zone
+var dz = document.getElementById('dropZone');
+if (dz) {
+  dz.addEventListener('click', function() { document.getElementById('fileInput').click(); });
+  dz.addEventListener('dragover', function(e) { e.preventDefault(); dz.classList.add('drag'); });
+  dz.addEventListener('dragleave', function() { dz.classList.remove('drag'); });
+  dz.addEventListener('drop', function(e) {
+    e.preventDefault();
+    dz.classList.remove('drag');
+    var file = e.dataTransfer.files[0];
+    if (file) handleFile({ target: { files: [file] } });
+  });
+}
+
+// Pay options
+document.querySelectorAll('.pay-opt').forEach(function(btn) {
+  btn.addEventListener('click', function() {
+    document.querySelectorAll('.pay-opt').forEach(function(b) { b.classList.remove('active'); });
+    this.classList.add('active');
+  });
+});
+
+// Scroll animations
+if ('IntersectionObserver' in window) {
+  var obs = new IntersectionObserver(function(entries) {
+    entries.forEach(function(e) { if (e.isIntersecting) e.target.classList.add('visible'); });
+  }, { threshold: 0.1 });
+  document.querySelectorAll('.fade-up').forEach(function(el) { obs.observe(el); });
+} else {
+  document.querySelectorAll('.fade-up').forEach(function(el) { el.classList.add('visible'); });
+}
+```
+
+});
+})();
 </script><script>
 let selectedSize = ‘2x2’;
 let selectedFinish = ‘gloss’;
