@@ -39,8 +39,47 @@
       padding: 120px 48px 80px;
       background: radial-gradient(ellipse at 70% 50%, rgba(255,92,0,0.08) 0%, transparent 60%),
                   radial-gradient(ellipse at 20% 80%, rgba(0,212,180,0.06) 0%, transparent 50%);
+      justify-content: space-between; gap: 48px;
     }
-    .hero-content { max-width: 640px; }
+    .hero-content { max-width: 580px; flex-shrink: 0; }
+    .hero-visual {
+      flex: 1; display: flex; align-items: center; justify-content: center;
+      position: relative; min-height: 400px; max-width: 500px;
+    }
+    .sticker-float {
+      position: absolute; border-radius: 16px; box-shadow: 0 20px 60px rgba(0,0,0,0.5);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 3rem; font-weight: 900; letter-spacing: 2px;
+      animation: floatSticker 6s ease-in-out infinite;
+      background: var(--gray); border: 2px solid rgba(255,255,255,0.08);
+      overflow: hidden;
+    }
+    .sticker-float.s1 { width:180px;height:180px; top:10%; left:5%; animation-delay:0s; background:linear-gradient(135deg,#1a1a1a,#2a1a0a); border-color:rgba(255,92,0,0.3); }
+    .sticker-float.s2 { width:140px;height:140px; top:15%; right:10%; animation-delay:1.5s; background:linear-gradient(135deg,#0a1a2a,#0a2a1a); border-color:rgba(0,212,180,0.3); }
+    .sticker-float.s3 { width:160px;height:160px; bottom:20%; left:15%; animation-delay:3s; background:linear-gradient(135deg,#1a0a2a,#2a0a1a); border-color:rgba(255,45,139,0.3); }
+    .sticker-float.s4 { width:120px;height:120px; bottom:15%; right:5%; animation-delay:0.8s; background:linear-gradient(135deg,#1a2a0a,#2a2a0a); border-color:rgba(255,225,53,0.3); }
+    .sticker-float.s5 { width:100px;height:100px; top:45%; left:35%; animation-delay:2s; background:linear-gradient(135deg,#0a0a2a,#1a1a0a); border-color:rgba(0,212,180,0.2); }
+    @keyframes floatSticker {
+      0%,100% { transform: translateY(0px) rotate(var(--rot,0deg)); }
+      50% { transform: translateY(-18px) rotate(var(--rot,0deg)); }
+    }
+    .sticker-float.s1 { --rot: -8deg; }
+    .sticker-float.s2 { --rot: 12deg; }
+    .sticker-float.s3 { --rot: -5deg; }
+    .sticker-float.s4 { --rot: 15deg; }
+    .sticker-float.s5 { --rot: -3deg; }
+    .sticker-inner { padding: 16px; text-align: center; }
+    .sticker-emoji { font-size: 2.5rem; display: block; margin-bottom: 6px; }
+    .sticker-text { font-size: 0.65rem; font-weight: 800; letter-spacing: 2px; text-transform: uppercase; opacity: 0.8; }
+    .print-badge {
+      position: absolute; top: 50%; left: 50%; transform: translate(-50%,-50%);
+      background: rgba(255,92,0,0.15); border: 1px solid rgba(255,92,0,0.4);
+      border-radius: 50%; width: 120px; height: 120px;
+      display: flex; flex-direction: column; align-items: center; justify-content: center;
+      animation: spin 20s linear infinite;
+    }
+    @keyframes spin { from{transform:translate(-50%,-50%) rotate(0deg);} to{transform:translate(-50%,-50%) rotate(360deg);} }
+    .print-badge span { font-size: 0.6rem; font-weight: 800; letter-spacing: 3px; color: var(--orange); text-transform: uppercase; }
     .hero-tag { display: inline-block; background: rgba(255,225,53,0.1); border: 1px solid rgba(255,225,53,0.3); color: var(--yellow); font-size: 0.75rem; font-weight: 700; letter-spacing: 2px; padding: 6px 16px; border-radius: 2px; margin-bottom: 28px; }
     h1 { font-family: 'Bebas Neue', sans-serif; font-size: clamp(4rem, 8vw, 7rem); line-height: 0.95; letter-spacing: 2px; margin-bottom: 24px; }
     h1 span { color: var(--orange); }
@@ -57,7 +96,8 @@
     .section-tag { display: inline-block; color: var(--orange); font-size: 0.72rem; font-weight: 700; letter-spacing: 3px; text-transform: uppercase; margin-bottom: 12px; }
     h2 { font-family: 'Bebas Neue', sans-serif; font-size: clamp(2.5rem, 5vw, 4rem); letter-spacing: 2px; margin-bottom: 16px; }
     .order-section { background: var(--gray); }
-    .order-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 48px; max-width: 1100px; }
+    .order-section > * { margin-left: auto; margin-right: auto; }
+    .order-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 48px; max-width: 960px; margin: 0 auto; }
     .upload-zone {
       border: 2px dashed rgba(255,255,255,0.2);
       border-radius: 12px; padding: 60px 40px;
@@ -184,7 +224,8 @@
     @media (max-width: 768px) {
       nav { padding: 16px 20px; }
       nav ul { display: none; }
-      .hero { padding: 100px 20px 60px; }
+      .hero { padding: 100px 20px 60px; flex-direction: column; }
+      .hero-visual { display: none; }
       section { padding: 60px 20px; }
       .order-grid { grid-template-columns: 1fr; }
       .footer-grid { grid-template-columns: 1fr 1fr; }
@@ -233,14 +274,51 @@
       <div class="trust-item">⭐ 4.9/5 rated</div>
     </div>
   </div>
+  <div class="hero-visual">
+    <div class="sticker-float s1">
+      <div class="sticker-inner">
+        <span class="sticker-emoji">🔥</span>
+        <span class="sticker-text">Die-Cut</span>
+      </div>
+    </div>
+    <div class="sticker-float s2">
+      <div class="sticker-inner">
+        <span class="sticker-emoji">🌈</span>
+        <span class="sticker-text">Holo</span>
+      </div>
+    </div>
+    <div class="sticker-float s3">
+      <div class="sticker-inner">
+        <span class="sticker-emoji">✨</span>
+        <span class="sticker-text">Gloss</span>
+      </div>
+    </div>
+    <div class="sticker-float s4">
+      <div class="sticker-inner">
+        <span class="sticker-emoji">🎨</span>
+        <span class="sticker-text">Custom</span>
+      </div>
+    </div>
+    <div class="sticker-float s5">
+      <div class="sticker-inner">
+        <span class="sticker-emoji">⚡</span>
+        <span class="sticker-text">Fast</span>
+      </div>
+    </div>
+    <div class="print-badge">
+      <span>PREMIUM</span>
+      <span style="font-size:1.2rem;margin:4px 0">🖨️</span>
+      <span>PRINT</span>
+    </div>
+  </div>
 </section>
 
 <!-- ORDER SECTION -->
 
 <section class="order-section" id="order">
-  <div class="section-tag">// PLACE YOUR ORDER</div>
-  <h2>DESIGN YOUR <span style="color:var(--orange)">STICKERS</span></h2>
-  <p style="opacity:0.6;margin-bottom:40px;max-width:500px">Upload your artwork, choose your options, and we'll print and ship your custom stickers in 3-5 business days.</p>
+  <div class="section-tag" style="display:block;text-align:center">// PLACE YOUR ORDER</div>
+  <h2 style="text-align:center">DESIGN YOUR <span style="color:var(--orange)">STICKERS</span></h2>
+  <p style="opacity:0.6;margin-bottom:40px;max-width:500px;margin-left:auto;margin-right:auto;text-align:center">Upload your artwork, choose your options, and we'll print and ship your custom stickers in 3-5 business days.</p>
 
   <div class="order-grid">
     <!-- Upload -->
