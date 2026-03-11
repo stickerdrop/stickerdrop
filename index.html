@@ -68,181 +68,173 @@
     .sticker-float.s3 { --rot: -5deg; }
     .sticker-float.s4 { --rot: 15deg; }
     .sticker-float.s5 { --rot: -3deg; }
-    .sticker-inner { padding: 16px; text-align: center; }
-    .sticker-emoji { font-size: 2.5rem; display: block; margin-bottom: 6px; }
-    .sticker-text { font-size: 0.65rem; font-weight: 800; letter-spacing: 2px; text-transform: uppercase; opacity: 0.8; }
-    .print-badge {
-      position: absolute; top: 50%; left: 50%; transform: translate(-50%,-50%);
-      background: rgba(255,92,0,0.15); border: 1px solid rgba(255,92,0,0.4);
-      border-radius: 50%; width: 120px; height: 120px;
-      display: flex; flex-direction: column; align-items: center; justify-content: center;
-      animation: spin 20s linear infinite;
-    }
-    @keyframes spin { from{transform:translate(-50%,-50%) rotate(0deg);} to{transform:translate(-50%,-50%) rotate(360deg);} }
-    .print-badge span { font-size: 0.6rem; font-weight: 800; letter-spacing: 3px; color: var(--orange); text-transform: uppercase; }
-    .hero-tag { display: inline-block; background: rgba(255,225,53,0.1); border: 1px solid rgba(255,225,53,0.3); color: var(--yellow); font-size: 0.75rem; font-weight: 700; letter-spacing: 2px; padding: 6px 16px; border-radius: 2px; margin-bottom: 28px; }
-    h1 { font-family: 'Bebas Neue', sans-serif; font-size: clamp(4rem, 8vw, 7rem); line-height: 0.95; letter-spacing: 2px; margin-bottom: 24px; }
-    h1 span { color: var(--orange); }
-    .hero-sub { font-size: 1.1rem; opacity: 0.7; line-height: 1.7; margin-bottom: 40px; max-width: 480px; }
-    .hero-btns { display: flex; gap: 16px; flex-wrap: wrap; }
-    .btn-primary { background: var(--yellow); color: var(--black); border: none; padding: 16px 36px; border-radius: 4px; font-weight: 700; font-size: 1rem; cursor: pointer; letter-spacing: 0.5px; transition: all 0.2s; }
-    .btn-primary:hover { background: var(--orange); color: #fff; transform: translateY(-2px); }
-    .btn-outline { background: transparent; border: 1.5px solid rgba(255,255,255,0.3); color: var(--white); padding: 16px 36px; border-radius: 4px; font-weight: 600; font-size: 1rem; cursor: pointer; transition: all 0.2s; }
-    .btn-outline:hover { border-color: var(--yellow); color: var(--yellow); }
-    .trust-row { display: flex; gap: 32px; align-items: center; margin-top: 56px; flex-wrap: wrap; }
-    .trust-item { display: flex; align-items: center; gap: 10px; font-size: 0.85rem; opacity: 0.6; }
-    .trust-item img { width: 120px; height: 120px; border-radius: 16px; object-fit: cover; }
-    section { padding: 100px 48px; }
-    .section-tag { display: inline-block; color: var(--orange); font-size: 0.72rem; font-weight: 700; letter-spacing: 3px; text-transform: uppercase; margin-bottom: 12px; }
-    h2 { font-family: 'Bebas Neue', sans-serif; font-size: clamp(2.5rem, 5vw, 4rem); letter-spacing: 2px; margin-bottom: 16px; }
-    .order-section { background: var(--gray); }
-    .order-section > * { margin-left: auto; margin-right: auto; }
-    .order-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 48px; max-width: 960px; margin: 0 auto; }
-    .upload-zone {
-      border: 2px dashed rgba(255,255,255,0.2);
-      border-radius: 12px; padding: 60px 40px;
-      text-align: center; cursor: pointer; transition: all 0.3s;
-      background: rgba(255,255,255,0.02);
-    }
-    .upload-zone:hover, .upload-zone.drag { border-color: var(--yellow); background: rgba(255,225,53,0.04); }
-    .upload-icon { font-size: 3rem; margin-bottom: 16px; }
-    .upload-title { font-size: 1.2rem; font-weight: 700; margin-bottom: 8px; }
-    .upload-sub { font-size: 0.85rem; opacity: 0.5; margin-bottom: 24px; }
-    .upload-preview { display: none; position: relative; }
-    .upload-preview img { max-width: 100%; border-radius: 8px; max-height: 300px; object-fit: contain; }
-    .remove-btn { position: absolute; top: 8px; right: 8px; background: var(--orange); color: #fff; border: none; border-radius: 50%; width: 28px; height: 28px; cursor: pointer; font-size: 1rem; }
-    .config-panel h3 { font-size: 1.3rem; font-weight: 700; margin-bottom: 24px; }
-    .form-group { margin-bottom: 20px; }
-    .form-group label { display: block; font-size: 0.78rem; font-weight: 700; letter-spacing: 1.5px; text-transform: uppercase; opacity: 0.6; margin-bottom: 8px; }
-    .form-group input, .form-group select {
-      width: 100%; background: var(--mid); border: 1px solid rgba(255,255,255,0.1);
-      color: var(--white); padding: 12px 16px; border-radius: 6px;
-      font-size: 0.95rem; font-family: inherit; transition: border-color 0.2s; appearance: none;
-    }
-    .form-group input:focus, .form-group select:focus { outline: none; border-color: var(--yellow); }
-    .size-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px; }
-    .size-btn {
-      background: var(--mid); border: 1.5px solid rgba(255,255,255,0.1);
-      color: var(--white); padding: 10px; border-radius: 6px;
-      font-size: 0.85rem; font-weight: 600; cursor: pointer; transition: all 0.2s; text-align: center;
-    }
-    .size-btn:hover, .size-btn.active { background: var(--yellow); color: var(--black); border-color: var(--yellow); }
-    .finish-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 8px; }
-    .finish-btn {
-      background: var(--mid); border: 1.5px solid rgba(255,255,255,0.1);
-      color: var(--white); padding: 12px 16px; border-radius: 6px;
-      font-size: 0.85rem; font-weight: 600; cursor: pointer; transition: all 0.2s; text-align: center;
-    }
-    .finish-btn:hover, .finish-btn.active { border-color: var(--teal); color: var(--teal); }
-    .price-box { background: var(--black); border-radius: 10px; padding: 20px 24px; margin: 24px 0; }
-    .price-label { font-size: 0.8rem; opacity: 0.6; text-transform: uppercase; letter-spacing: 1px; }
-    .price-val { font-family: 'Bebas Neue', sans-serif; font-size: 2.5rem; color: var(--yellow); }
-    .shipping-badge { font-size: 0.82rem; color: var(--yellow); margin-top: 6px; font-weight: 600; }
-    .checkout-modal {
-      display: none; position: fixed; inset: 0; z-index: 200;
-      background: rgba(0,0,0,0.85); align-items: center; justify-content: center;
-    }
-    .checkout-modal.open { display: flex; }
-    .checkout-box {
-      background: var(--gray); border-radius: 16px;
-      padding: 40px; max-width: 480px; width: 90%; max-height: 90vh; overflow-y: auto;
-      border: 1px solid rgba(255,255,255,0.08);
-    }
-    .checkout-box h3 { font-family: 'Bebas Neue', sans-serif; font-size: 2rem; letter-spacing: 2px; margin-bottom: 24px; display: flex; justify-content: space-between; align-items: center; }
-    .close-btn { background: none; border: none; color: var(--white); font-size: 1.5rem; cursor: pointer; opacity: 0.5; }
-    .close-btn:hover { opacity: 1; }
-    .payment-opts { display: flex; gap: 12px; margin-bottom: 20px; }
-    .pay-opt {
-      flex: 1; padding: 14px; border-radius: 8px;
-      border: 1.5px solid rgba(255,255,255,0.15);
-      background: var(--mid); color: var(--white);
-      font-size: 0.9rem; font-weight: 600; cursor: pointer; text-align: center; transition: all 0.2s;
-    }
-    .pay-opt:hover, .pay-opt.active { border-color: var(--yellow); color: var(--yellow); }
-    .card-input {
-      background: var(--mid); border: 1px solid rgba(255,255,255,0.1);
-      border-radius: 6px; padding: 14px 16px; font-family: 'Space Mono', monospace;
-      font-size: 0.9rem; color: var(--white); width: 100%; margin-bottom: 12px;
-    }
-    .order-summary { background: var(--black); border-radius: 8px; padding: 16px 20px; margin-bottom: 24px; }
-    .order-row { display: flex; justify-content: space-between; font-size: 0.85rem; padding: 5px 0; }
-    .order-row.total { border-top: 1px solid rgba(255,255,255,0.1); margin-top: 8px; padding-top: 12px; font-weight: 700; color: var(--yellow); font-size: 1rem; }
-    .order-row.free-ship { color: var(--teal); font-weight: 700; }
-    .pay-btn { width: 100%; background: var(--yellow); color: var(--black); border: none; padding: 18px; border-radius: 8px; font-size: 1rem; font-weight: 700; cursor: pointer; transition: all 0.2s; letter-spacing: 0.5px; }
-    .pay-btn:hover { background: var(--orange); color: #fff; }
-    .success-overlay {
-      display: none; position: fixed; inset: 0; z-index: 300;
-      background: rgba(0,0,0,0.95); align-items: center; justify-content: center;
-      flex-direction: column; text-align: center; padding: 40px;
-    }
-    .success-overlay.open { display: flex; }
-    .success-icon { font-size: 5rem; margin-bottom: 24px; }
-    .success-overlay h2 { font-family: 'Bebas Neue', sans-serif; font-size: 3rem; color: var(--yellow); margin-bottom: 16px; }
-    .success-overlay p { opacity: 0.7; margin-bottom: 32px; max-width: 420px; line-height: 1.7; }
-    .success-steps { display: flex; flex-direction: column; gap: 12px; margin-bottom: 32px; }
-    .step-badge { background: var(--gray); border-radius: 8px; padding: 12px 20px; font-size: 0.85rem; }
-    .step-badge strong { display: block; margin-bottom: 2px; color: var(--teal); }
-    .products-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 24px; }
-    .product-card {
-      background: var(--gray); border-radius: 12px; overflow: hidden;
-      border: 1px solid rgba(255,255,255,0.06); transition: transform 0.25s, border-color 0.25s;
-    }
-    .product-card:hover { transform: translateY(-6px); border-color: rgba(255,225,53,0.3); }
-    .product-img { width: 100%; height: 200px; object-fit: cover; background: var(--mid); display: flex; align-items: center; justify-content: center; font-size: 3rem; }
-    .product-body { padding: 20px; }
-    .product-name { font-size: 1rem; font-weight: 700; margin-bottom: 6px; }
-    .product-desc { font-size: 0.82rem; opacity: 0.6; margin-bottom: 12px; line-height: 1.5; }
-    .product-price { font-family: 'Bebas Neue'; font-size: 1.5rem; color: var(--yellow); }
-    .product-cta { background: var(--yellow); color: var(--black); border: none; padding: 8px 16px; border-radius: 4px; font-weight: 700; font-size: 0.85rem; cursor: pointer; margin-top: 12px; }
-    .product-cta:hover { background: var(--orange); color: #fff; }
-    .features-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 24px; }
-    .feature-card { background: var(--gray); border-radius: 10px; padding: 24px; border: 1px solid rgba(255,255,255,0.06); }
-    .feature-icon { font-size: 2rem; margin-bottom: 12px; }
-    .feature-title { font-size: 1rem; font-weight: 700; margin-bottom: 8px; }
-    .feature-desc { font-size: 0.85rem; opacity: 0.6; line-height: 1.6; }
-    .review-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 20px; }
-    .review-card {
-      position: relative; background: var(--gray); border-radius: 12px;
-      padding: 32px 28px; border: 1px solid rgba(255,255,255,0.06);
-    }
-    .review-stars { color: var(--yellow); font-size: 1.1rem; margin-bottom: 12px; }
-    .review-text { font-size: 0.9rem; line-height: 1.7; opacity: 0.8; margin-bottom: 16px; }
-    .reviewer { font-size: 0.82rem; opacity: 0.5; }
-    footer { padding: 60px 48px 40px; border-top: 1px solid rgba(255,255,255,0.06); }
-    .footer-grid { display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 48px; margin-bottom: 48px; }
-    .footer-brand p { font-size: 0.85rem; opacity: 0.5; line-height: 1.7; margin-top: 12px; max-width: 280px; }
-    .footer-col h4 { font-size: 0.78rem; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; opacity: 0.4; margin-bottom: 16px; }
-    .footer-col a { display: block; font-size: 0.85rem; opacity: 0.6; text-decoration: none; margin-bottom: 8px; transition: opacity 0.2s; }
-    .footer-col a:hover { opacity: 1; color: var(--yellow); }
-    .footer-bottom { border-top: 1px solid rgba(255,255,255,0.06); padding-top: 24px; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 16px; }
-    .footer-bottom p { font-size: 0.82rem; opacity: 0.4; }
-    .social-links { display: flex; gap: 12px; }
-    .social-link { width: 36px; height: 36px; border-radius: 6px; background: var(--mid); display: flex; align-items: center; justify-content: center; text-decoration: none; font-size: 1rem; transition: background 0.2s; }
-    .social-link:hover { background: var(--orange); }
-    .fade-up { opacity: 0; transform: translateY(24px); transition: opacity 0.6s ease, transform 0.6s ease; }
-    .fade-up.visible { opacity: 1; transform: none; }
-    @media (max-width: 768px) {
-      nav { padding: 16px 20px; }
-      nav ul { display: none; }
-      .hero { padding: 100px 20px 60px; flex-direction: column; }
-      .hero-visual { display: none; }
-      section { padding: 60px 20px; }
-      .order-grid { grid-template-columns: 1fr; }
-      .footer-grid { grid-template-columns: 1fr 1fr; }
-      .size-grid { grid-template-columns: repeat(3, 1fr); gap: 10px; }
-      .finish-grid { grid-template-columns: repeat(2, 1fr); gap: 10px; }
-      .size-btn { padding: 14px 8px; font-size: 0.9rem; min-height: 48px; }
-      .finish-btn { padding: 14px 8px; font-size: 0.9rem; min-height: 48px; }
-      .btn-primary { padding: 18px; font-size: 1rem; min-height: 56px; }
-      .checkout-box { padding: 24px 20px; }
-      .form-group input { min-height: 48px; font-size: 16px; }
-      .form-group select { min-height: 48px; font-size: 16px; }
-      input[type="number"] { min-height: 48px; font-size: 16px; }
-      .pay-btn { min-height: 56px; font-size: 1.1rem; }
-    }
-    /* Prevent double-tap zoom on buttons */
-    button { touch-action: manipulation; }
-    input, select { touch-action: manipulation; font-size: 16px; }
+
+```
+.hero-tag { display: inline-block; background: rgba(255,225,53,0.1); border: 1px solid rgba(255,225,53,0.3); color: var(--yellow); font-size: 0.75rem; font-weight: 700; letter-spacing: 2px; padding: 6px 16px; border-radius: 2px; margin-bottom: 28px; }
+h1 { font-family: 'Bebas Neue', sans-serif; font-size: clamp(4rem, 8vw, 7rem); line-height: 0.95; letter-spacing: 2px; margin-bottom: 24px; }
+h1 span { color: var(--orange); }
+.hero-sub { font-size: 1.1rem; opacity: 0.7; line-height: 1.7; margin-bottom: 40px; max-width: 480px; }
+.hero-btns { display: flex; gap: 16px; flex-wrap: wrap; }
+.btn-primary { background: var(--yellow); color: var(--black); border: none; padding: 16px 36px; border-radius: 4px; font-weight: 700; font-size: 1rem; cursor: pointer; letter-spacing: 0.5px; transition: all 0.2s; }
+.btn-primary:hover { background: var(--orange); color: #fff; transform: translateY(-2px); }
+.btn-outline { background: transparent; border: 1.5px solid rgba(255,255,255,0.3); color: var(--white); padding: 16px 36px; border-radius: 4px; font-weight: 600; font-size: 1rem; cursor: pointer; transition: all 0.2s; }
+.btn-outline:hover { border-color: var(--yellow); color: var(--yellow); }
+.trust-row { display: flex; gap: 32px; align-items: center; margin-top: 56px; flex-wrap: wrap; }
+.trust-item { display: flex; align-items: center; gap: 10px; font-size: 0.85rem; opacity: 0.6; }
+.trust-item img { width: 120px; height: 120px; border-radius: 16px; object-fit: cover; }
+section { padding: 100px 48px; }
+.section-tag { display: inline-block; color: var(--orange); font-size: 0.72rem; font-weight: 700; letter-spacing: 3px; text-transform: uppercase; margin-bottom: 12px; }
+h2 { font-family: 'Bebas Neue', sans-serif; font-size: clamp(2.5rem, 5vw, 4rem); letter-spacing: 2px; margin-bottom: 16px; }
+.order-section { background: var(--gray); }
+.order-section-inner { max-width: 1000px; margin: 0 auto; }
+.order-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; }
+.upload-zone {
+  border: 2px dashed rgba(255,255,255,0.2);
+  border-radius: 12px; padding: 60px 40px;
+  text-align: center; cursor: pointer; transition: all 0.3s;
+  background: rgba(255,255,255,0.02);
+}
+.upload-zone:hover, .upload-zone.drag { border-color: var(--yellow); background: rgba(255,225,53,0.04); }
+.upload-icon { font-size: 3rem; margin-bottom: 16px; }
+.upload-title { font-size: 1.2rem; font-weight: 700; margin-bottom: 8px; }
+.upload-sub { font-size: 0.85rem; opacity: 0.5; margin-bottom: 24px; }
+.upload-preview { display: none; position: relative; }
+.upload-preview img { max-width: 100%; border-radius: 8px; max-height: 300px; object-fit: contain; }
+.remove-btn { position: absolute; top: 8px; right: 8px; background: var(--orange); color: #fff; border: none; border-radius: 50%; width: 28px; height: 28px; cursor: pointer; font-size: 1rem; }
+.config-panel h3 { font-size: 1.3rem; font-weight: 700; margin-bottom: 24px; }
+.form-group { margin-bottom: 20px; }
+.form-group label { display: block; font-size: 0.78rem; font-weight: 700; letter-spacing: 1.5px; text-transform: uppercase; opacity: 0.6; margin-bottom: 8px; }
+.form-group input, .form-group select {
+  width: 100%; background: var(--mid); border: 1px solid rgba(255,255,255,0.1);
+  color: var(--white); padding: 12px 16px; border-radius: 6px;
+  font-size: 0.95rem; font-family: inherit; transition: border-color 0.2s; appearance: none;
+}
+.form-group input:focus, .form-group select:focus { outline: none; border-color: var(--yellow); }
+.size-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px; }
+.size-btn {
+  background: var(--mid); border: 1.5px solid rgba(255,255,255,0.1);
+  color: var(--white); padding: 10px; border-radius: 6px;
+  font-size: 0.85rem; font-weight: 600; cursor: pointer; transition: all 0.2s; text-align: center;
+}
+.size-btn:hover, .size-btn.active { background: var(--yellow); color: var(--black); border-color: var(--yellow); }
+.finish-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 8px; }
+.finish-btn {
+  background: var(--mid); border: 1.5px solid rgba(255,255,255,0.1);
+  color: var(--white); padding: 12px 16px; border-radius: 6px;
+  font-size: 0.85rem; font-weight: 600; cursor: pointer; transition: all 0.2s; text-align: center;
+}
+.finish-btn:hover, .finish-btn.active { border-color: var(--teal); color: var(--teal); }
+.price-box { background: var(--black); border-radius: 10px; padding: 20px 24px; margin: 24px 0; }
+.price-label { font-size: 0.8rem; opacity: 0.6; text-transform: uppercase; letter-spacing: 1px; }
+.price-val { font-family: 'Bebas Neue', sans-serif; font-size: 2.5rem; color: var(--yellow); }
+.shipping-badge { font-size: 0.82rem; color: var(--yellow); margin-top: 6px; font-weight: 600; }
+.checkout-modal {
+  display: none; position: fixed; inset: 0; z-index: 200;
+  background: rgba(0,0,0,0.85); align-items: center; justify-content: center;
+}
+.checkout-modal.open { display: flex; }
+.checkout-box {
+  background: var(--gray); border-radius: 16px;
+  padding: 40px; max-width: 480px; width: 90%; max-height: 90vh; overflow-y: auto;
+  border: 1px solid rgba(255,255,255,0.08);
+}
+.checkout-box h3 { font-family: 'Bebas Neue', sans-serif; font-size: 2rem; letter-spacing: 2px; margin-bottom: 24px; display: flex; justify-content: space-between; align-items: center; }
+.close-btn { background: none; border: none; color: var(--white); font-size: 1.5rem; cursor: pointer; opacity: 0.5; }
+.close-btn:hover { opacity: 1; }
+.payment-opts { display: flex; gap: 12px; margin-bottom: 20px; }
+.pay-opt {
+  flex: 1; padding: 14px; border-radius: 8px;
+  border: 1.5px solid rgba(255,255,255,0.15);
+  background: var(--mid); color: var(--white);
+  font-size: 0.9rem; font-weight: 600; cursor: pointer; text-align: center; transition: all 0.2s;
+}
+.pay-opt:hover, .pay-opt.active { border-color: var(--yellow); color: var(--yellow); }
+.card-input {
+  background: var(--mid); border: 1px solid rgba(255,255,255,0.1);
+  border-radius: 6px; padding: 14px 16px; font-family: 'Space Mono', monospace;
+  font-size: 0.9rem; color: var(--white); width: 100%; margin-bottom: 12px;
+}
+.order-summary { background: var(--black); border-radius: 8px; padding: 16px 20px; margin-bottom: 24px; }
+.order-row { display: flex; justify-content: space-between; font-size: 0.85rem; padding: 5px 0; }
+.order-row.total { border-top: 1px solid rgba(255,255,255,0.1); margin-top: 8px; padding-top: 12px; font-weight: 700; color: var(--yellow); font-size: 1rem; }
+.order-row.free-ship { color: var(--teal); font-weight: 700; }
+.pay-btn { width: 100%; background: var(--yellow); color: var(--black); border: none; padding: 18px; border-radius: 8px; font-size: 1rem; font-weight: 700; cursor: pointer; transition: all 0.2s; letter-spacing: 0.5px; }
+.pay-btn:hover { background: var(--orange); color: #fff; }
+.success-overlay {
+  display: none; position: fixed; inset: 0; z-index: 300;
+  background: rgba(0,0,0,0.95); align-items: center; justify-content: center;
+  flex-direction: column; text-align: center; padding: 40px;
+}
+.success-overlay.open { display: flex; }
+.success-icon { font-size: 5rem; margin-bottom: 24px; }
+.success-overlay h2 { font-family: 'Bebas Neue', sans-serif; font-size: 3rem; color: var(--yellow); margin-bottom: 16px; }
+.success-overlay p { opacity: 0.7; margin-bottom: 32px; max-width: 420px; line-height: 1.7; }
+.success-steps { display: flex; flex-direction: column; gap: 12px; margin-bottom: 32px; }
+.step-badge { background: var(--gray); border-radius: 8px; padding: 12px 20px; font-size: 0.85rem; }
+.step-badge strong { display: block; margin-bottom: 2px; color: var(--teal); }
+.products-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 24px; }
+.product-card {
+  background: var(--gray); border-radius: 12px; overflow: hidden;
+  border: 1px solid rgba(255,255,255,0.06); transition: transform 0.25s, border-color 0.25s;
+}
+.product-card:hover { transform: translateY(-6px); border-color: rgba(255,225,53,0.3); }
+.product-img { width: 100%; height: 200px; object-fit: cover; background: var(--mid); display: flex; align-items: center; justify-content: center; font-size: 3rem; }
+.product-body { padding: 20px; }
+.product-name { font-size: 1rem; font-weight: 700; margin-bottom: 6px; }
+.product-desc { font-size: 0.82rem; opacity: 0.6; margin-bottom: 12px; line-height: 1.5; }
+.product-price { font-family: 'Bebas Neue'; font-size: 1.5rem; color: var(--yellow); }
+.product-cta { background: var(--yellow); color: var(--black); border: none; padding: 8px 16px; border-radius: 4px; font-weight: 700; font-size: 0.85rem; cursor: pointer; margin-top: 12px; }
+.product-cta:hover { background: var(--orange); color: #fff; }
+.features-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 24px; }
+.feature-card { background: var(--gray); border-radius: 10px; padding: 24px; border: 1px solid rgba(255,255,255,0.06); }
+.feature-icon { font-size: 2rem; margin-bottom: 12px; }
+.feature-title { font-size: 1rem; font-weight: 700; margin-bottom: 8px; }
+.feature-desc { font-size: 0.85rem; opacity: 0.6; line-height: 1.6; }
+.review-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 20px; }
+.review-card {
+  position: relative; background: var(--gray); border-radius: 12px;
+  padding: 32px 28px; border: 1px solid rgba(255,255,255,0.06);
+}
+.review-stars { color: var(--yellow); font-size: 1.1rem; margin-bottom: 12px; }
+.review-text { font-size: 0.9rem; line-height: 1.7; opacity: 0.8; margin-bottom: 16px; }
+.reviewer { font-size: 0.82rem; opacity: 0.5; }
+footer { padding: 60px 48px 40px; border-top: 1px solid rgba(255,255,255,0.06); }
+.footer-grid { display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 48px; margin-bottom: 48px; }
+.footer-brand p { font-size: 0.85rem; opacity: 0.5; line-height: 1.7; margin-top: 12px; max-width: 280px; }
+.footer-col h4 { font-size: 0.78rem; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; opacity: 0.4; margin-bottom: 16px; }
+.footer-col a { display: block; font-size: 0.85rem; opacity: 0.6; text-decoration: none; margin-bottom: 8px; transition: opacity 0.2s; }
+.footer-col a:hover { opacity: 1; color: var(--yellow); }
+.footer-bottom { border-top: 1px solid rgba(255,255,255,0.06); padding-top: 24px; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 16px; }
+.footer-bottom p { font-size: 0.82rem; opacity: 0.4; }
+.social-links { display: flex; gap: 12px; }
+.social-link { width: 36px; height: 36px; border-radius: 6px; background: var(--mid); display: flex; align-items: center; justify-content: center; text-decoration: none; font-size: 1rem; transition: background 0.2s; }
+.social-link:hover { background: var(--orange); }
+.fade-up { opacity: 0; transform: translateY(24px); transition: opacity 0.6s ease, transform 0.6s ease; }
+.fade-up.visible { opacity: 1; transform: none; }
+@media (max-width: 768px) {
+  nav { padding: 16px 20px; }
+  nav ul { display: none; }
+  .hero { padding: 100px 20px 60px; flex-direction: column; }
+  .hero-visual { display: none; }
+  section { padding: 60px 20px; }
+  .order-grid { grid-template-columns: 1fr; }
+  .footer-grid { grid-template-columns: 1fr 1fr; }
+  .size-grid { grid-template-columns: repeat(3, 1fr); gap: 10px; }
+  .finish-grid { grid-template-columns: repeat(2, 1fr); gap: 10px; }
+  .size-btn { padding: 14px 8px; font-size: 0.9rem; min-height: 48px; }
+  .finish-btn { padding: 14px 8px; font-size: 0.9rem; min-height: 48px; }
+  .btn-primary { padding: 18px; font-size: 1rem; min-height: 56px; }
+  .checkout-box { padding: 24px 20px; }
+  .form-group input { min-height: 48px; font-size: 16px; }
+  .form-group select { min-height: 48px; font-size: 16px; }
+  input[type="number"] { min-height: 48px; font-size: 16px; }
+  .pay-btn { min-height: 56px; font-size: 1.1rem; }
+}
+/* Prevent double-tap zoom on buttons */
+button { touch-action: manipulation; }
+input, select { touch-action: manipulation; font-size: 16px; }
+```
+
   </style>
 </head>
 <body>
@@ -275,47 +267,107 @@
     </div>
   </div>
   <div class="hero-visual">
-    <div class="sticker-float s1">
-      <div class="sticker-inner">
-        <span class="sticker-emoji">🔥</span>
-        <span class="sticker-text">Die-Cut</span>
-      </div>
-    </div>
-    <div class="sticker-float s2">
-      <div class="sticker-inner">
-        <span class="sticker-emoji">🌈</span>
-        <span class="sticker-text">Holo</span>
-      </div>
-    </div>
-    <div class="sticker-float s3">
-      <div class="sticker-inner">
-        <span class="sticker-emoji">✨</span>
-        <span class="sticker-text">Gloss</span>
-      </div>
-    </div>
-    <div class="sticker-float s4">
-      <div class="sticker-inner">
-        <span class="sticker-emoji">🎨</span>
-        <span class="sticker-text">Custom</span>
-      </div>
-    </div>
-    <div class="sticker-float s5">
-      <div class="sticker-inner">
-        <span class="sticker-emoji">⚡</span>
-        <span class="sticker-text">Fast</span>
-      </div>
-    </div>
-    <div class="print-badge">
-      <span>PREMIUM</span>
-      <span style="font-size:1.2rem;margin:4px 0">🖨️</span>
-      <span>PRINT</span>
-    </div>
+
+```
+<!-- Sticker 1: Bold lightning bolt die-cut shape -->
+<div class="sticker-float s1">
+  <svg viewBox="0 0 160 160" width="160" height="160" xmlns="http://www.w3.org/2000/svg">
+    <defs>
+      <linearGradient id="g1" x1="0%" y1="0%" x2="100%" y2="100%">
+        <stop offset="0%" style="stop-color:#FF5C00"/>
+        <stop offset="100%" style="stop-color:#FF2D8B"/>
+      </linearGradient>
+      <filter id="shadow1"><feDropShadow dx="0" dy="4" stdDeviation="6" flood-color="rgba(255,92,0,0.5)"/></filter>
+    </defs>
+    <!-- Die-cut sticker shape - lightning bolt -->
+    <polygon points="90,10 45,85 75,85 55,150 115,65 82,65" fill="url(#g1)" filter="url(#shadow1)"/>
+    <polygon points="90,10 45,85 75,85 55,150 115,65 82,65" fill="none" stroke="white" stroke-width="3" opacity="0.6"/>
+    <!-- Sticker shine effect -->
+    <ellipse cx="72" cy="45" rx="12" ry="6" fill="white" opacity="0.25" transform="rotate(-30 72 45)"/>
+  </svg>
+</div>
+
+<!-- Sticker 2: Holographic star burst -->
+<div class="sticker-float s2">
+  <svg viewBox="0 0 140 140" width="140" height="140" xmlns="http://www.w3.org/2000/svg">
+    <defs>
+      <linearGradient id="g2" x1="0%" y1="0%" x2="100%" y2="100%">
+        <stop offset="0%" style="stop-color:#00D4B4"/>
+        <stop offset="33%" style="stop-color:#7B2FFF"/>
+        <stop offset="66%" style="stop-color:#FF2D8B"/>
+        <stop offset="100%" style="stop-color:#FFE135"/>
+      </linearGradient>
+      <filter id="shadow2"><feDropShadow dx="0" dy="4" stdDeviation="6" flood-color="rgba(0,212,180,0.5)"/></filter>
+    </defs>
+    <polygon points="70,8 85,50 130,50 95,76 108,118 70,93 32,118 45,76 10,50 55,50" fill="url(#g2)" filter="url(#shadow2)"/>
+    <polygon points="70,8 85,50 130,50 95,76 108,118 70,93 32,118 45,76 10,50 55,50" fill="none" stroke="white" stroke-width="2" opacity="0.5"/>
+    <text x="70" y="68" text-anchor="middle" fill="white" font-size="11" font-weight="900" font-family="Arial" opacity="0.9">HOLO</text>
+    <ellipse cx="55" cy="35" rx="10" ry="5" fill="white" opacity="0.3" transform="rotate(-20 55 35)"/>
+  </svg>
+</div>
+
+<!-- Sticker 3: Round badge sticker -->
+<div class="sticker-float s3">
+  <svg viewBox="0 0 150 150" width="150" height="150" xmlns="http://www.w3.org/2000/svg">
+    <defs>
+      <linearGradient id="g3" x1="0%" y1="0%" x2="100%" y2="100%">
+        <stop offset="0%" style="stop-color:#FFE135"/>
+        <stop offset="100%" style="stop-color:#FF5C00"/>
+      </linearGradient>
+      <filter id="shadow3"><feDropShadow dx="0" dy="4" stdDeviation="8" flood-color="rgba(255,225,53,0.5)"/></filter>
+    </defs>
+    <circle cx="75" cy="75" r="68" fill="url(#g3)" filter="url(#shadow3)"/>
+    <circle cx="75" cy="75" r="68" fill="none" stroke="white" stroke-width="3" opacity="0.6"/>
+    <circle cx="75" cy="75" r="58" fill="none" stroke="white" stroke-width="1.5" stroke-dasharray="4,3" opacity="0.4"/>
+    <text x="75" y="66" text-anchor="middle" fill="#0a0a0a" font-size="13" font-weight="900" font-family="Arial">STICKER</text>
+    <text x="75" y="84" text-anchor="middle" fill="#0a0a0a" font-size="13" font-weight="900" font-family="Arial">DROP</text>
+    <text x="75" y="98" text-anchor="middle" fill="#0a0a0a" font-size="9" font-weight="700" font-family="Arial" opacity="0.7">YOUR STICKERS UNLEASHED</text>
+    <ellipse cx="55" cy="42" rx="14" ry="7" fill="white" opacity="0.3" transform="rotate(-30 55 42)"/>
+  </svg>
+</div>
+
+<!-- Sticker 4: Heart shape sticker -->
+<div class="sticker-float s4">
+  <svg viewBox="0 0 120 120" width="120" height="120" xmlns="http://www.w3.org/2000/svg">
+    <defs>
+      <linearGradient id="g4" x1="0%" y1="0%" x2="100%" y2="100%">
+        <stop offset="0%" style="stop-color:#FF2D8B"/>
+        <stop offset="100%" style="stop-color:#7B2FFF"/>
+      </linearGradient>
+      <filter id="shadow4"><feDropShadow dx="0" dy="4" stdDeviation="6" flood-color="rgba(255,45,139,0.5)"/></filter>
+    </defs>
+    <path d="M60,100 C60,100 15,65 15,40 C15,25 27,15 40,15 C50,15 58,21 60,27 C62,21 70,15 80,15 C93,15 105,25 105,40 C105,65 60,100 60,100 Z" fill="url(#g4)" filter="url(#shadow4)"/>
+    <path d="M60,100 C60,100 15,65 15,40 C15,25 27,15 40,15 C50,15 58,21 60,27 C62,21 70,15 80,15 C93,15 105,25 105,40 C105,65 60,100 60,100 Z" fill="none" stroke="white" stroke-width="2.5" opacity="0.5"/>
+    <ellipse cx="42" cy="32" rx="8" ry="5" fill="white" opacity="0.35" transform="rotate(-30 42 32)"/>
+  </svg>
+</div>
+
+<!-- Sticker 5: Hexagon sticker -->
+<div class="sticker-float s5">
+  <svg viewBox="0 0 110 110" width="110" height="110" xmlns="http://www.w3.org/2000/svg">
+    <defs>
+      <linearGradient id="g5" x1="0%" y1="0%" x2="100%" y2="100%">
+        <stop offset="0%" style="stop-color:#7B2FFF"/>
+        <stop offset="100%" style="stop-color:#00D4B4"/>
+      </linearGradient>
+      <filter id="shadow5"><feDropShadow dx="0" dy="3" stdDeviation="5" flood-color="rgba(123,47,255,0.5)"/></filter>
+    </defs>
+    <polygon points="55,8 98,30 98,80 55,102 12,80 12,30" fill="url(#g5)" filter="url(#shadow5)"/>
+    <polygon points="55,8 98,30 98,80 55,102 12,80 12,30" fill="none" stroke="white" stroke-width="2" opacity="0.5"/>
+    <text x="55" y="52" text-anchor="middle" fill="white" font-size="10" font-weight="900" font-family="Arial">CUSTOM</text>
+    <text x="55" y="66" text-anchor="middle" fill="white" font-size="10" font-weight="900" font-family="Arial">PRINT</text>
+    <ellipse cx="40" cy="25" rx="9" ry="5" fill="white" opacity="0.3" transform="rotate(-25 40 25)"/>
+  </svg>
+</div>
+```
+
   </div>
 </section>
 
 <!-- ORDER SECTION -->
 
 <section class="order-section" id="order">
+  <div class="order-section-inner">
   <div class="section-tag" style="display:block;text-align:center">// PLACE YOUR ORDER</div>
   <h2 style="text-align:center">DESIGN YOUR <span style="color:var(--orange)">STICKERS</span></h2>
   <p style="opacity:0.6;margin-bottom:40px;max-width:500px;margin-left:auto;margin-right:auto;text-align:center">Upload your artwork, choose your options, and we'll print and ship your custom stickers in 3-5 business days.</p>
@@ -394,6 +446,7 @@
 ```
 
   </div>
+</div><!-- end order-section-inner -->
 </section>
 
 <!-- CHECKOUT MODAL -->
