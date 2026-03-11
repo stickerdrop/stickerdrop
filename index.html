@@ -43,48 +43,222 @@
     }
     .hero-content { max-width: 580px; flex-shrink: 0; }
     .hero-visual {
-      flex: 1; display: flex; align-items: center; justify-content: center;
-      max-width: 520px; flex-shrink: 0;
+      flex: 1; display: flex; align-items: flex-end; justify-content: center;
+      gap: 24px; max-width: 560px; flex-shrink: 0; padding-bottom: 20px;
     }
-    .hero-img-grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      grid-template-rows: 1fr 1fr;
-      gap: 14px;
-      width: 100%;
-    }
-    .hero-img-wrap {
-      border-radius: 16px;
-      overflow: hidden;
-      box-shadow: 0 20px 60px rgba(0,0,0,0.5);
-      border: 2px solid rgba(255,255,255,0.08);
-      animation: floatImg 6s ease-in-out infinite;
-    }
-    .hero-img-wrap img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      display: block;
-      transition: transform 0.4s ease;
-    }
-    .hero-img-wrap:hover img { transform: scale(1.05); }
-    .hi1 { animation-delay: 0s; }
-    .hi2 { animation-delay: 1.5s; aspect-ratio: 1; }
-    .hi3 { animation-delay: 3s; }
-    .hi4 { animation-delay: 0.8s; aspect-ratio: 1; }
-    @keyframes floatImg {
-      0%,100% { transform: translateY(0px); }
-      50% { transform: translateY(-10px); }
-    }
-      50% { transform: translateY(-18px) rotate(var(--rot,0deg)); }
-    }
-    .sticker-float.s1 { --rot: -8deg; }
-    .sticker-float.s2 { --rot: 12deg; }
-    .sticker-float.s3 { --rot: -5deg; }
-    .sticker-float.s4 { --rot: 15deg; }
-    .sticker-float.s5 { --rot: -3deg; }
 
 ```
+/* ── LAPTOP ── */
+.mockup-laptop {
+  display: flex; flex-direction: column; align-items: center;
+  animation: floatMock 5s ease-in-out infinite;
+  filter: drop-shadow(0 24px 48px rgba(0,0,0,0.6));
+}
+.laptop-screen {
+  width: 200px; height: 130px;
+  background: linear-gradient(160deg,#1a1a2e,#0d0d1a);
+  border-radius: 10px 10px 0 0;
+  border: 2px solid #333;
+  border-bottom: none;
+  padding: 8px;
+  position: relative;
+}
+.laptop-screen::before {
+  content: ''; position: absolute; top: 4px; left: 50%; transform: translateX(-50%);
+  width: 6px; height: 6px; border-radius: 50%;
+  background: #333;
+}
+.laptop-screen-inner {
+  width: 100%; height: 100%;
+  background: linear-gradient(135deg,#0a1628,#1a0a28);
+  border-radius: 4px; display: flex; align-items: center; justify-content: center;
+  position: relative; overflow: hidden;
+}
+.screen-glow {
+  position: absolute; width: 60px; height: 60px;
+  background: radial-gradient(circle, rgba(255,92,0,0.3), transparent);
+  top: 20%; left: 30%;
+}
+.screen-text {
+  font-family: 'Bebas Neue', sans-serif; font-size: 0.7rem;
+  letter-spacing: 2px; color: rgba(255,255,255,0.15);
+  text-align: center; line-height: 1.4; text-transform: uppercase;
+}
+.laptop-body { width: 220px; }
+.laptop-hinge {
+  width: 100%; height: 4px;
+  background: linear-gradient(90deg,#222,#444,#222);
+  border-radius: 2px;
+}
+.laptop-base {
+  width: 100%; height: 14px;
+  background: linear-gradient(180deg,#2a2a2a,#1a1a1a);
+  border-radius: 0 0 8px 8px;
+  border: 1.5px solid #333;
+  border-top: none;
+  display: flex; align-items: center; justify-content: center;
+  position: relative; overflow: hidden;
+}
+.laptop-keyboard { display: flex; flex-direction: column; gap: 1px; padding: 2px 4px; }
+.key-row { display: flex; gap: 1px; }
+.key { width: 6px; height: 3px; background: #444; border-radius: 1px; }
+.key-wide { width: 12px; }
+.key-space { width: 28px; }
+.laptop-stickers { position: absolute; bottom: 2px; right: 8px; display: flex; gap: 4px; }
+.ls {
+  width: 16px; height: 16px; border-radius: 3px;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 0.55rem; font-weight: 900; border: 1px solid rgba(255,255,255,0.3);
+  position: relative; top: -18px;
+}
+.ls1 { background: linear-gradient(135deg,#ff5c00,#ff2d8b); color: white; transform: rotate(-8deg); }
+.ls2 { background: linear-gradient(135deg,#ffe135,#ff5c00); color: #0a0a0a; transform: rotate(5deg); }
+.ls3 { background: linear-gradient(135deg,#00d4b4,#7b2fff); color: white; transform: rotate(-3deg); }
+.ls4 { background: linear-gradient(135deg,#7b2fff,#ff2d8b); color: white; transform: rotate(10deg); }
+
+/* ── WATER BOTTLE ── */
+.mockup-bottle {
+  display: flex; flex-direction: column; align-items: center;
+  animation: floatMock 6s ease-in-out infinite 1s;
+  filter: drop-shadow(0 24px 48px rgba(0,0,0,0.6));
+}
+.bottle-cap {
+  width: 28px; height: 20px;
+  background: linear-gradient(180deg,#ff5c00,#cc3300);
+  border-radius: 4px 4px 2px 2px;
+  border: 1px solid rgba(255,255,255,0.1);
+}
+.bottle-neck {
+  width: 22px; height: 24px;
+  background: linear-gradient(90deg,#1a1a2e,#2a2a4e,#1a1a2e);
+  border-left: 1px solid rgba(255,255,255,0.1);
+  border-right: 1px solid rgba(0,0,0,0.3);
+}
+.bottle-body {
+  width: 54px; height: 160px;
+  background: linear-gradient(90deg,#0d1a3a,#1a2a5a,#2a3a6a,#1a2a5a,#0d1a3a);
+  border-radius: 8px;
+  border: 1px solid rgba(255,255,255,0.08);
+  position: relative; overflow: hidden;
+}
+.bottle-shine {
+  position: absolute; top: 0; left: 6px; width: 8px; height: 100%;
+  background: linear-gradient(180deg,rgba(255,255,255,0.12),rgba(255,255,255,0.03),rgba(255,255,255,0.08));
+  border-radius: 4px;
+}
+.bottle-stickers {
+  position: absolute; left: 50%; top: 30%;
+  transform: translateX(-50%);
+  display: flex; flex-direction: column; align-items: center; gap: 6px;
+}
+.bs {
+  border-radius: 4px; display: flex; align-items: center; justify-content: center;
+  font-weight: 900; border: 1px solid rgba(255,255,255,0.3);
+}
+.bs1 {
+  width: 36px; height: 18px; font-size: 0.5rem; letter-spacing: 1px;
+  background: linear-gradient(135deg,#ffe135,#ff5c00); color: #0a0a0a;
+  transform: rotate(-5deg);
+}
+.bs2 {
+  width: 18px; height: 18px; font-size: 0.6rem;
+  background: linear-gradient(135deg,#00d4b4,#7b2fff); color: white;
+  border-radius: 50%; transform: rotate(8deg);
+}
+.bs3 {
+  width: 26px; height: 18px; font-size: 0.6rem;
+  background: linear-gradient(135deg,#ff2d8b,#7b2fff); color: white;
+  transform: rotate(-3deg);
+}
+.bottle-base {
+  width: 58px; height: 10px;
+  background: linear-gradient(180deg,#1a2a5a,#0d1a3a);
+  border-radius: 0 0 10px 10px;
+  border: 1px solid rgba(255,255,255,0.06);
+  border-top: none;
+}
+
+/* ── SKATEBOARD ── */
+.mockup-skate {
+  display: flex; flex-direction: column; align-items: center;
+  animation: floatMock 7s ease-in-out infinite 2s;
+  filter: drop-shadow(0 24px 48px rgba(0,0,0,0.6));
+}
+.skate-deck {
+  width: 72px; height: 220px;
+  background: linear-gradient(180deg,#2a1a0a,#3a2a1a,#2a1a0a);
+  border-radius: 14px 14px 12px 12px;
+  border: 1.5px solid rgba(255,255,255,0.1);
+  position: relative;
+  display: flex; flex-direction: column;
+  align-items: center; justify-content: space-between;
+  padding: 14px 0;
+}
+.skate-grip {
+  position: absolute; inset: 4px;
+  border-radius: 12px;
+  background-image: repeating-linear-gradient(
+    45deg, rgba(0,0,0,0.15) 0px, rgba(0,0,0,0.15) 1px,
+    transparent 1px, transparent 4px
+  );
+}
+.skate-stickers {
+  position: absolute; top: 50%; left: 50%;
+  transform: translate(-50%,-50%);
+  display: flex; flex-direction: column; align-items: center; gap: 8px;
+  z-index: 2;
+}
+.sks {
+  border-radius: 4px; display: flex; align-items: center; justify-content: center;
+  font-weight: 900; border: 1px solid rgba(255,255,255,0.3);
+}
+.sks1 {
+  width: 54px; height: 20px; font-size: 0.55rem; letter-spacing: 2px;
+  background: linear-gradient(135deg,#ff5c00,#ff2d8b); color: white;
+  transform: rotate(-3deg);
+}
+.sks2 {
+  width: 22px; height: 22px; font-size: 0.7rem;
+  background: linear-gradient(135deg,#ffe135,#ff5c00); color: #0a0a0a;
+  border-radius: 50%; transform: rotate(5deg);
+}
+.sks3 {
+  width: 32px; height: 20px; font-size: 0.65rem;
+  background: linear-gradient(135deg,#00d4b4,#7b2fff); color: white;
+  transform: rotate(-6deg);
+}
+.skate-trucks {
+  position: absolute; width: 100%;
+  display: flex; flex-direction: column;
+  justify-content: space-between; height: 100%;
+  top: 0; left: 0;
+  pointer-events: none;
+}
+.truck {
+  width: 100%; display: flex; align-items: center;
+  justify-content: space-between; padding: 0 2px;
+}
+.wheel {
+  width: 14px; height: 14px; border-radius: 50%;
+  background: radial-gradient(circle at 35% 35%,#555,#222);
+  border: 2px solid #444;
+}
+.axle {
+  flex: 1; height: 4px; background: #444; border-radius: 2px; margin: 0 2px;
+}
+
+@keyframes floatMock {
+  0%,100% { transform: translateY(0px); }
+  50% { transform: translateY(-12px); }
+}
+  50% { transform: translateY(-18px) rotate(var(--rot,0deg)); }
+}
+.sticker-float.s1 { --rot: -8deg; }
+.sticker-float.s2 { --rot: 12deg; }
+.sticker-float.s3 { --rot: -5deg; }
+.sticker-float.s4 { --rot: 15deg; }
+.sticker-float.s5 { --rot: -3deg; }
+
 .hero-tag { display: inline-block; background: rgba(255,225,53,0.1); border: 1px solid rgba(255,225,53,0.3); color: var(--yellow); font-size: 0.75rem; font-weight: 700; letter-spacing: 2px; padding: 6px 16px; border-radius: 2px; margin-bottom: 28px; }
 h1 { font-family: 'Bebas Neue', sans-serif; font-size: clamp(4rem, 8vw, 7rem); line-height: 0.95; letter-spacing: 2px; margin-bottom: 24px; }
 h1 span { color: var(--orange); }
@@ -286,21 +460,84 @@ input, select { touch-action: manipulation; font-size: 16px; }
     </div>
   </div>
   <div class="hero-visual">
-    <div class="hero-img-grid">
-      <div class="hero-img-wrap hi1">
-        <img src="https://images.unsplash.com/photo-1572375992501-4b0892d50c69?w=400&q=80&fit=crop" alt="Custom stickers" />
+
+```
+<!-- LAPTOP MOCKUP -->
+<div class="mockup-laptop">
+  <div class="laptop-screen">
+    <div class="laptop-screen-inner">
+      <div class="screen-glow"></div>
+      <div class="screen-text">your<br/>design<br/>here</div>
+    </div>
+  </div>
+  <div class="laptop-body">
+    <div class="laptop-hinge"></div>
+    <div class="laptop-base">
+      <div class="laptop-keyboard">
+        <div class="key-row">
+          <span class="key"></span><span class="key"></span><span class="key"></span>
+          <span class="key"></span><span class="key"></span><span class="key"></span>
+          <span class="key"></span><span class="key"></span><span class="key"></span>
+        </div>
+        <div class="key-row">
+          <span class="key"></span><span class="key"></span><span class="key"></span>
+          <span class="key"></span><span class="key"></span><span class="key"></span>
+          <span class="key"></span><span class="key"></span>
+        </div>
+        <div class="key-row">
+          <span class="key key-wide"></span><span class="key"></span>
+          <span class="key key-space"></span>
+        </div>
       </div>
-      <div class="hero-img-wrap hi2">
-        <img src="https://images.unsplash.com/photo-1618160702438-9b02ab6515c9?w=400&q=80&fit=crop" alt="Holographic stickers" />
-      </div>
-      <div class="hero-img-wrap hi3">
-        <img src="https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=400&q=80&fit=crop" alt="Die cut stickers" />
-      </div>
-      <div class="hero-img-wrap hi4">
-        <img src="https://images.unsplash.com/photo-1611532736597-de2d4265fba3?w=400&q=80&fit=crop" alt="Sticker pack" />
+      <!-- Stickers on laptop lid (shown on base for CSS simplicity) -->
+      <div class="laptop-stickers">
+        <div class="ls ls1">🔥</div>
+        <div class="ls ls2">⚡</div>
+        <div class="ls ls3">★</div>
+        <div class="ls ls4">✦</div>
       </div>
     </div>
   </div>
+</div>
+
+<!-- WATER BOTTLE -->
+<div class="mockup-bottle">
+  <div class="bottle-cap"></div>
+  <div class="bottle-neck"></div>
+  <div class="bottle-body">
+    <div class="bottle-shine"></div>
+    <div class="bottle-stickers">
+      <div class="bs bs1">SD</div>
+      <div class="bs bs2">✦</div>
+      <div class="bs bs3">🌊</div>
+    </div>
+  </div>
+  <div class="bottle-base"></div>
+</div>
+
+<!-- SKATEBOARD -->
+<div class="mockup-skate">
+  <div class="skate-deck">
+    <div class="skate-grip"></div>
+    <div class="skate-stickers">
+      <div class="sks sks1">DROP</div>
+      <div class="sks sks2">★</div>
+      <div class="sks sks3">⚡</div>
+    </div>
+    <div class="skate-trucks">
+      <div class="truck">
+        <div class="wheel"></div><div class="axle"></div><div class="wheel"></div>
+      </div>
+      <div class="truck">
+        <div class="wheel"></div><div class="axle"></div><div class="wheel"></div>
+      </div>
+    </div>
+  </div>
+</div>
+```
+
+  </div>
+
 </section>
 
 <!-- ORDER SECTION -->
