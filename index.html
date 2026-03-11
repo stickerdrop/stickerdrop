@@ -561,7 +561,7 @@ input, select { touch-action: manipulation; font-size: 16px; }
           <img id="previewImg" src="" alt="Preview"/>
           <button class="remove-btn" onclick="removeFile(event)">×</button>
         </div>
-        <input type="file" id="fileInput" accept="image/*,.pdf,.svg" style="display:none" onchange="handleFile(event)"/>
+        <input type="file" id="fileInput" accept="image/*,.pdf,.svg,.ai,.eps" style="display:none" onchange="handleFile(event)"/>
       </div>
 
 ```
@@ -1018,79 +1018,129 @@ function selectFinish(f) {
 }
 
 // ── PROOF WINDOW ──
+// Vector file extensions - these are resolution independent
+var VECTOR_TYPES = ['pdf','ai','eps','svg'];
+
+function isVectorFile(file) {
+  var ext = file.name.split('.').pop().toLowerCase();
+  return VECTOR_TYPES.indexOf(ext) !== -1;
+}
+
 function showProof(file, dataUrl) {
   var proof = document.getElementById('proofWindow');
   var img   = document.getElementById('proofImg');
   if (!proof || !img) return;
 
-  img.src = dataUrl;
   proof.style.display = 'block';
+  var ext = file.name.split('.').pop().toLowerCase().toUpperCase();
+  var badge   = document.getElementById('proofQualityBadge');
+  var warning = document.getElementById('proofWarning');
+  var resEl   = document.getElementById('proofResolution');
+  var fmtEl   = document.getElementById('proofFormat');
 
-  // Get image dimensions
-  var testImg = new Image();
-  testImg.onload = function() {
-    var w = testImg.naturalWidth;
-    var h = testImg.naturalHeight;
-    var dpi = estimateDPI(w, h);
+  // Format display
+  if (fmtEl) {
+    fmtEl.textContent = ext;
+    fmtEl.style.color = ['PNG','SVG','PDF','AI','EPS'].indexOf(ext) !== -1 ? '#00c876' : '#ffb800';
+  }
 
-    // Resolution display
-    var resEl = document.getElementById('proofResolution');
+  if (isVectorFile(file)) {
+    // ── VECTOR FILE — always print ready ──
     if (resEl) {
-      resEl.textContent = w + ' × ' + h + 'px';
-      resEl.style.color = dpi >= 300 ? '#00c876' : dpi >= 150 ? '#ffb800' : '#ff4444';
+      resEl.textContent = 'Vector';
+      resEl.style.color = '#00c876';
     }
-
-    // Format
-    var fmtEl = document.getElementById('proofFormat');
-    if (fmtEl) {
-      var ext = file.name.split('.').pop().toUpperCase();
-      fmtEl.textContent = ext;
-      fmtEl.style.color = ['PNG','SVG','PDF'].includes(ext) ? '#00c876' : '#ffb800';
-    }
-
-    // Quality badge
-    var badge = document.getElementById('proofQualityBadge');
-    var warning = document.getElementById('proofWarning');
-    var warnings = [];
-
-    if (dpi < 150) {
-      warnings.push('⚠️ Low resolution (' + w + '×' + h + 'px). Your stickers may print blurry. We recommend at least 300 DPI (e.g. ' + Math.ceil(selectedSize !== 'custom' ? (SIZE_INCHES[selectedSize]||{w:3}).w * 300 : customW * 300) + '×' + Math.ceil(selectedSize !== 'custom' ? (SIZE_INCHES[selectedSize]||{h:3}).h * 300 : customH * 300) + 'px for this size).');
-    } else if (dpi < 300) {
-      warnings.push('⚡ Medium resolution. Your stickers will print OK but for best results use 300+ DPI.');
-    }
-
     if (badge) {
-      if (warnings.length === 0) {
-        badge.textContent = '✓ PRINT READY';
-        badge.style.background = 'rgba(0,200,118,0.1)';
-        badge.style.color = '#00c876';
-        badge.style.border = '1px solid rgba(0,200,118,0.3)';
-      } else if (dpi < 150) {
-        badge.textContent = '⚠ LOW RES';
-        badge.style.background = 'rgba(255,68,68,0.1)';
-        badge.style.color = '#ff4444';
-        badge.style.border = '1px solid rgba(255,68,68,0.3)';
-      } else {
-        badge.textContent = '~ OK QUALITY';
-        badge.style.background = 'rgba(255,184,0,0.1)';
-        badge.style.color = '#ffb800';
-        badge.style.border = '1px solid rgba(255,184,0,0.3)';
-      }
+      badge.textContent = '✓ PRINT READY';
+      badge.style.background = 'rgba(0,200,118,0.1)';
+      badge.style.color = '#00c876';
+      badge.style.border = '1px solid rgba(0,200,118,0.3)';
     }
-
     if (warning) {
-      if (warnings.length > 0) {
-        warning.textContent = warnings.join(' ');
-        warning.style.display = 'block';
-      } else {
-        warning.style.display = 'none';
+      warning.style.display = 'none';
+    }
+    // Show vector preview or placeholder
+    if (ext === 'SVG') {
+      img.src = dataUrl;
+      img.style.display = 'block';
+    } else {
+      // PDF/AI/EPS - show a styled placeholder since browsers can't render them directly
+      img.style.display = 'none';
+      var canvas = document.getElementById('proofCanvas');
+      if (canvas) {
+        var existing = document.getElementById('vectorPlaceholder');
+        if (existing) existing.remove();
+        var placeholder = document.createElement('div');
+        placeholder.id = 'vectorPlaceholder';
+        placeholder.style.cssText = 'display:flex;flex-direction:column;align-items:center;justify-content:center;padding:40px;text-align:center;';
+        placeholder.innerHTML =
+          '<div style="font-size:3rem;margin-bottom:12px">' +
+          (ext==='PDF'?'📄':ext==='AI'?'🎨':'📐') + '</div>' +
+          '<div style="font-size:1rem;font-weight:700;color:#f5f0eb;margin-bottom:6px">' + file.name + '</div>' +
+          '<div style="font-size:0.82rem;color:#00c876;margin-bottom:4px">✓ Vector file — infinite resolution</div>' +
+          '<div style="font-size:0.78rem;color:#666;max-width:280px;line-height:1.5">' +
+          'Vector files print perfectly at any size. Your design will be crisp and clean at ' +
+          (selectedSize==='custom' ? customW+'"×'+customH+'"' :
+            (SIZE_INCHES[selectedSize]?SIZE_INCHES[selectedSize].w+'"×'+SIZE_INCHES[selectedSize].h+'"':selectedSize)) +
+          ' and beyond.</div>';
+        canvas.appendChild(placeholder);
       }
     }
+  } else {
+    // ── RASTER FILE — check resolution ──
+    // Remove vector placeholder if present
+    var existing = document.getElementById('vectorPlaceholder');
+    if (existing) existing.remove();
+    img.style.display = 'block';
+    img.src = dataUrl;
 
-    updateProofRuler();
-  };
-  testImg.src = dataUrl;
+    var testImg = new Image();
+    testImg.onload = function() {
+      var w = testImg.naturalWidth;
+      var h = testImg.naturalHeight;
+      var dpi = estimateDPI(w, h);
 
+      if (resEl) {
+        resEl.textContent = w + ' × ' + h + 'px';
+        resEl.style.color = dpi >= 300 ? '#00c876' : dpi >= 150 ? '#ffb800' : '#ff4444';
+      }
+
+      var recW = Math.ceil(selectedSize !== 'custom' ? (SIZE_INCHES[selectedSize]||{w:3}).w * 300 : customW * 300);
+      var recH = Math.ceil(selectedSize !== 'custom' ? (SIZE_INCHES[selectedSize]||{h:3}).h * 300 : customH * 300);
+
+      if (badge) {
+        if (dpi >= 300) {
+          badge.textContent = '✓ PRINT READY';
+          badge.style.background = 'rgba(0,200,118,0.1)';
+          badge.style.color = '#00c876';
+          badge.style.border = '1px solid rgba(0,200,118,0.3)';
+          if (warning) warning.style.display = 'none';
+        } else if (dpi >= 150) {
+          badge.textContent = '~ OK QUALITY';
+          badge.style.background = 'rgba(255,184,0,0.1)';
+          badge.style.color = '#ffb800';
+          badge.style.border = '1px solid rgba(255,184,0,0.3)';
+          if (warning) {
+            warning.textContent = '⚡ Medium resolution (' + w + '×' + h + 'px). Stickers will print OK. For best results use ' + recW + '×' + recH + 'px (300 DPI).';
+            warning.style.display = 'block';
+          }
+        } else {
+          badge.textContent = '⚠ LOW RES';
+          badge.style.background = 'rgba(255,68,68,0.1)';
+          badge.style.color = '#ff4444';
+          badge.style.border = '1px solid rgba(255,68,68,0.3)';
+          if (warning) {
+            warning.textContent = '⚠️ Low resolution (' + w + '×' + h + 'px). Stickers may print blurry. Please re-export your design at ' + recW + '×' + recH + 'px (300 DPI) for this size. Or upload as a vector file (SVG, PDF, AI) for perfect quality at any size.';
+            warning.style.display = 'block';
+          }
+        }
+      }
+      updateProofRuler();
+    };
+    testImg.src = dataUrl;
+  }
+
+  updateProofRuler();
   // Reset approval
   var cb = document.getElementById('proofApproved');
   if (cb) cb.checked = false;
