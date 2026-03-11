@@ -219,6 +219,10 @@ footer { padding: 60px 48px 40px; border-top: 1px solid rgba(255,255,255,0.06); 
   section { padding: 60px 20px; }
   .order-grid { grid-template-columns: 1fr; }
   .footer-grid { grid-template-columns: 1fr 1fr; }
+  .size-grid { grid-template-columns: repeat(3,1fr); }
+  .finish-grid { grid-template-columns: repeat(2,1fr); }
+  .size-btn, .finish-btn { min-height: 48px; font-size: 0.9rem; }
+  input, select { font-size: 16px !important; }
   .size-grid { grid-template-columns: repeat(3, 1fr); gap: 10px; }
   .finish-grid { grid-template-columns: repeat(2, 1fr); gap: 10px; }
   .size-btn { padding: 14px 8px; font-size: 0.9rem; min-height: 48px; }
@@ -371,7 +375,7 @@ input, select { touch-action: manipulation; font-size: 16px; }
   <div class="section-tag" style="display:block;text-align:center">// PLACE YOUR ORDER</div>
   <h2 style="text-align:center">DESIGN YOUR <span style="color:var(--orange)">STICKERS</span></h2>
   <p style="opacity:0.6;margin-bottom:40px;max-width:500px;margin-left:auto;margin-right:auto;text-align:center">Upload your artwork, choose your options, and we'll print and ship your custom stickers in 3-5 business days.</p>
-  <div style="display:grid;grid-template-columns:1fr 1fr;gap:40px;width:100%;">
+  <div style="display:flex;flex-direction:column;gap:32px;max-width:700px;margin:0 auto;width:100%;">
     <!-- Upload -->
     <div>
       <div class="upload-zone" id="dropZone" onclick="document.getElementById('fileInput').click()">
