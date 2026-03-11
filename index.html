@@ -1,5 +1,4 @@
 <!DOCTYPE html>
-
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
@@ -47,388 +46,386 @@
       gap: 24px; max-width: 560px; flex-shrink: 0; padding-bottom: 20px;
     }
 
-```
-/* ── LAPTOP ── */
-.mockup-laptop {
-  display: flex; flex-direction: column; align-items: center;
-  animation: floatMock 5s ease-in-out infinite;
-  filter: drop-shadow(0 24px 48px rgba(0,0,0,0.6));
-}
-.laptop-screen {
-  width: 200px; height: 130px;
-  background: linear-gradient(160deg,#1a1a2e,#0d0d1a);
-  border-radius: 10px 10px 0 0;
-  border: 2px solid #333;
-  border-bottom: none;
-  padding: 8px;
-  position: relative;
-}
-.laptop-screen::before {
-  content: ''; position: absolute; top: 4px; left: 50%; transform: translateX(-50%);
-  width: 6px; height: 6px; border-radius: 50%;
-  background: #333;
-}
-.laptop-screen-inner {
-  width: 100%; height: 100%;
-  background: linear-gradient(135deg,#0a1628,#1a0a28);
-  border-radius: 4px; display: flex; align-items: center; justify-content: center;
-  position: relative; overflow: hidden;
-}
-.screen-glow {
-  position: absolute; width: 60px; height: 60px;
-  background: radial-gradient(circle, rgba(255,92,0,0.3), transparent);
-  top: 20%; left: 30%;
-}
-.screen-text {
-  font-family: 'Bebas Neue', sans-serif; font-size: 0.7rem;
-  letter-spacing: 2px; color: rgba(255,255,255,0.15);
-  text-align: center; line-height: 1.4; text-transform: uppercase;
-}
-.laptop-body { width: 220px; }
-.laptop-hinge {
-  width: 100%; height: 4px;
-  background: linear-gradient(90deg,#222,#444,#222);
-  border-radius: 2px;
-}
-.laptop-base {
-  width: 100%; height: 14px;
-  background: linear-gradient(180deg,#2a2a2a,#1a1a1a);
-  border-radius: 0 0 8px 8px;
-  border: 1.5px solid #333;
-  border-top: none;
-  display: flex; align-items: center; justify-content: center;
-  position: relative; overflow: hidden;
-}
-.laptop-keyboard { display: flex; flex-direction: column; gap: 1px; padding: 2px 4px; }
-.key-row { display: flex; gap: 1px; }
-.key { width: 6px; height: 3px; background: #444; border-radius: 1px; }
-.key-wide { width: 12px; }
-.key-space { width: 28px; }
-.laptop-stickers { position: absolute; bottom: 2px; right: 8px; display: flex; gap: 4px; }
-.ls {
-  width: 16px; height: 16px; border-radius: 3px;
-  display: flex; align-items: center; justify-content: center;
-  font-size: 0.55rem; font-weight: 900; border: 1px solid rgba(255,255,255,0.3);
-  position: relative; top: -18px;
-}
-.ls1 { background: linear-gradient(135deg,#ff5c00,#ff2d8b); color: white; transform: rotate(-8deg); }
-.ls2 { background: linear-gradient(135deg,#ffe135,#ff5c00); color: #0a0a0a; transform: rotate(5deg); }
-.ls3 { background: linear-gradient(135deg,#00d4b4,#7b2fff); color: white; transform: rotate(-3deg); }
-.ls4 { background: linear-gradient(135deg,#7b2fff,#ff2d8b); color: white; transform: rotate(10deg); }
+    /* ── LAPTOP ── */
+    .mockup-laptop {
+      display: flex; flex-direction: column; align-items: center;
+      animation: floatMock 5s ease-in-out infinite;
+      filter: drop-shadow(0 24px 48px rgba(0,0,0,0.6));
+    }
+    .laptop-screen {
+      width: 200px; height: 130px;
+      background: linear-gradient(160deg,#1a1a2e,#0d0d1a);
+      border-radius: 10px 10px 0 0;
+      border: 2px solid #333;
+      border-bottom: none;
+      padding: 8px;
+      position: relative;
+    }
+    .laptop-screen::before {
+      content: ''; position: absolute; top: 4px; left: 50%; transform: translateX(-50%);
+      width: 6px; height: 6px; border-radius: 50%;
+      background: #333;
+    }
+    .laptop-screen-inner {
+      width: 100%; height: 100%;
+      background: linear-gradient(135deg,#0a1628,#1a0a28);
+      border-radius: 4px; display: flex; align-items: center; justify-content: center;
+      position: relative; overflow: hidden;
+    }
+    .screen-glow {
+      position: absolute; width: 60px; height: 60px;
+      background: radial-gradient(circle, rgba(255,92,0,0.3), transparent);
+      top: 20%; left: 30%;
+    }
+    .screen-text {
+      font-family: 'Bebas Neue', sans-serif; font-size: 0.7rem;
+      letter-spacing: 2px; color: rgba(255,255,255,0.15);
+      text-align: center; line-height: 1.4; text-transform: uppercase;
+    }
+    .laptop-body { width: 220px; }
+    .laptop-hinge {
+      width: 100%; height: 4px;
+      background: linear-gradient(90deg,#222,#444,#222);
+      border-radius: 2px;
+    }
+    .laptop-base {
+      width: 100%; height: 14px;
+      background: linear-gradient(180deg,#2a2a2a,#1a1a1a);
+      border-radius: 0 0 8px 8px;
+      border: 1.5px solid #333;
+      border-top: none;
+      display: flex; align-items: center; justify-content: center;
+      position: relative; overflow: hidden;
+    }
+    .laptop-keyboard { display: flex; flex-direction: column; gap: 1px; padding: 2px 4px; }
+    .key-row { display: flex; gap: 1px; }
+    .key { width: 6px; height: 3px; background: #444; border-radius: 1px; }
+    .key-wide { width: 12px; }
+    .key-space { width: 28px; }
+    .laptop-stickers { position: absolute; bottom: 2px; right: 8px; display: flex; gap: 4px; }
+    .ls {
+      width: 16px; height: 16px; border-radius: 3px;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 0.55rem; font-weight: 900; border: 1px solid rgba(255,255,255,0.3);
+      position: relative; top: -18px;
+    }
+    .ls1 { background: linear-gradient(135deg,#ff5c00,#ff2d8b); color: white; transform: rotate(-8deg); }
+    .ls2 { background: linear-gradient(135deg,#ffe135,#ff5c00); color: #0a0a0a; transform: rotate(5deg); }
+    .ls3 { background: linear-gradient(135deg,#00d4b4,#7b2fff); color: white; transform: rotate(-3deg); }
+    .ls4 { background: linear-gradient(135deg,#7b2fff,#ff2d8b); color: white; transform: rotate(10deg); }
 
-/* ── WATER BOTTLE ── */
-.mockup-bottle {
-  display: flex; flex-direction: column; align-items: center;
-  animation: floatMock 6s ease-in-out infinite 1s;
-  filter: drop-shadow(0 24px 48px rgba(0,0,0,0.6));
-}
-.bottle-cap {
-  width: 28px; height: 20px;
-  background: linear-gradient(180deg,#ff5c00,#cc3300);
-  border-radius: 4px 4px 2px 2px;
-  border: 1px solid rgba(255,255,255,0.1);
-}
-.bottle-neck {
-  width: 22px; height: 24px;
-  background: linear-gradient(90deg,#1a1a2e,#2a2a4e,#1a1a2e);
-  border-left: 1px solid rgba(255,255,255,0.1);
-  border-right: 1px solid rgba(0,0,0,0.3);
-}
-.bottle-body {
-  width: 54px; height: 160px;
-  background: linear-gradient(90deg,#0d1a3a,#1a2a5a,#2a3a6a,#1a2a5a,#0d1a3a);
-  border-radius: 8px;
-  border: 1px solid rgba(255,255,255,0.08);
-  position: relative; overflow: hidden;
-}
-.bottle-shine {
-  position: absolute; top: 0; left: 6px; width: 8px; height: 100%;
-  background: linear-gradient(180deg,rgba(255,255,255,0.12),rgba(255,255,255,0.03),rgba(255,255,255,0.08));
-  border-radius: 4px;
-}
-.bottle-stickers {
-  position: absolute; left: 50%; top: 30%;
-  transform: translateX(-50%);
-  display: flex; flex-direction: column; align-items: center; gap: 6px;
-}
-.bs {
-  border-radius: 4px; display: flex; align-items: center; justify-content: center;
-  font-weight: 900; border: 1px solid rgba(255,255,255,0.3);
-}
-.bs1 {
-  width: 36px; height: 18px; font-size: 0.5rem; letter-spacing: 1px;
-  background: linear-gradient(135deg,#ffe135,#ff5c00); color: #0a0a0a;
-  transform: rotate(-5deg);
-}
-.bs2 {
-  width: 18px; height: 18px; font-size: 0.6rem;
-  background: linear-gradient(135deg,#00d4b4,#7b2fff); color: white;
-  border-radius: 50%; transform: rotate(8deg);
-}
-.bs3 {
-  width: 26px; height: 18px; font-size: 0.6rem;
-  background: linear-gradient(135deg,#ff2d8b,#7b2fff); color: white;
-  transform: rotate(-3deg);
-}
-.bottle-base {
-  width: 58px; height: 10px;
-  background: linear-gradient(180deg,#1a2a5a,#0d1a3a);
-  border-radius: 0 0 10px 10px;
-  border: 1px solid rgba(255,255,255,0.06);
-  border-top: none;
-}
+    /* ── WATER BOTTLE ── */
+    .mockup-bottle {
+      display: flex; flex-direction: column; align-items: center;
+      animation: floatMock 6s ease-in-out infinite 1s;
+      filter: drop-shadow(0 24px 48px rgba(0,0,0,0.6));
+    }
+    .bottle-cap {
+      width: 28px; height: 20px;
+      background: linear-gradient(180deg,#ff5c00,#cc3300);
+      border-radius: 4px 4px 2px 2px;
+      border: 1px solid rgba(255,255,255,0.1);
+    }
+    .bottle-neck {
+      width: 22px; height: 24px;
+      background: linear-gradient(90deg,#1a1a2e,#2a2a4e,#1a1a2e);
+      border-left: 1px solid rgba(255,255,255,0.1);
+      border-right: 1px solid rgba(0,0,0,0.3);
+    }
+    .bottle-body {
+      width: 54px; height: 160px;
+      background: linear-gradient(90deg,#0d1a3a,#1a2a5a,#2a3a6a,#1a2a5a,#0d1a3a);
+      border-radius: 8px;
+      border: 1px solid rgba(255,255,255,0.08);
+      position: relative; overflow: hidden;
+    }
+    .bottle-shine {
+      position: absolute; top: 0; left: 6px; width: 8px; height: 100%;
+      background: linear-gradient(180deg,rgba(255,255,255,0.12),rgba(255,255,255,0.03),rgba(255,255,255,0.08));
+      border-radius: 4px;
+    }
+    .bottle-stickers {
+      position: absolute; left: 50%; top: 30%;
+      transform: translateX(-50%);
+      display: flex; flex-direction: column; align-items: center; gap: 6px;
+    }
+    .bs {
+      border-radius: 4px; display: flex; align-items: center; justify-content: center;
+      font-weight: 900; border: 1px solid rgba(255,255,255,0.3);
+    }
+    .bs1 {
+      width: 36px; height: 18px; font-size: 0.5rem; letter-spacing: 1px;
+      background: linear-gradient(135deg,#ffe135,#ff5c00); color: #0a0a0a;
+      transform: rotate(-5deg);
+    }
+    .bs2 {
+      width: 18px; height: 18px; font-size: 0.6rem;
+      background: linear-gradient(135deg,#00d4b4,#7b2fff); color: white;
+      border-radius: 50%; transform: rotate(8deg);
+    }
+    .bs3 {
+      width: 26px; height: 18px; font-size: 0.6rem;
+      background: linear-gradient(135deg,#ff2d8b,#7b2fff); color: white;
+      transform: rotate(-3deg);
+    }
+    .bottle-base {
+      width: 58px; height: 10px;
+      background: linear-gradient(180deg,#1a2a5a,#0d1a3a);
+      border-radius: 0 0 10px 10px;
+      border: 1px solid rgba(255,255,255,0.06);
+      border-top: none;
+    }
 
-/* ── SKATEBOARD ── */
-.mockup-skate {
-  display: flex; flex-direction: column; align-items: center;
-  animation: floatMock 7s ease-in-out infinite 2s;
-  filter: drop-shadow(0 24px 48px rgba(0,0,0,0.6));
-}
-.skate-deck {
-  width: 72px; height: 220px;
-  background: linear-gradient(180deg,#2a1a0a,#3a2a1a,#2a1a0a);
-  border-radius: 14px 14px 12px 12px;
-  border: 1.5px solid rgba(255,255,255,0.1);
-  position: relative;
-  display: flex; flex-direction: column;
-  align-items: center; justify-content: space-between;
-  padding: 14px 0;
-}
-.skate-grip {
-  position: absolute; inset: 4px;
-  border-radius: 12px;
-  background-image: repeating-linear-gradient(
-    45deg, rgba(0,0,0,0.15) 0px, rgba(0,0,0,0.15) 1px,
-    transparent 1px, transparent 4px
-  );
-}
-.skate-stickers {
-  position: absolute; top: 50%; left: 50%;
-  transform: translate(-50%,-50%);
-  display: flex; flex-direction: column; align-items: center; gap: 8px;
-  z-index: 2;
-}
-.sks {
-  border-radius: 4px; display: flex; align-items: center; justify-content: center;
-  font-weight: 900; border: 1px solid rgba(255,255,255,0.3);
-}
-.sks1 {
-  width: 54px; height: 20px; font-size: 0.55rem; letter-spacing: 2px;
-  background: linear-gradient(135deg,#ff5c00,#ff2d8b); color: white;
-  transform: rotate(-3deg);
-}
-.sks2 {
-  width: 22px; height: 22px; font-size: 0.7rem;
-  background: linear-gradient(135deg,#ffe135,#ff5c00); color: #0a0a0a;
-  border-radius: 50%; transform: rotate(5deg);
-}
-.sks3 {
-  width: 32px; height: 20px; font-size: 0.65rem;
-  background: linear-gradient(135deg,#00d4b4,#7b2fff); color: white;
-  transform: rotate(-6deg);
-}
-.skate-trucks {
-  position: absolute; width: 100%;
-  display: flex; flex-direction: column;
-  justify-content: space-between; height: 100%;
-  top: 0; left: 0;
-  pointer-events: none;
-}
-.truck {
-  width: 100%; display: flex; align-items: center;
-  justify-content: space-between; padding: 0 2px;
-}
-.wheel {
-  width: 14px; height: 14px; border-radius: 50%;
-  background: radial-gradient(circle at 35% 35%,#555,#222);
-  border: 2px solid #444;
-}
-.axle {
-  flex: 1; height: 4px; background: #444; border-radius: 2px; margin: 0 2px;
-}
+    /* ── SKATEBOARD ── */
+    .mockup-skate {
+      display: flex; flex-direction: column; align-items: center;
+      animation: floatMock 7s ease-in-out infinite 2s;
+      filter: drop-shadow(0 24px 48px rgba(0,0,0,0.6));
+    }
+    .skate-deck {
+      width: 72px; height: 220px;
+      background: linear-gradient(180deg,#2a1a0a,#3a2a1a,#2a1a0a);
+      border-radius: 14px 14px 12px 12px;
+      border: 1.5px solid rgba(255,255,255,0.1);
+      position: relative;
+      display: flex; flex-direction: column;
+      align-items: center; justify-content: space-between;
+      padding: 14px 0;
+    }
+    .skate-grip {
+      position: absolute; inset: 4px;
+      border-radius: 12px;
+      background-image: repeating-linear-gradient(
+        45deg, rgba(0,0,0,0.15) 0px, rgba(0,0,0,0.15) 1px,
+        transparent 1px, transparent 4px
+      );
+    }
+    .skate-stickers {
+      position: absolute; top: 50%; left: 50%;
+      transform: translate(-50%,-50%);
+      display: flex; flex-direction: column; align-items: center; gap: 8px;
+      z-index: 2;
+    }
+    .sks {
+      border-radius: 4px; display: flex; align-items: center; justify-content: center;
+      font-weight: 900; border: 1px solid rgba(255,255,255,0.3);
+    }
+    .sks1 {
+      width: 54px; height: 20px; font-size: 0.55rem; letter-spacing: 2px;
+      background: linear-gradient(135deg,#ff5c00,#ff2d8b); color: white;
+      transform: rotate(-3deg);
+    }
+    .sks2 {
+      width: 22px; height: 22px; font-size: 0.7rem;
+      background: linear-gradient(135deg,#ffe135,#ff5c00); color: #0a0a0a;
+      border-radius: 50%; transform: rotate(5deg);
+    }
+    .sks3 {
+      width: 32px; height: 20px; font-size: 0.65rem;
+      background: linear-gradient(135deg,#00d4b4,#7b2fff); color: white;
+      transform: rotate(-6deg);
+    }
+    .skate-trucks {
+      position: absolute; width: 100%;
+      display: flex; flex-direction: column;
+      justify-content: space-between; height: 100%;
+      top: 0; left: 0;
+      pointer-events: none;
+    }
+    .truck {
+      width: 100%; display: flex; align-items: center;
+      justify-content: space-between; padding: 0 2px;
+    }
+    .wheel {
+      width: 14px; height: 14px; border-radius: 50%;
+      background: radial-gradient(circle at 35% 35%,#555,#222);
+      border: 2px solid #444;
+    }
+    .axle {
+      flex: 1; height: 4px; background: #444; border-radius: 2px; margin: 0 2px;
+    }
 
-@keyframes floatMock {
-  0%,100% { transform: translateY(0px); }
-  50% { transform: translateY(-12px); }
-}
-  50% { transform: translateY(-18px) rotate(var(--rot,0deg)); }
-}
-.sticker-float.s1 { --rot: -8deg; }
-.sticker-float.s2 { --rot: 12deg; }
-.sticker-float.s3 { --rot: -5deg; }
-.sticker-float.s4 { --rot: 15deg; }
-.sticker-float.s5 { --rot: -3deg; }
+    @keyframes floatMock {
+      0%,100% { transform: translateY(0px); }
+      50% { transform: translateY(-12px); }
+    }
+      50% { transform: translateY(-18px) rotate(var(--rot,0deg)); }
+    }
+    .sticker-float.s1 { --rot: -8deg; }
+    .sticker-float.s2 { --rot: 12deg; }
+    .sticker-float.s3 { --rot: -5deg; }
+    .sticker-float.s4 { --rot: 15deg; }
+    .sticker-float.s5 { --rot: -3deg; }
 
-.hero-tag { display: inline-block; background: rgba(255,225,53,0.1); border: 1px solid rgba(255,225,53,0.3); color: var(--yellow); font-size: 0.75rem; font-weight: 700; letter-spacing: 2px; padding: 6px 16px; border-radius: 2px; margin-bottom: 28px; }
-h1 { font-family: 'Bebas Neue', sans-serif; font-size: clamp(4rem, 8vw, 7rem); line-height: 0.95; letter-spacing: 2px; margin-bottom: 24px; }
-h1 span { color: var(--orange); }
-.hero-sub { font-size: 1.1rem; opacity: 0.7; line-height: 1.7; margin-bottom: 40px; max-width: 480px; }
-.hero-btns { display: flex; gap: 16px; flex-wrap: wrap; }
-.btn-primary { background: var(--yellow); color: var(--black); border: none; padding: 16px 36px; border-radius: 4px; font-weight: 700; font-size: 1rem; cursor: pointer; letter-spacing: 0.5px; transition: all 0.2s; }
-.btn-primary:hover { background: var(--orange); color: #fff; transform: translateY(-2px); }
-.btn-outline { background: transparent; border: 1.5px solid rgba(255,255,255,0.3); color: var(--white); padding: 16px 36px; border-radius: 4px; font-weight: 600; font-size: 1rem; cursor: pointer; transition: all 0.2s; }
-.btn-outline:hover { border-color: var(--yellow); color: var(--yellow); }
-.trust-row { display: flex; gap: 32px; align-items: center; margin-top: 56px; flex-wrap: wrap; }
-.trust-item { display: flex; align-items: center; gap: 10px; font-size: 0.85rem; opacity: 0.6; }
-.trust-item img { width: 120px; height: 120px; border-radius: 16px; object-fit: cover; }
-section { padding: 100px 48px; }
-.section-tag { display: inline-block; color: var(--orange); font-size: 0.72rem; font-weight: 700; letter-spacing: 3px; text-transform: uppercase; margin-bottom: 12px; }
-h2 { font-family: 'Bebas Neue', sans-serif; font-size: clamp(2.5rem, 5vw, 4rem); letter-spacing: 2px; margin-bottom: 16px; }
-.order-section { background: var(--gray); }
-.order-section-inner { width: 100%; max-width: 1100px; margin: 0 auto; }
-.order-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; width: 100%; align-items: start; min-width: 0; }
-.upload-zone {
-  border: 2px dashed rgba(255,255,255,0.2);
-  border-radius: 12px; padding: 60px 40px;
-  text-align: center; cursor: pointer; transition: all 0.3s;
-  background: rgba(255,255,255,0.02);
-}
-.upload-zone:hover, .upload-zone.drag { border-color: var(--yellow); background: rgba(255,225,53,0.04); }
-.upload-icon { font-size: 3rem; margin-bottom: 16px; }
-.upload-title { font-size: 1.2rem; font-weight: 700; margin-bottom: 8px; }
-.upload-sub { font-size: 0.85rem; opacity: 0.5; margin-bottom: 24px; }
-.upload-preview { display: none; position: relative; }
-.upload-preview img { max-width: 100%; border-radius: 8px; max-height: 300px; object-fit: contain; }
-.remove-btn { position: absolute; top: 8px; right: 8px; background: var(--orange); color: #fff; border: none; border-radius: 50%; width: 28px; height: 28px; cursor: pointer; font-size: 1rem; }
-.config-panel h3 { font-size: 1.3rem; font-weight: 700; margin-bottom: 24px; }
-.form-group { margin-bottom: 20px; }
-.form-group label { display: block; font-size: 0.78rem; font-weight: 700; letter-spacing: 1.5px; text-transform: uppercase; opacity: 0.6; margin-bottom: 8px; }
-.form-group input, .form-group select {
-  width: 100%; background: var(--mid); border: 1px solid rgba(255,255,255,0.1);
-  color: var(--white); padding: 12px 16px; border-radius: 6px;
-  font-size: 0.95rem; font-family: inherit; transition: border-color 0.2s; appearance: none;
-}
-.form-group input:focus, .form-group select:focus { outline: none; border-color: var(--yellow); }
-.size-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px; }
-.size-btn {
-  background: var(--mid); border: 1.5px solid rgba(255,255,255,0.1);
-  color: var(--white); padding: 10px; border-radius: 6px;
-  font-size: 0.85rem; font-weight: 600; cursor: pointer; transition: all 0.2s; text-align: center;
-}
-.size-btn:hover, .size-btn.active { background: var(--yellow); color: var(--black); border-color: var(--yellow); }
-.finish-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 8px; }
-.finish-btn {
-  background: var(--mid); border: 1.5px solid rgba(255,255,255,0.1);
-  color: var(--white); padding: 12px 16px; border-radius: 6px;
-  font-size: 0.85rem; font-weight: 600; cursor: pointer; transition: all 0.2s; text-align: center;
-}
-.finish-btn:hover, .finish-btn.active { border-color: var(--teal); color: var(--teal); }
-.price-box { background: var(--black); border-radius: 10px; padding: 20px 24px; margin: 24px 0; }
-.price-label { font-size: 0.8rem; opacity: 0.6; text-transform: uppercase; letter-spacing: 1px; }
-.price-val { font-family: 'Bebas Neue', sans-serif; font-size: 2.5rem; color: var(--yellow); }
-.shipping-badge { font-size: 0.82rem; color: var(--yellow); margin-top: 6px; font-weight: 600; }
-.checkout-modal {
-  display: none; position: fixed; inset: 0; z-index: 200;
-  background: rgba(0,0,0,0.85); align-items: center; justify-content: center;
-}
-.checkout-modal.open { display: flex; }
-.checkout-box {
-  background: var(--gray); border-radius: 16px;
-  padding: 40px; max-width: 480px; width: 90%; max-height: 90vh; overflow-y: auto;
-  border: 1px solid rgba(255,255,255,0.08);
-}
-.checkout-box h3 { font-family: 'Bebas Neue', sans-serif; font-size: 2rem; letter-spacing: 2px; margin-bottom: 24px; display: flex; justify-content: space-between; align-items: center; }
-.close-btn { background: none; border: none; color: var(--white); font-size: 1.5rem; cursor: pointer; opacity: 0.5; }
-.close-btn:hover { opacity: 1; }
-.payment-opts { display: flex; gap: 12px; margin-bottom: 20px; }
-.pay-opt {
-  flex: 1; padding: 14px; border-radius: 8px;
-  border: 1.5px solid rgba(255,255,255,0.15);
-  background: var(--mid); color: var(--white);
-  font-size: 0.9rem; font-weight: 600; cursor: pointer; text-align: center; transition: all 0.2s;
-}
-.pay-opt:hover, .pay-opt.active { border-color: var(--yellow); color: var(--yellow); }
-.card-input {
-  background: var(--mid); border: 1px solid rgba(255,255,255,0.1);
-  border-radius: 6px; padding: 14px 16px; font-family: 'Space Mono', monospace;
-  font-size: 0.9rem; color: var(--white); width: 100%; margin-bottom: 12px;
-}
-.order-summary { background: var(--black); border-radius: 8px; padding: 16px 20px; margin-bottom: 24px; }
-.order-row { display: flex; justify-content: space-between; font-size: 0.85rem; padding: 5px 0; }
-.order-row.total { border-top: 1px solid rgba(255,255,255,0.1); margin-top: 8px; padding-top: 12px; font-weight: 700; color: var(--yellow); font-size: 1rem; }
-.order-row.free-ship { color: var(--teal); font-weight: 700; }
-.pay-btn { width: 100%; background: var(--yellow); color: var(--black); border: none; padding: 18px; border-radius: 8px; font-size: 1rem; font-weight: 700; cursor: pointer; transition: all 0.2s; letter-spacing: 0.5px; }
-.pay-btn:hover { background: var(--orange); color: #fff; }
-.success-overlay {
-  display: none; position: fixed; inset: 0; z-index: 300;
-  background: rgba(0,0,0,0.95); align-items: center; justify-content: center;
-  flex-direction: column; text-align: center; padding: 40px;
-}
-.success-overlay.open { display: flex; }
-.success-icon { font-size: 5rem; margin-bottom: 24px; }
-.success-overlay h2 { font-family: 'Bebas Neue', sans-serif; font-size: 3rem; color: var(--yellow); margin-bottom: 16px; }
-.success-overlay p { opacity: 0.7; margin-bottom: 32px; max-width: 420px; line-height: 1.7; }
-.success-steps { display: flex; flex-direction: column; gap: 12px; margin-bottom: 32px; }
-.step-badge { background: var(--gray); border-radius: 8px; padding: 12px 20px; font-size: 0.85rem; }
-.step-badge strong { display: block; margin-bottom: 2px; color: var(--teal); }
-.products-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 24px; }
-.product-card {
-  background: var(--gray); border-radius: 12px; overflow: hidden;
-  border: 1px solid rgba(255,255,255,0.06); transition: transform 0.25s, border-color 0.25s;
-}
-.product-card:hover { transform: translateY(-6px); border-color: rgba(255,225,53,0.3); }
-.product-img { width: 100%; height: 200px; object-fit: cover; background: var(--mid); display: flex; align-items: center; justify-content: center; font-size: 3rem; }
-.product-
-.product-name { font-size: 1rem; font-weight: 700; margin-bottom: 6px; }
-.product-desc { font-size: 0.82rem; opacity: 0.6; margin-bottom: 12px; line-height: 1.5; }
-.product-price { font-family: 'Bebas Neue'; font-size: 1.5rem; color: var(--yellow); }
-.product-cta { background: var(--yellow); color: var(--black); border: none; padding: 8px 16px; border-radius: 4px; font-weight: 700; font-size: 0.85rem; cursor: pointer; margin-top: 12px; }
-.product-cta:hover { background: var(--orange); color: #fff; }
-.features-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 24px; }
-.feature-card { background: var(--gray); border-radius: 10px; padding: 24px; border: 1px solid rgba(255,255,255,0.06); }
-.feature-icon { font-size: 2rem; margin-bottom: 12px; }
-.feature-title { font-size: 1rem; font-weight: 700; margin-bottom: 8px; }
-.feature-desc { font-size: 0.85rem; opacity: 0.6; line-height: 1.6; }
-.review-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 20px; }
-.review-card {
-  position: relative; background: var(--gray); border-radius: 12px;
-  padding: 32px 28px; border: 1px solid rgba(255,255,255,0.06);
-}
-.review-stars { color: var(--yellow); font-size: 1.1rem; margin-bottom: 12px; }
-.review-text { font-size: 0.9rem; line-height: 1.7; opacity: 0.8; margin-bottom: 16px; }
-.reviewer { font-size: 0.82rem; opacity: 0.5; }
-footer { padding: 60px 48px 40px; border-top: 1px solid rgba(255,255,255,0.06); }
-.footer-grid { display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 48px; margin-bottom: 48px; }
-.footer-brand p { font-size: 0.85rem; opacity: 0.5; line-height: 1.7; margin-top: 12px; max-width: 280px; }
-.footer-col h4 { font-size: 0.78rem; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; opacity: 0.4; margin-bottom: 16px; }
-.footer-col a { display: block; font-size: 0.85rem; opacity: 0.6; text-decoration: none; margin-bottom: 8px; transition: opacity 0.2s; }
-.footer-col a:hover { opacity: 1; color: var(--yellow); }
-.footer-bottom { border-top: 1px solid rgba(255,255,255,0.06); padding-top: 24px; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 16px; }
-.footer-bottom p { font-size: 0.82rem; opacity: 0.4; }
-.social-links { display: flex; gap: 12px; }
-.social-link { width: 36px; height: 36px; border-radius: 6px; background: var(--mid); display: flex; align-items: center; justify-content: center; text-decoration: none; font-size: 1rem; transition: background 0.2s; }
-.social-link:hover { background: var(--orange); }
-.fade-up { opacity: 0; transform: translateY(24px); transition: opacity 0.6s ease, transform 0.6s ease; }
-.fade-up.visible { opacity: 1; transform: none; }
-@media (max-width: 768px) {
-  nav { padding: 16px 20px; }
-  nav ul { display: none; }
-  .hero { padding: 100px 20px 60px; flex-direction: column; }
-  .hero-visual { display: none; }
-  section { padding: 60px 20px; }
-  .order-grid { grid-template-columns: 1fr; }
-  .footer-grid { grid-template-columns: 1fr 1fr; }
-  .size-grid { grid-template-columns: repeat(3,1fr); }
-  .finish-grid { grid-template-columns: repeat(2,1fr); }
-  .size-btn, .finish-btn { min-height: 48px; font-size: 0.9rem; }
-  input, select { font-size: 16px !important; }
-  .size-grid { grid-template-columns: repeat(3, 1fr); gap: 10px; }
-  .finish-grid { grid-template-columns: repeat(2, 1fr); gap: 10px; }
-  .size-btn { padding: 14px 8px; font-size: 0.9rem; min-height: 48px; }
-  .finish-btn { padding: 14px 8px; font-size: 0.9rem; min-height: 48px; }
-  .btn-primary { padding: 18px; font-size: 1rem; min-height: 56px; }
-  .checkout-box { padding: 24px 20px; }
-  .form-group input { min-height: 48px; font-size: 16px; }
-  .form-group select { min-height: 48px; font-size: 16px; }
-  input[type="number"] { min-height: 48px; font-size: 16px; }
-  .pay-btn { min-height: 56px; font-size: 1.1rem; }
-}
-/* Prevent double-tap zoom on buttons */
-button { touch-action: manipulation; }
-input, select { touch-action: manipulation; font-size: 16px; }
-```
-
+    .hero-tag { display: inline-block; background: rgba(255,225,53,0.1); border: 1px solid rgba(255,225,53,0.3); color: var(--yellow); font-size: 0.75rem; font-weight: 700; letter-spacing: 2px; padding: 6px 16px; border-radius: 2px; margin-bottom: 28px; }
+    h1 { font-family: 'Bebas Neue', sans-serif; font-size: clamp(4rem, 8vw, 7rem); line-height: 0.95; letter-spacing: 2px; margin-bottom: 24px; }
+    h1 span { color: var(--orange); }
+    .hero-sub { font-size: 1.1rem; opacity: 0.7; line-height: 1.7; margin-bottom: 40px; max-width: 480px; }
+    .hero-btns { display: flex; gap: 16px; flex-wrap: wrap; }
+    .btn-primary { background: var(--yellow); color: var(--black); border: none; padding: 16px 36px; border-radius: 4px; font-weight: 700; font-size: 1rem; cursor: pointer; letter-spacing: 0.5px; transition: all 0.2s; }
+    .btn-primary:hover { background: var(--orange); color: #fff; transform: translateY(-2px); }
+    .btn-outline { background: transparent; border: 1.5px solid rgba(255,255,255,0.3); color: var(--white); padding: 16px 36px; border-radius: 4px; font-weight: 600; font-size: 1rem; cursor: pointer; transition: all 0.2s; }
+    .btn-outline:hover { border-color: var(--yellow); color: var(--yellow); }
+    .trust-row { display: flex; gap: 32px; align-items: center; margin-top: 56px; flex-wrap: wrap; }
+    .trust-item { display: flex; align-items: center; gap: 10px; font-size: 0.85rem; opacity: 0.6; }
+    .trust-item img { width: 120px; height: 120px; border-radius: 16px; object-fit: cover; }
+    section { padding: 100px 48px; }
+    .section-tag { display: inline-block; color: var(--orange); font-size: 0.72rem; font-weight: 700; letter-spacing: 3px; text-transform: uppercase; margin-bottom: 12px; }
+    h2 { font-family: 'Bebas Neue', sans-serif; font-size: clamp(2.5rem, 5vw, 4rem); letter-spacing: 2px; margin-bottom: 16px; }
+    .order-section { background: var(--gray); }
+    .order-section-inner { width: 100%; max-width: 1100px; margin: 0 auto; }
+    .order-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; width: 100%; align-items: start; min-width: 0; }
+    .upload-zone {
+      border: 2px dashed rgba(255,255,255,0.2);
+      border-radius: 12px; padding: 60px 40px;
+      text-align: center; cursor: pointer; transition: all 0.3s;
+      background: rgba(255,255,255,0.02);
+    }
+    .upload-zone:hover, .upload-zone.drag { border-color: var(--yellow); background: rgba(255,225,53,0.04); }
+    .upload-icon { font-size: 3rem; margin-bottom: 16px; }
+    .upload-title { font-size: 1.2rem; font-weight: 700; margin-bottom: 8px; }
+    .upload-sub { font-size: 0.85rem; opacity: 0.5; margin-bottom: 24px; }
+    .upload-preview { display: none; position: relative; }
+    .upload-preview img { max-width: 100%; border-radius: 8px; max-height: 300px; object-fit: contain; }
+    .remove-btn { position: absolute; top: 8px; right: 8px; background: var(--orange); color: #fff; border: none; border-radius: 50%; width: 28px; height: 28px; cursor: pointer; font-size: 1rem; }
+    .config-panel h3 { font-size: 1.3rem; font-weight: 700; margin-bottom: 24px; }
+    .form-group { margin-bottom: 20px; }
+    .form-group label { display: block; font-size: 0.78rem; font-weight: 700; letter-spacing: 1.5px; text-transform: uppercase; opacity: 0.6; margin-bottom: 8px; }
+    .form-group input, .form-group select {
+      width: 100%; background: var(--mid); border: 1px solid rgba(255,255,255,0.1);
+      color: var(--white); padding: 12px 16px; border-radius: 6px;
+      font-size: 0.95rem; font-family: inherit; transition: border-color 0.2s; appearance: none;
+    }
+    .form-group input:focus, .form-group select:focus { outline: none; border-color: var(--yellow); }
+    .size-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px; }
+    .size-btn {
+      background: var(--mid); border: 1.5px solid rgba(255,255,255,0.1);
+      color: var(--white); padding: 10px; border-radius: 6px;
+      font-size: 0.85rem; font-weight: 600; cursor: pointer; transition: all 0.2s; text-align: center;
+    }
+    .size-btn:hover, .size-btn.active { background: var(--yellow); color: var(--black); border-color: var(--yellow); }
+    .finish-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 8px; }
+    .finish-btn {
+      background: var(--mid); border: 1.5px solid rgba(255,255,255,0.1);
+      color: var(--white); padding: 12px 16px; border-radius: 6px;
+      font-size: 0.85rem; font-weight: 600; cursor: pointer; transition: all 0.2s; text-align: center;
+    }
+    .finish-btn:hover, .finish-btn.active { border-color: var(--teal); color: var(--teal); }
+    .price-box { background: var(--black); border-radius: 10px; padding: 20px 24px; margin: 24px 0; }
+    .price-label { font-size: 0.8rem; opacity: 0.6; text-transform: uppercase; letter-spacing: 1px; }
+    .price-val { font-family: 'Bebas Neue', sans-serif; font-size: 2.5rem; color: var(--yellow); }
+    .shipping-badge { font-size: 0.82rem; color: var(--yellow); margin-top: 6px; font-weight: 600; }
+    .checkout-modal {
+      display: none; position: fixed; inset: 0; z-index: 200;
+      background: rgba(0,0,0,0.85); align-items: center; justify-content: center;
+    }
+    .checkout-modal.open { display: flex; }
+    .checkout-box {
+      background: var(--gray); border-radius: 16px;
+      padding: 40px; max-width: 480px; width: 90%; max-height: 90vh; overflow-y: auto;
+      border: 1px solid rgba(255,255,255,0.08);
+    }
+    .checkout-box h3 { font-family: 'Bebas Neue', sans-serif; font-size: 2rem; letter-spacing: 2px; margin-bottom: 24px; display: flex; justify-content: space-between; align-items: center; }
+    .close-btn { background: none; border: none; color: var(--white); font-size: 1.5rem; cursor: pointer; opacity: 0.5; }
+    .close-btn:hover { opacity: 1; }
+    .payment-opts { display: flex; gap: 12px; margin-bottom: 20px; }
+    .pay-opt {
+      flex: 1; padding: 14px; border-radius: 8px;
+      border: 1.5px solid rgba(255,255,255,0.15);
+      background: var(--mid); color: var(--white);
+      font-size: 0.9rem; font-weight: 600; cursor: pointer; text-align: center; transition: all 0.2s;
+    }
+    .pay-opt:hover, .pay-opt.active { border-color: var(--yellow); color: var(--yellow); }
+    .card-input {
+      background: var(--mid); border: 1px solid rgba(255,255,255,0.1);
+      border-radius: 6px; padding: 14px 16px; font-family: 'Space Mono', monospace;
+      font-size: 0.9rem; color: var(--white); width: 100%; margin-bottom: 12px;
+    }
+    .order-summary { background: var(--black); border-radius: 8px; padding: 16px 20px; margin-bottom: 24px; }
+    .order-row { display: flex; justify-content: space-between; font-size: 0.85rem; padding: 5px 0; }
+    .order-row.total { border-top: 1px solid rgba(255,255,255,0.1); margin-top: 8px; padding-top: 12px; font-weight: 700; color: var(--yellow); font-size: 1rem; }
+    .order-row.free-ship { color: var(--teal); font-weight: 700; }
+    .pay-btn { width: 100%; background: var(--yellow); color: var(--black); border: none; padding: 18px; border-radius: 8px; font-size: 1rem; font-weight: 700; cursor: pointer; transition: all 0.2s; letter-spacing: 0.5px; }
+    .pay-btn:hover { background: var(--orange); color: #fff; }
+    .success-overlay {
+      display: none; position: fixed; inset: 0; z-index: 300;
+      background: rgba(0,0,0,0.95); align-items: center; justify-content: center;
+      flex-direction: column; text-align: center; padding: 40px;
+    }
+    .success-overlay.open { display: flex; }
+    .success-icon { font-size: 5rem; margin-bottom: 24px; }
+    .success-overlay h2 { font-family: 'Bebas Neue', sans-serif; font-size: 3rem; color: var(--yellow); margin-bottom: 16px; }
+    .success-overlay p { opacity: 0.7; margin-bottom: 32px; max-width: 420px; line-height: 1.7; }
+    .success-steps { display: flex; flex-direction: column; gap: 12px; margin-bottom: 32px; }
+    .step-badge { background: var(--gray); border-radius: 8px; padding: 12px 20px; font-size: 0.85rem; }
+    .step-badge strong { display: block; margin-bottom: 2px; color: var(--teal); }
+    .products-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 24px; }
+    .product-card {
+      background: var(--gray); border-radius: 12px; overflow: hidden;
+      border: 1px solid rgba(255,255,255,0.06); transition: transform 0.25s, border-color 0.25s;
+    }
+    .product-card:hover { transform: translateY(-6px); border-color: rgba(255,225,53,0.3); }
+    .product-img { width: 100%; height: 200px; object-fit: cover; background: var(--mid); display: flex; align-items: center; justify-content: center; font-size: 3rem; }
+    .product-
+    .product-name { font-size: 1rem; font-weight: 700; margin-bottom: 6px; }
+    .product-desc { font-size: 0.82rem; opacity: 0.6; margin-bottom: 12px; line-height: 1.5; }
+    .product-price { font-family: 'Bebas Neue'; font-size: 1.5rem; color: var(--yellow); }
+    .product-cta { background: var(--yellow); color: var(--black); border: none; padding: 8px 16px; border-radius: 4px; font-weight: 700; font-size: 0.85rem; cursor: pointer; margin-top: 12px; }
+    .product-cta:hover { background: var(--orange); color: #fff; }
+    .features-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 24px; }
+    .feature-card { background: var(--gray); border-radius: 10px; padding: 24px; border: 1px solid rgba(255,255,255,0.06); }
+    .feature-icon { font-size: 2rem; margin-bottom: 12px; }
+    .feature-title { font-size: 1rem; font-weight: 700; margin-bottom: 8px; }
+    .feature-desc { font-size: 0.85rem; opacity: 0.6; line-height: 1.6; }
+    .review-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 20px; }
+    .review-card {
+      position: relative; background: var(--gray); border-radius: 12px;
+      padding: 32px 28px; border: 1px solid rgba(255,255,255,0.06);
+    }
+    .review-stars { color: var(--yellow); font-size: 1.1rem; margin-bottom: 12px; }
+    .review-text { font-size: 0.9rem; line-height: 1.7; opacity: 0.8; margin-bottom: 16px; }
+    .reviewer { font-size: 0.82rem; opacity: 0.5; }
+    footer { padding: 60px 48px 40px; border-top: 1px solid rgba(255,255,255,0.06); }
+    .footer-grid { display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 48px; margin-bottom: 48px; }
+    .footer-brand p { font-size: 0.85rem; opacity: 0.5; line-height: 1.7; margin-top: 12px; max-width: 280px; }
+    .footer-col h4 { font-size: 0.78rem; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; opacity: 0.4; margin-bottom: 16px; }
+    .footer-col a { display: block; font-size: 0.85rem; opacity: 0.6; text-decoration: none; margin-bottom: 8px; transition: opacity 0.2s; }
+    .footer-col a:hover { opacity: 1; color: var(--yellow); }
+    .footer-bottom { border-top: 1px solid rgba(255,255,255,0.06); padding-top: 24px; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 16px; }
+    .footer-bottom p { font-size: 0.82rem; opacity: 0.4; }
+    .social-links { display: flex; gap: 12px; }
+    .social-link { width: 36px; height: 36px; border-radius: 6px; background: var(--mid); display: flex; align-items: center; justify-content: center; text-decoration: none; font-size: 1rem; transition: background 0.2s; }
+    .social-link:hover { background: var(--orange); }
+    .fade-up { opacity: 0; transform: translateY(24px); transition: opacity 0.6s ease, transform 0.6s ease; }
+    .fade-up.visible { opacity: 1; transform: none; }
+    @media (max-width: 768px) {
+      nav { padding: 16px 20px; }
+      nav ul { display: none; }
+      .hero { padding: 100px 20px 60px; flex-direction: column; }
+      .hero-visual { display: none; }
+      section { padding: 60px 20px; }
+      .order-grid { grid-template-columns: 1fr; }
+      .footer-grid { grid-template-columns: 1fr 1fr; }
+      .size-grid { grid-template-columns: repeat(3,1fr); }
+      .finish-grid { grid-template-columns: repeat(2,1fr); }
+      .size-btn, .finish-btn { min-height: 48px; font-size: 0.9rem; }
+      input, select { font-size: 16px !important; }
+      .size-grid { grid-template-columns: repeat(3, 1fr); gap: 10px; }
+      .finish-grid { grid-template-columns: repeat(2, 1fr); gap: 10px; }
+      .size-btn { padding: 14px 8px; font-size: 0.9rem; min-height: 48px; }
+      .finish-btn { padding: 14px 8px; font-size: 0.9rem; min-height: 48px; }
+      .btn-primary { padding: 18px; font-size: 1rem; min-height: 56px; }
+      .checkout-box { padding: 24px 20px; }
+      .form-group input { min-height: 48px; font-size: 16px; }
+      .form-group select { min-height: 48px; font-size: 16px; }
+      input[type="number"] { min-height: 48px; font-size: 16px; }
+      .pay-btn { min-height: 56px; font-size: 1.1rem; }
+    }
+    /* Prevent double-tap zoom on buttons */
+    button { touch-action: manipulation; }
+    input, select { touch-action: manipulation; font-size: 16px; }
   </style>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.min.js"></script>
 </head>
 <body>
 
@@ -461,87 +458,84 @@ input, select { touch-action: manipulation; font-size: 16px; }
   </div>
   <div class="hero-visual">
 
-```
-<!-- LAPTOP MOCKUP -->
-<div class="mockup-laptop">
-  <div class="laptop-screen">
-    <div class="laptop-screen-inner">
-      <div class="screen-glow"></div>
-      <div class="screen-text">your<br/>design<br/>here</div>
-    </div>
-  </div>
-  <div class="laptop-body">
-    <div class="laptop-hinge"></div>
-    <div class="laptop-base">
-      <div class="laptop-keyboard">
-        <div class="key-row">
-          <span class="key"></span><span class="key"></span><span class="key"></span>
-          <span class="key"></span><span class="key"></span><span class="key"></span>
-          <span class="key"></span><span class="key"></span><span class="key"></span>
-        </div>
-        <div class="key-row">
-          <span class="key"></span><span class="key"></span><span class="key"></span>
-          <span class="key"></span><span class="key"></span><span class="key"></span>
-          <span class="key"></span><span class="key"></span>
-        </div>
-        <div class="key-row">
-          <span class="key key-wide"></span><span class="key"></span>
-          <span class="key key-space"></span>
+    <!-- LAPTOP MOCKUP -->
+    <div class="mockup-laptop">
+      <div class="laptop-screen">
+        <div class="laptop-screen-inner">
+          <div class="screen-glow"></div>
+          <div class="screen-text">your<br/>design<br/>here</div>
         </div>
       </div>
-      <!-- Stickers on laptop lid (shown on base for CSS simplicity) -->
-      <div class="laptop-stickers">
-        <div class="ls ls1">🔥</div>
-        <div class="ls ls2">⚡</div>
-        <div class="ls ls3">★</div>
-        <div class="ls ls4">✦</div>
+      <div class="laptop-body">
+        <div class="laptop-hinge"></div>
+        <div class="laptop-base">
+          <div class="laptop-keyboard">
+            <div class="key-row">
+              <span class="key"></span><span class="key"></span><span class="key"></span>
+              <span class="key"></span><span class="key"></span><span class="key"></span>
+              <span class="key"></span><span class="key"></span><span class="key"></span>
+            </div>
+            <div class="key-row">
+              <span class="key"></span><span class="key"></span><span class="key"></span>
+              <span class="key"></span><span class="key"></span><span class="key"></span>
+              <span class="key"></span><span class="key"></span>
+            </div>
+            <div class="key-row">
+              <span class="key key-wide"></span><span class="key"></span>
+              <span class="key key-space"></span>
+            </div>
+          </div>
+          <!-- Stickers on laptop lid (shown on base for CSS simplicity) -->
+          <div class="laptop-stickers">
+            <div class="ls ls1">🔥</div>
+            <div class="ls ls2">⚡</div>
+            <div class="ls ls3">★</div>
+            <div class="ls ls4">✦</div>
+          </div>
+        </div>
       </div>
     </div>
-  </div>
-</div>
 
-<!-- WATER BOTTLE -->
-<div class="mockup-bottle">
-  <div class="bottle-cap"></div>
-  <div class="bottle-neck"></div>
-  <div class="bottle-body">
-    <div class="bottle-shine"></div>
-    <div class="bottle-stickers">
-      <div class="bs bs1">SD</div>
-      <div class="bs bs2">✦</div>
-      <div class="bs bs3">🌊</div>
+    <!-- WATER BOTTLE -->
+    <div class="mockup-bottle">
+      <div class="bottle-cap"></div>
+      <div class="bottle-neck"></div>
+      <div class="bottle-body">
+        <div class="bottle-shine"></div>
+        <div class="bottle-stickers">
+          <div class="bs bs1">SD</div>
+          <div class="bs bs2">✦</div>
+          <div class="bs bs3">🌊</div>
+        </div>
+      </div>
+      <div class="bottle-base"></div>
     </div>
-  </div>
-  <div class="bottle-base"></div>
-</div>
 
-<!-- SKATEBOARD -->
-<div class="mockup-skate">
-  <div class="skate-deck">
-    <div class="skate-grip"></div>
-    <div class="skate-stickers">
-      <div class="sks sks1">DROP</div>
-      <div class="sks sks2">★</div>
-      <div class="sks sks3">⚡</div>
-    </div>
-    <div class="skate-trucks">
-      <div class="truck">
-        <div class="wheel"></div><div class="axle"></div><div class="wheel"></div>
+    <!-- SKATEBOARD -->
+    <div class="mockup-skate">
+      <div class="skate-deck">
+        <div class="skate-grip"></div>
+        <div class="skate-stickers">
+          <div class="sks sks1">DROP</div>
+          <div class="sks sks2">★</div>
+          <div class="sks sks3">⚡</div>
+        </div>
+        <div class="skate-trucks">
+          <div class="truck">
+            <div class="wheel"></div><div class="axle"></div><div class="wheel"></div>
+          </div>
+          <div class="truck">
+            <div class="wheel"></div><div class="axle"></div><div class="wheel"></div>
+          </div>
+        </div>
       </div>
-      <div class="truck">
-        <div class="wheel"></div><div class="axle"></div><div class="wheel"></div>
-      </div>
     </div>
-  </div>
-</div>
-```
 
   </div>
 
 </section>
 
 <!-- ORDER SECTION -->
-
 <section class="order-section" id="order" style="padding:100px 48px;">
   <div style="max-width:1100px;margin:0 auto;width:100%;">
   <div class="section-tag" style="display:block;text-align:center">// PLACE YOUR ORDER</div>
@@ -564,190 +558,182 @@ input, select { touch-action: manipulation; font-size: 16px; }
         <input type="file" id="fileInput" accept="image/*,.pdf,.svg,.ai,.eps" style="display:none" onchange="handleFile(event)"/>
       </div>
 
-```
-  <!-- PROOF WINDOW -->
-  <div id="proofWindow" style="display:none;margin-top:20px;background:#111;border-radius:12px;border:1px solid rgba(255,255,255,0.1);overflow:hidden">
-    <div style="background:#1a1a1a;padding:12px 16px;display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid rgba(255,255,255,0.08)">
-      <div>
-        <div style="font-size:0.7rem;letter-spacing:2px;color:#FF5C00;font-weight:700;text-transform:uppercase">Design Proof</div>
-        <div style="font-size:0.8rem;color:#888;margin-top:2px">Review your design before ordering</div>
-      </div>
-      <div id="proofQualityBadge" style="padding:4px 12px;border-radius:20px;font-size:0.7rem;font-weight:700;letter-spacing:1px"></div>
-    </div>
-    <div style="padding:20px">
-      <!-- Preview with size indicator -->
-      <div style="position:relative;display:inline-block;width:100%">
-        <div id="proofCanvas" style="background:repeating-conic-gradient(#1a1a1a 0% 25%,#222 0% 50%) 0 0 / 16px 16px;border-radius:8px;display:flex;align-items:center;justify-content:center;min-height:200px;overflow:hidden;position:relative">
-          <img id="proofImg" style="max-width:100%;max-height:300px;object-fit:contain;display:block"/>
-          <!-- Size overlay ruler -->
-          <div id="proofRuler" style="position:absolute;bottom:8px;left:50%;transform:translateX(-50%);background:rgba(0,0,0,0.7);color:#ffe135;font-size:0.7rem;padding:3px 10px;border-radius:20px;font-weight:700;letter-spacing:1px;white-space:nowrap"></div>
+      <!-- PROOF WINDOW -->
+      <div id="proofWindow" style="display:none;margin-top:20px;background:#111;border-radius:12px;border:1px solid rgba(255,255,255,0.1);overflow:hidden">
+        <div style="background:#1a1a1a;padding:12px 16px;display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid rgba(255,255,255,0.08)">
+          <div>
+            <div style="font-size:0.7rem;letter-spacing:2px;color:#FF5C00;font-weight:700;text-transform:uppercase">Design Proof</div>
+            <div style="font-size:0.8rem;color:#888;margin-top:2px">Review your design before ordering</div>
+          </div>
+          <div id="proofQualityBadge" style="padding:4px 12px;border-radius:20px;font-size:0.7rem;font-weight:700;letter-spacing:1px"></div>
+        </div>
+        <div style="padding:20px">
+          <!-- Preview with size indicator -->
+          <div style="position:relative;display:inline-block;width:100%">
+            <div id="proofCanvas" style="background:repeating-conic-gradient(#1a1a1a 0% 25%,#222 0% 50%) 0 0 / 16px 16px;border-radius:8px;display:flex;align-items:center;justify-content:center;min-height:200px;overflow:hidden;position:relative">
+              <img id="proofImg" style="max-width:100%;max-height:300px;object-fit:contain;display:block"/>
+              <!-- Size overlay ruler -->
+              <div id="proofRuler" style="position:absolute;bottom:8px;left:50%;transform:translateX(-50%);background:rgba(0,0,0,0.7);color:#ffe135;font-size:0.7rem;padding:3px 10px;border-radius:20px;font-weight:700;letter-spacing:1px;white-space:nowrap"></div>
+            </div>
+          </div>
+
+          <!-- Quality indicators -->
+          <div style="margin-top:16px;display:grid;grid-template-columns:1fr 1fr 1fr;gap:10px">
+            <div style="background:#1a1a1a;border-radius:8px;padding:10px;text-align:center">
+              <div style="font-size:0.65rem;color:#666;text-transform:uppercase;letter-spacing:1px;margin-bottom:4px">Resolution</div>
+              <div id="proofResolution" style="font-size:0.85rem;font-weight:700;color:#f5f0eb">—</div>
+            </div>
+            <div style="background:#1a1a1a;border-radius:8px;padding:10px;text-align:center">
+              <div style="font-size:0.65rem;color:#666;text-transform:uppercase;letter-spacing:1px;margin-bottom:4px">Size</div>
+              <div id="proofSize" style="font-size:0.85rem;font-weight:700;color:#f5f0eb">—</div>
+            </div>
+            <div style="background:#1a1a1a;border-radius:8px;padding:10px;text-align:center">
+              <div style="font-size:0.65rem;color:#666;text-transform:uppercase;letter-spacing:1px;margin-bottom:4px">Format</div>
+              <div id="proofFormat" style="font-size:0.85rem;font-weight:700;color:#f5f0eb">—</div>
+            </div>
+          </div>
+
+          <!-- Quality warning -->
+          <div id="proofWarning" style="display:none;margin-top:12px;padding:10px 14px;border-radius:8px;font-size:0.82rem;line-height:1.5;border-left:3px solid #FF5C00;background:rgba(255,92,0,0.08);color:#ffb07a"></div>
+
+          <!-- Approval checkbox -->
+          <div style="margin-top:16px;display:flex;align-items:flex-start;gap:12px;padding:14px;background:#1a1a1a;border-radius:8px;border:1px solid rgba(255,255,255,0.08)">
+            <input type="checkbox" id="proofApproved" style="width:18px;height:18px;margin-top:1px;accent-color:#00D4B4;cursor:pointer" onchange="updateApproval()"/>
+            <label for="proofApproved" style="font-size:0.85rem;color:#ccc;line-height:1.5;cursor:pointer">
+              <strong style="color:#f5f0eb">I approve this design for printing.</strong><br/>
+              I confirm my artwork looks correct and I understand that StickerDrop will print exactly what is shown above.
+            </label>
+          </div>
         </div>
       </div>
+    </div>
 
-      <!-- Quality indicators -->
-      <div style="margin-top:16px;display:grid;grid-template-columns:1fr 1fr 1fr;gap:10px">
-        <div style="background:#1a1a1a;border-radius:8px;padding:10px;text-align:center">
-          <div style="font-size:0.65rem;color:#666;text-transform:uppercase;letter-spacing:1px;margin-bottom:4px">Resolution</div>
-          <div id="proofResolution" style="font-size:0.85rem;font-weight:700;color:#f5f0eb">—</div>
+    <!-- Config -->
+    <div class="config-panel">
+      <h3>CONFIGURE YOUR ORDER</h3>
+
+      <div class="form-group">
+        <label>Sticker Type</label>
+        <select id="stickerType" onchange="updatePrice()" oninput="updatePrice()">
+          <option value="die-cut">Die-Cut Stickers</option>
+          <option value="kiss-cut">Kiss-Cut Stickers</option>
+          <option value="clear">Clear Stickers</option>
+          <option value="holographic">Holographic Stickers</option>
+          <option value="bumper">Bumper Stickers</option>
+        </select>
+      </div>
+
+      <div class="form-group">
+        <label>Size</label>
+        <div class="size-grid">
+          <button class="size-btn active" data-size="2x2" onclick="selectSize('2x2')">2" × 2"</button>
+          <button class="size-btn" data-size="3x3" onclick="selectSize('3x3')">3" × 3"</button>
+          <button class="size-btn" data-size="4x4" onclick="selectSize('4x4')">4" × 4"</button>
+          <button class="size-btn" data-size="5x5" onclick="selectSize('5x5')">5" × 5"</button>
+          <button class="size-btn" data-size="3x5" onclick="selectSize('3x5')">3" × 5"</button>
+          <button class="size-btn" data-size="custom" onclick="selectSize('custom')">Custom</button>
         </div>
-        <div style="background:#1a1a1a;border-radius:8px;padding:10px;text-align:center">
-          <div style="font-size:0.65rem;color:#666;text-transform:uppercase;letter-spacing:1px;margin-bottom:4px">Size</div>
-          <div id="proofSize" style="font-size:0.85rem;font-weight:700;color:#f5f0eb">—</div>
-        </div>
-        <div style="background:#1a1a1a;border-radius:8px;padding:10px;text-align:center">
-          <div style="font-size:0.65rem;color:#666;text-transform:uppercase;letter-spacing:1px;margin-bottom:4px">Format</div>
-          <div id="proofFormat" style="font-size:0.85rem;font-weight:700;color:#f5f0eb">—</div>
+        <div id="customSizeInputs" style="display:none;margin-top:12px;background:#1a1a1a;border-radius:8px;padding:14px;border:1px solid rgba(255,255,255,0.1)">
+          <div style="font-size:0.72rem;letter-spacing:1.5px;color:#888;text-transform:uppercase;margin-bottom:10px">Enter your dimensions (inches)</div>
+          <div style="display:flex;align-items:center;gap:10px">
+            <div style="flex:1">
+              <div style="font-size:0.7rem;color:#666;margin-bottom:4px">Width</div>
+              <input type="number" id="customWidth" min="0.5" max="24" step="0.25" value="3"
+                style="width:100%;background:#2a2a2a;border:1px solid rgba(255,255,255,0.15);color:#f5f0eb;padding:10px 12px;border-radius:6px;font-size:1rem;font-family:inherit"
+                oninput="updateCustomSize()" placeholder="e.g. 3.5"/>
+            </div>
+            <div style="color:#888;font-size:1.2rem;padding-top:16px">×</div>
+            <div style="flex:1">
+              <div style="font-size:0.7rem;color:#666;margin-bottom:4px">Height</div>
+              <input type="number" id="customHeight" min="0.5" max="24" step="0.25" value="3"
+                style="width:100%;background:#2a2a2a;border:1px solid rgba(255,255,255,0.15);color:#f5f0eb;padding:10px 12px;border-radius:6px;font-size:1rem;font-family:inherit"
+                oninput="updateCustomSize()" placeholder="e.g. 4"/>
+            </div>
+          </div>
+          <div id="customSizePreview" style="margin-top:10px;font-size:0.82rem;color:#00D4B4"></div>
         </div>
       </div>
 
-      <!-- Quality warning -->
-      <div id="proofWarning" style="display:none;margin-top:12px;padding:10px 14px;border-radius:8px;font-size:0.82rem;line-height:1.5;border-left:3px solid #FF5C00;background:rgba(255,92,0,0.08);color:#ffb07a"></div>
-
-      <!-- Approval checkbox -->
-      <div style="margin-top:16px;display:flex;align-items:flex-start;gap:12px;padding:14px;background:#1a1a1a;border-radius:8px;border:1px solid rgba(255,255,255,0.08)">
-        <input type="checkbox" id="proofApproved" style="width:18px;height:18px;margin-top:1px;accent-color:#00D4B4;cursor:pointer" onchange="updateApproval()"/>
-        <label for="proofApproved" style="font-size:0.85rem;color:#ccc;line-height:1.5;cursor:pointer">
-          <strong style="color:#f5f0eb">I approve this design for printing.</strong><br/>
-          I confirm my artwork looks correct and I understand that StickerDrop will print exactly what is shown above.
-        </label>
-      </div>
-    </div>
-  </div>
-</div>
-
-<!-- Config -->
-<div class="config-panel">
-  <h3>CONFIGURE YOUR ORDER</h3>
-
-  <div class="form-group">
-    <label>Sticker Type</label>
-    <select id="stickerType" onchange="updatePrice()" oninput="updatePrice()">
-      <option value="die-cut">Die-Cut Stickers</option>
-      <option value="kiss-cut">Kiss-Cut Stickers</option>
-      <option value="clear">Clear Stickers</option>
-      <option value="holographic">Holographic Stickers</option>
-      <option value="bumper">Bumper Stickers</option>
-    </select>
-  </div>
-
-  <div class="form-group">
-    <label>Size</label>
-    <div class="size-grid">
-      <button class="size-btn active" data-size="2x2" onclick="selectSize('2x2')">2" × 2"</button>
-      <button class="size-btn" data-size="3x3" onclick="selectSize('3x3')">3" × 3"</button>
-      <button class="size-btn" data-size="4x4" onclick="selectSize('4x4')">4" × 4"</button>
-      <button class="size-btn" data-size="5x5" onclick="selectSize('5x5')">5" × 5"</button>
-      <button class="size-btn" data-size="3x5" onclick="selectSize('3x5')">3" × 5"</button>
-      <button class="size-btn" data-size="custom" onclick="selectSize('custom')">Custom</button>
-    </div>
-    <div id="customSizeInputs" style="display:none;margin-top:12px;background:#1a1a1a;border-radius:8px;padding:14px;border:1px solid rgba(255,255,255,0.1)">
-      <div style="font-size:0.72rem;letter-spacing:1.5px;color:#888;text-transform:uppercase;margin-bottom:10px">Enter your dimensions (inches)</div>
-      <div style="display:flex;align-items:center;gap:10px">
-        <div style="flex:1">
-          <div style="font-size:0.7rem;color:#666;margin-bottom:4px">Width</div>
-          <input type="number" id="customWidth" min="0.5" max="24" step="0.25" value="3"
-            style="width:100%;background:#2a2a2a;border:1px solid rgba(255,255,255,0.15);color:#f5f0eb;padding:10px 12px;border-radius:6px;font-size:1rem;font-family:inherit"
-            oninput="updateCustomSize()" placeholder="e.g. 3.5"/>
-        </div>
-        <div style="color:#888;font-size:1.2rem;padding-top:16px">×</div>
-        <div style="flex:1">
-          <div style="font-size:0.7rem;color:#666;margin-bottom:4px">Height</div>
-          <input type="number" id="customHeight" min="0.5" max="24" step="0.25" value="3"
-            style="width:100%;background:#2a2a2a;border:1px solid rgba(255,255,255,0.15);color:#f5f0eb;padding:10px 12px;border-radius:6px;font-size:1rem;font-family:inherit"
-            oninput="updateCustomSize()" placeholder="e.g. 4"/>
+      <div class="form-group">
+        <label>Finish</label>
+        <div class="finish-grid">
+          <button class="finish-btn active" data-finish="gloss" onclick="selectFinish('gloss')">✨ Gloss</button>
+          <button class="finish-btn" data-finish="matte" onclick="selectFinish('matte')">🌫 Matte</button>
+          <button class="finish-btn" data-finish="holographic" onclick="selectFinish('holographic')">🌈 Holographic</button>
+          <button class="finish-btn" data-finish="clear" onclick="selectFinish('clear')">🔍 Clear</button>
         </div>
       </div>
-      <div id="customSizePreview" style="margin-top:10px;font-size:0.82rem;color:#00D4B4"></div>
+
+      <div class="form-group">
+        <label>Quantity</label>
+        <input type="number" id="qty" value="50" min="1" max="10000" onchange="updatePrice()" oninput="updatePrice()" />
+      </div>
+
+      <div class="price-box">
+        <div class="price-label">SUBTOTAL</div>
+        <div id="priceDisplay" class="price-val">$17.50</div>
+        <div id="shippingBadge" class="shipping-badge">Add more for FREE shipping on orders over $80</div>
+      </div>
+
+      <div id="proofRequiredMsg" style="display:none;margin-bottom:10px;padding:10px 14px;background:rgba(255,92,0,0.08);border:1px solid rgba(255,92,0,0.2);border-radius:8px;font-size:0.82rem;color:#FF5C00;text-align:center">
+        ⚠️ Please upload your design and approve the proof before checking out
+      </div>
+      <button class="btn-primary" style="width:100%;font-size:1.1rem;padding:18px" id="checkoutBtn" onclick="openCheckout()">
+        PROCEED TO CHECKOUT →
+      </button>
     </div>
-  </div>
-
-  <div class="form-group">
-    <label>Finish</label>
-    <div class="finish-grid">
-      <button class="finish-btn active" data-finish="gloss" onclick="selectFinish('gloss')">✨ Gloss</button>
-      <button class="finish-btn" data-finish="matte" onclick="selectFinish('matte')">🌫 Matte</button>
-      <button class="finish-btn" data-finish="holographic" onclick="selectFinish('holographic')">🌈 Holographic</button>
-      <button class="finish-btn" data-finish="clear" onclick="selectFinish('clear')">🔍 Clear</button>
-    </div>
-  </div>
-
-  <div class="form-group">
-    <label>Quantity</label>
-    <input type="number" id="qty" value="50" min="1" max="10000" onchange="updatePrice()" oninput="updatePrice()" />
-  </div>
-
-  <div class="price-box">
-    <div class="price-label">SUBTOTAL</div>
-    <div id="priceDisplay" class="price-val">$17.50</div>
-    <div id="shippingBadge" class="shipping-badge">Add more for FREE shipping on orders over $80</div>
-  </div>
-
-  <div id="proofRequiredMsg" style="display:none;margin-bottom:10px;padding:10px 14px;background:rgba(255,92,0,0.08);border:1px solid rgba(255,92,0,0.2);border-radius:8px;font-size:0.82rem;color:#FF5C00;text-align:center">
-    ⚠️ Please upload your design and approve the proof before checking out
-  </div>
-  <button class="btn-primary" style="width:100%;font-size:1.1rem;padding:18px" id="checkoutBtn" onclick="openCheckout()">
-    PROCEED TO CHECKOUT →
-  </button>
-</div>
-```
-
   </div>
 </div><!-- end grid -->
   </div><!-- end inner -->
 </section>
 
 <!-- CHECKOUT MODAL -->
-
 <div class="checkout-modal" id="checkoutModal">
   <div class="checkout-box">
     <h3>CHECKOUT <button class="close-btn" id="closeCheckoutBtn">×</button></h3>
 
-```
-<div class="form-group">
-  <label>Full Name</label>
-  <input type="text" id="custName" placeholder="Your full name" style="background:var(--mid);border:1px solid rgba(255,255,255,0.1);color:var(--white);padding:12px 16px;border-radius:6px;width:100%;font-family:inherit;font-size:0.95rem"/>
-</div>
-<div class="form-group">
-  <label>Email</label>
-  <input type="email" id="custEmail" placeholder="your@email.com" style="background:var(--mid);border:1px solid rgba(255,255,255,0.1);color:var(--white);padding:12px 16px;border-radius:6px;width:100%;font-family:inherit;font-size:0.95rem"/>
-</div>
-<div class="form-group">
-  <label>Shipping Address</label>
-  <input type="text" id="custAddress" placeholder="Street address, City, State, ZIP" style="background:var(--mid);border:1px solid rgba(255,255,255,0.1);color:var(--white);padding:12px 16px;border-radius:6px;width:100%;font-family:inherit;font-size:0.95rem"/>
-</div>
+    <div class="form-group">
+      <label>Full Name</label>
+      <input type="text" id="custName" placeholder="Your full name" style="background:var(--mid);border:1px solid rgba(255,255,255,0.1);color:var(--white);padding:12px 16px;border-radius:6px;width:100%;font-family:inherit;font-size:0.95rem"/>
+    </div>
+    <div class="form-group">
+      <label>Email</label>
+      <input type="email" id="custEmail" placeholder="your@email.com" style="background:var(--mid);border:1px solid rgba(255,255,255,0.1);color:var(--white);padding:12px 16px;border-radius:6px;width:100%;font-family:inherit;font-size:0.95rem"/>
+    </div>
+    <div class="form-group">
+      <label>Shipping Address</label>
+      <input type="text" id="custAddress" placeholder="Street address, City, State, ZIP" style="background:var(--mid);border:1px solid rgba(255,255,255,0.1);color:var(--white);padding:12px 16px;border-radius:6px;width:100%;font-family:inherit;font-size:0.95rem"/>
+    </div>
 
-<div class="order-summary" id="orderSummary">
-  <div class="order-row"><span id="summaryItem">Die-Cut Stickers x 50</span><span id="summaryBase">$17.50</span></div>
-  <div class="order-row" id="shippingRow"><span>Shipping</span><span id="summaryShipping">$15.00</span></div>
-  <div class="order-row total"><span>Total</span><span id="summaryTotal">$32.50</span></div>
-</div>
+    <div class="order-summary" id="orderSummary">
+      <div class="order-row"><span id="summaryItem">Die-Cut Stickers x 50</span><span id="summaryBase">$17.50</span></div>
+      <div class="order-row" id="shippingRow"><span>Shipping</span><span id="summaryShipping">$15.00</span></div>
+      <div class="order-row total"><span>Total</span><span id="summaryTotal">$32.50</span></div>
+    </div>
 
-<div style="margin-bottom:16px;padding:10px 14px;background:rgba(0,212,180,0.08);border:1px solid rgba(0,212,180,0.2);border-radius:6px;font-size:0.82rem;color:var(--teal)">
-  🔒 Secure checkout powered by Stripe. Your card info is never stored.
-</div>
+    <div style="margin-bottom:16px;padding:10px 14px;background:rgba(0,212,180,0.08);border:1px solid rgba(0,212,180,0.2);border-radius:6px;font-size:0.82rem;color:var(--teal)">
+      🔒 Secure checkout powered by Stripe. Your card info is never stored.
+    </div>
 
-<div class="form-group">
-  <label>Payment</label>
-  <div class="payment-opts">
-    <button class="pay-opt active" onclick="selectPay(this)">💳 Card</button>
-    <button class="pay-opt" onclick="selectPay(this)">Apple Pay</button>
-    <button class="pay-opt" onclick="selectPay(this)">Google Pay</button>
-  </div>
-</div>
+    <div class="form-group">
+      <label>Payment</label>
+      <div class="payment-opts">
+        <button class="pay-opt active" onclick="selectPay(this)">💳 Card</button>
+        <button class="pay-opt" onclick="selectPay(this)">Apple Pay</button>
+        <button class="pay-opt" onclick="selectPay(this)">Google Pay</button>
+      </div>
+    </div>
 
-<div style="background:rgba(0,212,180,0.08);border:1px solid rgba(0,212,180,0.2);border-radius:6px;padding:14px 16px;margin-bottom:20px;font-size:0.85rem;color:#00D4B4;text-align:center">
-  🔒 You will be redirected to Stripe's secure checkout page.<br/>
-  <span style="font-size:0.75rem;opacity:0.7">Works on all devices. Cards, Apple Pay, Google Pay accepted.</span>
-</div>
+    <div style="background:rgba(0,212,180,0.08);border:1px solid rgba(0,212,180,0.2);border-radius:6px;padding:14px 16px;margin-bottom:20px;font-size:0.85rem;color:#00D4B4;text-align:center">
+      🔒 You will be redirected to Stripe's secure checkout page.<br/>
+      <span style="font-size:0.75rem;opacity:0.7">Works on all devices. Cards, Apple Pay, Google Pay accepted.</span>
+    </div>
 
-<button class="pay-btn" onclick="placeOrder()">PAY <span id="payTotal">$32.50</span> — ORDER NOW</button>
-```
-
+    <button class="pay-btn" onclick="placeOrder()">PAY <span id="payTotal">$32.50</span> — ORDER NOW</button>
   </div>
 </div>
 
 <!-- SUCCESS -->
-
 <div class="success-overlay" id="successOverlay">
   <div class="success-icon">🎉</div>
   <h2>ORDER PLACED!</h2>
@@ -761,7 +747,6 @@ input, select { touch-action: manipulation; font-size: 16px; }
 </div>
 
 <!-- PRODUCTS -->
-
 <section id="products">
   <div class="section-tag">// PRODUCT LINEUP</div>
   <h2 class="fade-up">EVERY STICKER <span style="color:var(--orange)">TYPE</span></h2>
@@ -816,7 +801,6 @@ input, select { touch-action: manipulation; font-size: 16px; }
 </section>
 
 <!-- FEATURES -->
-
 <section style="background:var(--gray)">
   <div class="section-tag">// WHY STICKERDROP</div>
   <h2 class="fade-up">BUILT FOR <span style="color:var(--orange)">CREATORS</span></h2>
@@ -831,7 +815,6 @@ input, select { touch-action: manipulation; font-size: 16px; }
 </section>
 
 <!-- REVIEWS -->
-
 <section id="reviews">
   <div class="section-tag">// CUSTOMER REVIEWS</div>
   <h2 class="fade-up">WHAT PEOPLE <span style="color:var(--orange)">ARE SAYING</span></h2>
@@ -843,7 +826,6 @@ input, select { touch-action: manipulation; font-size: 16px; }
 </section>
 
 <!-- FAQ -->
-
 <section id="faq" style="background:var(--gray)">
   <div class="section-tag">// FAQ</div>
   <h2 class="fade-up">GOT <span style="color:var(--orange)">QUESTIONS?</span></h2>
@@ -893,6 +875,7 @@ input, select { touch-action: manipulation; font-size: 16px; }
     </div>
   </div>
 </footer>
+
 
 <script>
 var selectedSize='2x2',selectedFinish='gloss',uploadedFile=null,proofApproved=false;
@@ -1021,6 +1004,108 @@ function selectFinish(f) {
 // Vector file extensions - these are resolution independent
 var VECTOR_TYPES = ['pdf','ai','eps','svg'];
 
+function renderPDF(file, container) {
+  // Use PDF.js to render first page of PDF as canvas
+  pdfjsLib.GlobalWorkerOptions.workerSrc =
+    'https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.worker.min.js';
+
+  var fileReader = new FileReader();
+  fileReader.onload = function(e) {
+    var typedarray = new Uint8Array(e.target.result);
+    pdfjsLib.getDocument({data: typedarray}).promise.then(function(pdf) {
+      pdf.getPage(1).then(function(page) {
+        var viewport = page.getViewport({scale: 1.5});
+        var pdfCanvas = document.createElement('canvas');
+        pdfCanvas.id = 'pdfCanvas';
+        pdfCanvas.width = viewport.width;
+        pdfCanvas.height = viewport.height;
+        pdfCanvas.style.cssText = 'max-width:100%;border-radius:6px;display:block;margin:0 auto;';
+        container.appendChild(pdfCanvas);
+        var ctx = pdfCanvas.getContext('2d');
+        page.render({canvasContext: ctx, viewport: viewport}).promise.then(function() {
+          // PDF rendered successfully
+          var badge = document.getElementById('proofQualityBadge');
+          if (badge) badge.textContent = '✓ PRINT READY';
+        });
+      });
+    }).catch(function(err) {
+      showVectorPlaceholder(container, {name:'document.pdf'}, 'PDF');
+    });
+  };
+  fileReader.readAsArrayBuffer(file);
+}
+
+function showVectorPlaceholder(container, file, ext) {
+  var placeholder = document.createElement('div');
+  placeholder.id = 'vectorPlaceholder';
+  placeholder.style.cssText = 'display:flex;flex-direction:column;align-items:center;justify-content:center;padding:32px;text-align:center;width:100%;';
+  placeholder.innerHTML = '<div style="font-size:2rem;margin-bottom:10px">⏳</div><div style="font-size:0.9rem;color:#888">Converting ' + ext + ' for preview...</div>';
+  container.appendChild(placeholder);
+  convertVectorServerSide(file, ext, container);
+}
+
+function convertVectorServerSide(file, ext, container) {
+  var fd = new FormData();
+  fd.append('file', file);
+  fetch('https://agent-production-ff8d.up.railway.app/convert-preview', {method:'POST', body:fd})
+  .then(function(r){return r.json();})
+  .then(function(data){
+    var ex = document.getElementById('vectorPlaceholder');
+    if (ex) ex.remove();
+    if (data.success && data.preview) {
+      var img = document.getElementById('proofImg');
+      img.src = data.preview;
+      img.style.display = 'block';
+      var resEl = document.getElementById('proofResolution');
+      if (resEl) { resEl.textContent = 'Vector ('+ext+')'; resEl.style.color = '#00c876'; }
+    } else {
+      showConversionFallback(container, file, ext);
+    }
+  })
+  .catch(function(){ showConversionFallback(container, file, ext); });
+}
+
+function showConversionFallback(container, file, ext) {
+  var ex = document.getElementById('vectorPlaceholder');
+  if (ex) ex.remove();
+  var ph = document.createElement('div');
+  ph.id = 'vectorPlaceholder';
+  ph.style.cssText = 'display:flex;flex-direction:column;align-items:center;justify-content:center;padding:32px;text-align:center;width:100%;';
+  ph.innerHTML = '<div style="font-size:2.5rem;margin-bottom:10px">'+(ext==='AI'?'🎨':'📐')+'</div>' +
+    '<div style="font-size:0.95rem;font-weight:700;color:#f5f0eb;margin-bottom:4px">'+file.name+'</div>' +
+    '<div style="font-size:0.78rem;color:#00c876;margin-bottom:8px">✓ Vector file — prints at infinite resolution</div>' +
+    '<div style="font-size:0.72rem;color:#555;max-width:280px;line-height:1.5">Preview unavailable for '+ext+' in this browser. Your file will print with perfect quality.</div>';
+  container.appendChild(ph);
+}
+
+function loadPreviewImage(e) {
+  var file = e.target.files[0];
+  if (!file) return;
+  var reader = new FileReader();
+  reader.onload = function(ev) {
+    // Show preview image in the proof canvas
+    var existing = document.getElementById('vectorPlaceholder');
+    if (existing) existing.remove();
+    var img = document.getElementById('proofImg');
+    img.src = ev.target.result;
+    img.style.display = 'block';
+    // Now do DPI check on the preview image
+    var testImg = new Image();
+    testImg.onload = function() {
+      var w = testImg.naturalWidth;
+      var h = testImg.naturalHeight;
+      var dpi = estimateDPI(w, h);
+      var resEl = document.getElementById('proofResolution');
+      if (resEl) {
+        resEl.textContent = w + ' × ' + h + 'px (preview)';
+        resEl.style.color = '#888'; // grey - it's a preview not the actual file
+      }
+    };
+    testImg.src = ev.target.result;
+  };
+  reader.readAsDataURL(file);
+}
+
 function isVectorFile(file) {
   var ext = file.name.split('.').pop().toLowerCase();
   return VECTOR_TYPES.indexOf(ext) !== -1;
@@ -1059,32 +1144,27 @@ function showProof(file, dataUrl) {
     if (warning) {
       warning.style.display = 'none';
     }
-    // Show vector preview or placeholder
+    // Show vector preview based on type
+    img.style.display = 'none';
+    var canvas = document.getElementById('proofCanvas');
+    var existing = document.getElementById('vectorPlaceholder');
+    if (existing) existing.remove();
+    var existingCanvas = document.getElementById('pdfCanvas');
+    if (existingCanvas) existingCanvas.remove();
+
     if (ext === 'SVG') {
+      // SVG renders natively
       img.src = dataUrl;
       img.style.display = 'block';
+
+    } else if (ext === 'PDF') {
+      // Render PDF using PDF.js
+      renderPDF(file, canvas);
+
     } else {
-      // PDF/AI/EPS - show a styled placeholder since browsers can't render them directly
-      img.style.display = 'none';
-      var canvas = document.getElementById('proofCanvas');
-      if (canvas) {
-        var existing = document.getElementById('vectorPlaceholder');
-        if (existing) existing.remove();
-        var placeholder = document.createElement('div');
-        placeholder.id = 'vectorPlaceholder';
-        placeholder.style.cssText = 'display:flex;flex-direction:column;align-items:center;justify-content:center;padding:40px;text-align:center;';
-        placeholder.innerHTML =
-          '<div style="font-size:3rem;margin-bottom:12px">' +
-          (ext==='PDF'?'📄':ext==='AI'?'🎨':'📐') + '</div>' +
-          '<div style="font-size:1rem;font-weight:700;color:#f5f0eb;margin-bottom:6px">' + file.name + '</div>' +
-          '<div style="font-size:0.82rem;color:#00c876;margin-bottom:4px">✓ Vector file — infinite resolution</div>' +
-          '<div style="font-size:0.78rem;color:#666;max-width:280px;line-height:1.5">' +
-          'Vector files print perfectly at any size. Your design will be crisp and clean at ' +
-          (selectedSize==='custom' ? customW+'"×'+customH+'"' :
-            (SIZE_INCHES[selectedSize]?SIZE_INCHES[selectedSize].w+'"×'+SIZE_INCHES[selectedSize].h+'"':selectedSize)) +
-          ' and beyond.</div>';
-        canvas.appendChild(placeholder);
-      }
+      // AI or EPS - cannot render in browser, show helpful placeholder
+      // with option to upload preview image
+      showVectorPlaceholder(canvas, file, ext);
     }
   } else {
     // ── RASTER FILE — check resolution ──
@@ -1332,7 +1412,6 @@ window.onload = function() {
   }
 };
 </script>
-
 </body>
 </html>
 </body>
